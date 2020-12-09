@@ -3,16 +3,18 @@
 {% block title %}MES EVENEMENTS{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
 
-<div class="example-wrapper">
-    <h1>MES EVENEMENTS</h1>
-    <ul>
-        <li>Evenement 1</li>
-        <li>Evenement 2</li>
-    </ul>
-</div>
+    <div class="example-wrapper">
+        <h1>MES EVENEMENTS</h1>
+        <ul>
+        {% for event in events %}
+            <li><a href="{{ path('event_show', {id: event.id}) }}">{{event.name}}</a></li>
+        {% endfor %}            
+        </ul>
+    </div>
+    <a href="{{ path('event_new') }}">Create new</a>
 {% endblock %}
