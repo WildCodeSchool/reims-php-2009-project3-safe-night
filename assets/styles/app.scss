@@ -74,6 +74,60 @@ header {
 }
 // à ici :)
 
+//Form (edit & new event pages)
+
+#event_name, #event_theme, #event_place {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#event {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    justify-content: center;
+}
+
+#event > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.eventTitle {
+    text-align: center;
+}
+
+#event label{
+    display: block;
+    margin-bottom: 0.5rem;
+}
+#event_datetime_start_date{
+    display: inline;
+    margin-right: 1rem;
+}
+
+#event_datetime_start_time{
+    display: inline;
+}
+
+#event_datetime_end_date{
+    display: inline;
+    margin-right: 1rem;
+}
+
+#event_datetime_end_time{
+    display: inline;
+}
+
+.btn {
+    align-self: center;
+    padding: 0.5rem 1rem;
+}
+form {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 // HOME PAGE pour le fichier index.html.twig
 
 .banner-img {
