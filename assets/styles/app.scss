@@ -14,22 +14,31 @@
     border: solid 1px red;
 }
 
+.my-events-content, a {
+    color: white;
+    font-weight: bold;
+}
+
 .new-event {
-    background-color: #c07a7f;
-    width: 22rem;
+    background-color: #74b8ab;
+    width: 20rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
 }
 
 .events-list {
     list-style-type: none;
-    width: 22rem;
     padding-left: 0;
+    text-transform: uppercase;
     border: solid 1px red;
 }
 
 .event {
-    background-color: #c07a7f;
-    width: 22rem;
+    background-color: #74b8ab;
+    width: 20rem;
     margin-bottom: 1rem;
+    padding: 2rem 0.75rem 2rem 0.75rem;
+    border-radius: 1rem;
+    text-align: end;
     border: solid 1px red;
-    
 }
