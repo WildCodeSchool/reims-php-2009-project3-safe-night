@@ -1,10 +1,9 @@
 @import 'variables.scss';
 
-* {
-    margin: 0;
-    padding: 0;
+html, body {
+	height: 100%;
+	margin: 0; padding: 0;
 }
-
 
 // Header style pour le fichier _header.html.twig
 
@@ -46,6 +45,10 @@ header {
 }
 
 // Navigation Bar pour le fichier _navigation.html.twig
+
+footer {
+    margin-top: 40%;
+}
 
 .flex-row {
     display: flex;
