@@ -1,5 +1,42 @@
 @import 'variables.scss';
 
+// Reinitialisation des marges et du remplissage du body
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+// Suppression des puces des listes à puces
+
+a {
+    text-decoration: none;
+}
+
+
+// Header style pour le fichier _header.html.twig
+
+header {
+    height: 4rem;
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 12px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0rem 1rem 0.25rem 1rem;
+    box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
+}
+
+.leftarrow {
+    width: 2rem;
+    height: 2rem;
+}
+
+.user-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
 // Page "Mes évènements du fichier index.html.twig
 
 .my-events-banner {
