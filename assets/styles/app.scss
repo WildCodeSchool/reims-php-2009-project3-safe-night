@@ -1,1 +1,35 @@
 @import 'variables.scss';
+
+// Page "Mes évènements du fichier index.html.twig
+
+.my-events-title {
+    color: white;
+}
+
+.my-events-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border: solid 1px red;
+}
+
+.new-event {
+    background-color: #c07a7f;
+    width: 22rem;
+}
+
+.events-list {
+    list-style-type: none;
+    width: 22rem;
+    padding-left: 0;
+    border: solid 1px red;
+}
+
+.event {
+    background-color: #c07a7f;
+    width: 22rem;
+    margin-bottom: 1rem;
+    border: solid 1px red;
+    
+}
