@@ -1,6 +1,10 @@
 @import 'variables.scss';
+@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-heavy);
+@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-book);
 
 body {
-    background-color: $wild-color;
-    color: $light-color;
+    font-family: 'CooperHewitt-Heavy', arial;
+}
+.eventShow-item {
+    text-align:center;
 }
