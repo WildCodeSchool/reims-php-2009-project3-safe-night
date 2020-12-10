@@ -3,22 +3,28 @@
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h1>{{ event.name }}</h1>
-    <h2>Theme</h2>
+    <div>
+        <img src="{{ asset('build/images/' ~ event.id ~ '.jpg') }}" />
+        <h1 class = "eventShow-title">{{ event.name }}</h1>
+    </div>
     <p class = "eventShow-item">{{ event.theme }}</p>
-    <h2>Heure de début</h2>
-    <p class = "eventShow-item">{{ event.datetimeStart ? event.datetimeStart|date('Y-m-d H:i:s') : '' }}</p>
-    <h2>Heure de fin</h2>
-    <p class = "eventShow-item">{{ event.datetimeEnd ? event.datetimeEnd|date('Y-m-d H:i:s') : '' }}</p>
-    <h2>Lieu</h2>
-    <p class = "eventShow-item">{{ event.place }}</p>
-    <div>
-        <a href="{{ path('event_index') }}">Retour à la Liste</a>
+    <div class = "showItem from">
+        <h2>Du</h2>
+        <p class = "eventShow-item">{{ event.datetimeStart ? event.datetimeStart|date('Y-m-d H:i:s') : '' }}</p>
     </div>
-    <div>
-        <a href="{{ path('event_edit', {'id': event.id}) }}">modifier</a>
+    <div class = "showItem to">
+        <h2>Au</h2>
+        <p class = "eventShow-item">{{ event.datetimeEnd ? event.datetimeEnd|date('Y-m-d H:i:s') : '' }}</p>
     </div>
-    <div>
+    <div class = "showItem location">
+        <img class = "icon" src = "{{ asset('build/images/location.png') }}">
+        <p class = "eventShow-item">{{ event.place }}</p>
+    </div>
+    <div class = "button-container">
+        <a class = "button" href="{{ path('event_index') }}">Retour à la Liste</a>
+        <a class = "button" href="{{ path('event_edit', {'id': event.id}) }}">modifier</a>
+    </div>
+    <div class = "button-container">
     {{ include('event/_delete_form.html.twig') }}
     </div>
 {% endblock %}

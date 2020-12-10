@@ -4,6 +4,8 @@
 
 body {
     font-family: 'CooperHewitt-Heavy', arial;
+    display:flex;
+    flex-direction: column;
 }
 .eventShow-item {
     text-align:center;
@@ -29,4 +31,51 @@ header {
 .user-icon {
     width: 2rem;
     height: 2rem;
+}
+
+.button {
+    border:1px solid black;
+    border-radius: 25px;
+    text-decoration: none;
+    display:block;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding:0.5em;
+    width: 60%;
+}
+
+.button-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.location {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+.icon {
+    max-width: 2rem;
+    height:auto;
+}
+.showItem {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.delete-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-container {
+    position:absolute;
+    z-index:2;
+}
+.eventShow-title{
+    position:relative;
+    z-index:1;
 }
