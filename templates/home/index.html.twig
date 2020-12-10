@@ -3,18 +3,22 @@
 {% block title %}Home{% endblock %}
     
 {% block body %}
-<div class="banner">
-    <div class="setting-pic">
-        <img src="http://placehold.it/100x100">
-    </div>
-    <div class="profil-pic">
-        <img src="http://placehold.it/100x100">
-    </div>
-</div>
 <div>
     <img class="banner-img" src="{{ asset('build/images/banner-img.6394fd7a.jpg') }}"/>
 </div>
-<div class="home-zone">
-    <img class="home-btn" src="http://placehold.it/100x100">
+
+<div class="wrapper">
+    <div>
+        <img class="wrapper-img" src="{{ asset('/build/images/amis.92db0299.png') }}"/>
+    </div>
+    <div>
+        <a href="/event"><img class="wrapper-img" src="{{ asset('/build/images/mesevent.b3258772.png') }}"/></a>
+    </div>
+    <div>
+        <img class="wrapper-img" src="{{ asset('/build/images/newevent.85896179.png') }}"/>
+    </div>
+    <div>
+        <img class="wrapper-img" src="{{ asset('/build/images/carte.21117fbf.png') }}"/>
+    </div>
 </div>
 {% endblock %}
