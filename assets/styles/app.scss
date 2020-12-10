@@ -41,11 +41,15 @@ header {
 
 .my-events-banner {
     width: 100%;
+    height: 15rem;
     border-radius: 0rem 0rem 1rem 1rem;
 }
 
 .my-events-title {
     color: white;
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 40px;
 }
 
 .my-events-content {
@@ -53,34 +57,30 @@ header {
     flex-direction: column;
     align-items: center;
     color: white;
-    border: solid 1px red;
 }
 
 .my-events-content, a {
-    color: white;
+    color: black;
     font-weight: bold;
 }
 
 .new-event {
     background-color: #74b8ab;
-    width: 20rem;
-    padding: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: 1rem;
 }
 
-.events-list {
+.event-list {
     list-style-type: none;
-    padding-left: 0;
-    text-transform: uppercase;
-    border: solid 1px red;
+    padding: 1rem;
 }
 
 .event {
     background-color: #74b8ab;
-    width: 20rem;
+    padding: 2rem 4rem 2rem 4rem;
     margin-bottom: 1rem;
-    padding: 2rem 0.75rem 2rem 0.75rem;
     border-radius: 1rem;
+    text-transform: uppercase;
     text-align: end;
-    border: solid 1px red;
 }
