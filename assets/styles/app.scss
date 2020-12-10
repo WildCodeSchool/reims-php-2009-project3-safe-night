@@ -34,7 +34,8 @@ header {
     height: 2rem;
 }
 //Axel -> Template show.html.twig. D'ici à...
-.button {
+
+.btn {
     border:1px solid black;
     border-radius: 25px;
     text-decoration: none;
@@ -44,8 +45,8 @@ header {
     margin-bottom: 1em;
     padding:0.5em;
     width: 60%;
+    color:black;
 }
-
 .button-container {
     display:flex;
     flex-direction: column;
