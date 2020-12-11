@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MES EVENEMENTS{% endblock %}
+{% block title %}Mes évènements{% endblock %}
 
 {% block body %}
     <style>
@@ -8,13 +8,17 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
-    <div class="example-wrapper">
-        <h1>MES EVENEMENTS</h1>
-        <ul>
+    <section >
+        <img class="my-events-banner" src="{{ asset('build/images/my-events.jpg') }}" alt="my-events-banner"/>
+        <h1 class="my-events-title">MES ÉVÈNEMENTS</h1>
+    </section>
+
+    <div class="my-events-content example-wrapper">
+        <ul class="event-list">
+            <li class="new-event"><a href="{{ path('event_new') }}">+ Nouvel évènement</a></li>
         {% for event in events %}
-            <li><a href="{{ path('event_show', {id: event.id}) }}">{{event.name}}</a></li>
-        {% endfor %}            
+            <li class="event"><a href="{{ path('event_show', {id: event.id}) }}">{{event.name}}</a></li>
+        {% endfor %}
         </ul>
     </div>
-    <a href="{{ path('event_new') }}">Create new</a>
 {% endblock %}

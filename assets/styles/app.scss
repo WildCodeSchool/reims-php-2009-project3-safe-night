@@ -12,9 +12,13 @@ body {
     display:flex;
     flex-direction: column;
 }
-.eventShow-item {
-    text-align:center;
+
+// Suppression des puces des listes à puces
+
+a {
+    text-decoration: none;
 }
+
 // Header style pour le fichier _header.html.twig
 
 header {
@@ -38,6 +42,7 @@ header {
     width: 2rem;
     height: 2rem;
 }
+
 //Axel -> Template show.html.twig. D'ici à...
 
 .btn {
@@ -77,6 +82,16 @@ header {
     flex-direction: column;
     align-items: center;
 }
+
+.eventShow-item {
+    text-align:center;
+}
+
+.banner-eventShow {
+    width: 100%;
+    height: auto;
+}
+
 // à ici :)
 
 //Form (edit & new event pages)
@@ -135,10 +150,55 @@ form {
     display: flex;
     flex-direction: column;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a0569ff5956890293945e38010c4128d2341441a
+// Page "Mes évènements" du fichier index.html.twig
+
+.my-events-banner {
+    width: 100%;
+    height: auto;
+    border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.my-events-title {
+    color: white;
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 40px;
+}
+
+.my-events-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.my-events-content, a {
+    color: black;
+    font-weight: bold;
+}
+
+.new-event {
+    background-color: #74b8ab;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+}
+
+.event-list {
+    list-style-type: none;
+    padding: 1rem;
+}
+
+.event {
+    background-color: #74b8ab;
+    padding: 2rem 4rem 2rem 4rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    text-align: end;
+}
+
 // HOME PAGE pour le fichier index.html.twig
 
 .banner-img {
@@ -156,16 +216,8 @@ form {
 
 // Navigation Bar pour le fichier _navigation.html.twig
 
-footer {
-    align-self: flex-end;
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
 .justify-center {
+    display: flex;
     justify-content: center;
 }
 
@@ -175,4 +227,3 @@ footer {
     border-radius: 12px 12px 0px 0px;
     box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
 }
-
