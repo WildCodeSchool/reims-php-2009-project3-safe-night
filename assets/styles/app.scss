@@ -2,6 +2,11 @@
 @import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-heavy);
 @import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-book);
 
+html, body {
+	min-height: 100vh;
+	margin: 0; padding: 0;
+}
+
 body {
     font-family: 'CooperHewitt-Heavy', arial;
     display:flex;
@@ -145,6 +150,10 @@ form {
 
 // Navigation Bar pour le fichier _navigation.html.twig
 
+footer {
+    align-self: flex-end;
+}
+
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -157,6 +166,6 @@ form {
 .Home {
     height: 3rem;
     border: black 1px;
-    border-radius: 12px 12px 12px 12px;
+    border-radius: 12px 12px 0px 0px;
     box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
 }
