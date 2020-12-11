@@ -3,40 +3,28 @@
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h1>Event</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ event.name }}</td>
-            </tr>
-            <tr>
-                <th>Theme</th>
-                <td>{{ event.theme }}</td>
-            </tr>
-            <tr>
-                <th>Datetime_start</th>
-                <td>{{ event.datetimeStart ? event.datetimeStart|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Datetime_end</th>
-                <td>{{ event.datetimeEnd ? event.datetimeEnd|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Place</th>
-                <td>{{ event.place }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('event_index') }}">back to list</a>
-
-    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
-
+    <div>
+        <img src="{{ asset('build/images/' ~ event.id ~ '.jpg') }}" />
+        <h1 class = "eventShow-title">{{ event.name }}</h1>
+    </div>
+    <p class = "eventShow-item">{{ event.theme }}</p>
+    <div class = "showItem from">
+        <h2>Du</h2>
+        <p class = "eventShow-item">{{ event.datetimeStart ? event.datetimeStart|date('Y-m-d H:i:s') : '' }}</p>
+    </div>
+    <div class = "showItem to">
+        <h2>Au</h2>
+        <p class = "eventShow-item">{{ event.datetimeEnd ? event.datetimeEnd|date('Y-m-d H:i:s') : '' }}</p>
+    </div>
+    <div class = "showItem location">
+        <img class = "icon" src = "{{ asset('build/images/location.png') }}">
+        <p class = "eventShow-item">{{ event.place }}</p>
+    </div>
+    <div class = "button-container">
+        <a class = "btn" href="{{ path('event_index') }}">Retour à la Liste</a>
+        <a class = "btn" href="{{ path('event_edit', {'id': event.id}) }}">modifier</a>
+    </div>
+    <div class = "button-container">
     {{ include('event/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
