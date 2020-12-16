@@ -1,6 +1,6 @@
 {% block header %}
     <header>
-        <a href="" ><img class="leftarrow" src="{{ asset('build/images/previous.png') }}" alt="leftarrow"/></a>
+        <a href="{{ app.request.headers.get('referer') }}"><img class="leftarrow" src="{{ asset('build/images/previous.png') }}" alt="leftarrow"/></a>
         <a href="" ><img class="user-icon" src="{{ asset('build/images/usericon.png') }}" alt="user-icon"/></a>
     </header>
 {% endblock %}
