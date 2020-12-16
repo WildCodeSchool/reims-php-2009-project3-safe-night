@@ -28,7 +28,7 @@ class User
     private $lastname;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="date")
      */
     private $birthday;
 
@@ -41,6 +41,11 @@ class User
      * @ORM\Column(type="string")
      */
     private $phoneNumber;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $adress;
 
     public function getId(): ?int
     {
@@ -103,6 +108,18 @@ class User
     public function setPhoneNumber(string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getAdress(): ?string
+    {
+        return $this->adress;
+    }
+
+    public function setAdress(string $adress): self
+    {
+        $this->adress = $adress;
 
         return $this;
     }
