@@ -23,9 +23,9 @@ class Event
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
-    private $theme;
+    private $description;
 
     /**
      * @ORM\Column(type="datetime")
@@ -59,14 +59,14 @@ class Event
         return $this;
     }
 
-    public function getTheme(): ?string
+    public function getDescription(): ?string
     {
-        return $this->theme;
+        return $this->description;
     }
 
-    public function setTheme(string $theme): self
+    public function setDescription(string $description): self
     {
-        $this->theme = $theme;
+        $this->description = $description;
 
         return $this;
     }
