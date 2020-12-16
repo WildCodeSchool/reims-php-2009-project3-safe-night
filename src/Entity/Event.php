@@ -30,12 +30,12 @@ class Event
     /**
      * @ORM\Column(type="datetime")
      */
-    private $datetime_start;
+    private $datetimeStart;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $datetime_end;
+    private $datetimeEnd;
 
     /**
      * @ORM\Column(type="text")
@@ -73,24 +73,24 @@ class Event
 
     public function getDatetimeStart(): ?\DateTimeInterface
     {
-        return $this->datetime_start;
+        return $this->datetimeStart;
     }
 
-    public function setDatetimeStart(\DateTimeInterface $datetime_start): self
+    public function setDatetimeStart(\DateTimeInterface $datetimeStart): self
     {
-        $this->datetime_start = $datetime_start;
+        $this->datetimeStart = $datetimeStart;
 
         return $this;
     }
 
     public function getDatetimeEnd(): ?\DateTimeInterface
     {
-        return $this->datetime_end;
+        return $this->datetimeEnd;
     }
 
-    public function setDatetimeEnd(\DateTimeInterface $datetime_end): self
+    public function setDatetimeEnd(\DateTimeInterface $datetimeEnd): self
     {
-        $this->datetime_end = $datetime_end;
+        $this->datetimeEnd = $datetimeEnd;
 
         return $this;
     }
