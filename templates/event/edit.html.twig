@@ -6,7 +6,7 @@
     <h1 class= "eventTitle">Modifier un événement</h1>
       {{ include('event/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
      <div class = "button-container">
-      <a href="{{ path('event_index') }}">>Retour aux évènements</a>
       {{ include('event/_delete_form.html.twig') }}
+       <a href="{{ path('event_index') }}">>Retour aux évènements</a>
      </div>
 {% endblock %}

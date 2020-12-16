@@ -12,13 +12,14 @@ body {
     display:flex;
     flex-direction: column;
 }
-
+.eventShow-item {
+    text-align:center;
+}
 // Suppression des puces des listes à puces
 
 a {
     text-decoration: none;
 }
-
 // Header style pour le fichier _header.html.twig
 
 header {
@@ -42,7 +43,6 @@ header {
     width: 2rem;
     height: 2rem;
 }
-
 //Axel -> Template show.html.twig. D'ici à...
 
 .btn {
@@ -144,13 +144,11 @@ header {
     align-self: center;
     padding: 0.5rem 1rem;
 }
-
 form {
     justify-content: center;
     display: flex;
     flex-direction: column;
 }
-
 // Page "Mes évènements" du fichier index.html.twig
 
 .my-events-banner {
@@ -198,9 +196,7 @@ form {
     text-transform: uppercase;
     text-align: end;
 }
-
 // HOME PAGE pour le fichier index.html.twig
-
 .banner-img {
     margin-top: 0;
     width: 100vw;
@@ -216,8 +212,16 @@ form {
 
 // Navigation Bar pour le fichier _navigation.html.twig
 
-.justify-center {
+footer {
+    align-self: flex-end;
+}
+
+.flex-row {
     display: flex;
+    flex-direction: row;
+}
+
+.justify-center {
     justify-content: center;
 }
 

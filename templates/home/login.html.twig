@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}{% endblock %}
+{% block body %}
+<form action="">
+    <div class="loginForm">
+        <label for="loginName">Identifiant </label>
+        <input type="text" name="loginName" id="loginName" >
+    </div>
+    <div class="loginForm">
+        <label for="loginPassword">Mot de passe </label>
+        <input type="text" name="loginPassword" id="loginPassword">
+    </div>
+</form>
+<div>
+    <a href="/index">Connexion </a>
+</div>
+<div>
+    <a href="/user/new">Création de compte </a>
+</div>
+{% endblock %}
+{% block navigation %}{% endblock %}
