@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>Name</th>
-                <td>{{ user.name }}</td>
+                <td>{{ user.firstname }}</td>
             </tr>
             <tr>
                 <th>Lastname</th>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Birthday</th>
-                <td>{{ user.birthday }}</td>
+                <td>{{ user.birthday|date('d-m-Y') }}</td>
             </tr>
             <tr>
                 <th>Email</th>
@@ -30,6 +30,10 @@
             <tr>
                 <th>Phone_number</th>
                 <td>{{ user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ user.adress }}</td>
             </tr>
         </tbody>
     </table>

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -76,12 +78,12 @@ class User
         return $this;
     }
 
-    public function getBirthday(): ?int
+    public function getBirthday(): ?Datetime
     {
         return $this->birthday;
     }
 
-    public function setBirthday(int $birthday): self
+    public function setBirthday(Datetime $birthday): self
     {
         $this->birthday = $birthday;
 
