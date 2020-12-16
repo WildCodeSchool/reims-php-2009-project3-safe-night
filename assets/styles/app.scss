@@ -93,6 +93,19 @@ header {
 }
 
 // à ici :)
+// Background color des pages: doormat, login, user/new
+
+.safeNightBlue {
+    background-color: $safeBlue-color;
+    justify-content: center;
+}
+.flexContainerLogo {
+    display: flex;
+    justify-content: center;
+}
+.openLogo {
+    justify-self: center;
+}
 
 //Form (edit & new event pages)
 
