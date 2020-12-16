@@ -15,7 +15,6 @@
 
     <div class="my-events-content example-wrapper">
         <ul class="event-list">
-            <li class="new-event"><a href="{{ path('event_new') }}">+ Nouvel évènement</a></li>
         {% for event in events %}
             <li class="event"><a href="{{ path('event_show', {id: event.id}) }}">{{event.name}}</a></li>
         {% endfor %}
