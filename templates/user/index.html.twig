@@ -21,9 +21,9 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
+                <td>{{ user.firstname }}</td>
                 <td>{{ user.lastname }}</td>
-                <td>{{ user.birthday }}</td>
+                <td>{{ user.birthday | date('Y-m-d')}}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.phoneNumber }}</td>
                 <td>

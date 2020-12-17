@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -28,7 +30,7 @@ class User
     private $lastname;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="date")
      */
     private $birthday;
 
@@ -41,6 +43,11 @@ class User
      * @ORM\Column(type="string")
      */
     private $phoneNumber;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $address;
 
     public function getId(): ?int
     {
@@ -71,12 +78,12 @@ class User
         return $this;
     }
 
-    public function getBirthday(): ?int
+    public function getBirthday(): ?Datetime
     {
         return $this->birthday;
     }
 
-    public function setBirthday(int $birthday): self
+    public function setBirthday(Datetime $birthday): self
     {
         $this->birthday = $birthday;
 
@@ -103,6 +110,18 @@ class User
     public function setPhoneNumber(string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }
