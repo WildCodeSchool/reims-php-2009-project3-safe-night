@@ -109,29 +109,30 @@ header {
 
 //Form (edit & new event pages)
 
-#event_name, #event_theme, #event_place {
+input {
     margin: 0;
     box-sizing: border-box;
+    display:inline;
 }
 
-#event {
+form {
+    padding: 1em;
     display: flex;
     flex-direction: column;
-    padding: 1em;
     justify-content: center;
 }
 
-#event > div {
+form  div {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
 }
 
-.eventTitle {
+.pageTitle {
     text-align: center;
 }
 
-#event label{
+label{
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -153,15 +154,14 @@ header {
     display: inline;
 }
 
+#user_birthday {
+    flex-direction: row;
+}
 .btn {
     align-self: center;
     padding: 0.5rem 1rem;
 }
-form {
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
+
 // Page "Mes évènements" du fichier index.html.twig
 
 .my-events-banner {
