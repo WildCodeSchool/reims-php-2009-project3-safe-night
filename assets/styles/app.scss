@@ -12,9 +12,11 @@ body {
     display:flex;
     flex-direction: column;
 }
+
 .eventShow-item {
     text-align:center;
 }
+
 // Suppression des puces des listes à puces
 
 a {
@@ -43,6 +45,7 @@ header {
     width: 2rem;
     height: 2rem;
 }
+
 //Axel -> Template show.html.twig. D'ici à...
 
 .btn {
@@ -58,25 +61,30 @@ header {
     color:black;
     align-self:center;
 }
+
 .button-container {
     display:flex;
     flex-direction: column;
     align-items: center;
 }
+
 .location {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
 }
+
 .icon {
     max-width: 2rem;
     height:auto;
 }
+
 .showItem {
     margin-top: 1em;
     margin-bottom: 1em;
 }
+
 .delete-form {
     width: 100%;
     display: flex;
@@ -100,10 +108,12 @@ header {
     background-color: $safeBlue-color;
     justify-content: center;
 }
+
 .flexContainerLogo {
     display: flex;
     justify-content: center;
 }
+
 .openLogo {
     justify-self: center;
 }
@@ -205,7 +215,9 @@ label{
     text-transform: uppercase;
     text-align: end;
 }
+
 // HOME PAGE pour le fichier index.html.twig
+
 .banner-img {
     margin-top: 0;
     width: 100vw;
@@ -245,6 +257,7 @@ footer {
 // Page Login du fichier login.html.twig
 
 .login-logo {
+    margin-top: 0rem;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -254,6 +267,7 @@ footer {
 
 .login-title {
     text-align: center;
+    font-size: 2rem;
 }
 
 .login-form-container {
@@ -261,16 +275,19 @@ footer {
     margin-left: auto;
     margin-right: auto;
     width: 17rem;
+    padding: 0px;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 0px;
 }
 
 .login-form > label {
     padding-left: 0.5rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
 .login-form > input {
@@ -321,6 +338,7 @@ h1 {
     font-style: normal;
     color: rgb(78, 72, 72);
 }
+
 .user-profil {
     border-spacing: 1.4rem;
 }
@@ -395,3 +413,14 @@ h1 {
     border-color: red;
 }  
 
+.safeNightBlue h1 {
+    color: white;
+}
+
+.safeNightBlue label {
+    color: white;
+}
+
+.safeNightBlue a {
+    color: white;
+}
