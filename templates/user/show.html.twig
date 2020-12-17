@@ -38,8 +38,8 @@
     <a class="disconnect-profil">Déconnection</a>
     <a class="edit-profil" href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a>
     <a class="cgu-profil">CGU et CGV</a>
-    <a class="delete-profil" href="{{ path('user_delete', {'id': user.id}) }}">Supprimer le profil</a>
+    {{ include('user/_delete_form.html.twig') }}
 </div>
 
-    {#{{ include('user/_delete_form.html.twig') }}#}
+    
 {% endblock %}
