@@ -56,6 +56,7 @@ header {
     padding:0.5em;
     width: 60%;
     color:black;
+    align-self:center;
 }
 .button-container {
     display:flex;
@@ -113,6 +114,11 @@ input {
     margin: 0;
     box-sizing: border-box;
     display:inline;
+    padding: 0.60rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border: solid 1px grey;
+    outline: none;
 }
 
 form {
@@ -136,36 +142,20 @@ label{
     display: block;
     margin-bottom: 0.5rem;
 }
-#event_datetime_start_date{
+#event_datetime_start_date, #event_datetime_end_date{
     display: inline;
     margin-right: 1rem;
 }
 
-#event_datetime_start_time{
-    display: inline;
-}
-
-#event_datetime_end_date{
-    display: inline;
-    margin-right: 1rem;
-}
-
-#event_datetime_end_time{
+#event_datetime_start_time, #event_datetime_end_time{
     display: inline;
 }
 
 #user_birthday {
     flex-direction: row;
 }
-.btn {
-    align-self: center;
-    padding: 0.5rem 1rem;
-}
-
-form { // URGENT Il faut atttribuer une classe à la balise, sinon les propriétés s'appliquent à toutes les balises form URGENT
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+#event_datetime_start, #event_datetime_end { 
+    flex-direction: row;
 }
 
 // Page "Mes évènements" du fichier index.html.twig
