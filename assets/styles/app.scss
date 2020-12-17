@@ -225,33 +225,35 @@ label{
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 4fr));
     margin: 4rem;
     max-width: 800px;
     font: 18px/1.5 sans-serif;
 }
+@media screen and (min-width: 768px) {
+    .wrapper {
+        display: flex;
+        justify-content: space-around;
+        margin: 4rem;
+        padding: 0px;
+    }
+  }
 
 // Navigation Bar pour le fichier _navigation.html.twig
 
 footer {
-    align-self: flex-end;
-}
-
-.flex-row {
     display: flex;
-    flex-direction: row;
-}
-
-.justify-center {
     justify-content: center;
 }
-
-.Home {
-    justify-self: center;
+.Home-img {
     height: 3rem;
     border: black 1px;
     border-radius: 12px 12px 0px 0px;
     box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
+}
+
+.Home-link {
+    text-align: center;
 }
 
 // Page Login du fichier login.html.twig
@@ -325,7 +327,7 @@ footer {
     justify-content: center;
 }
 
-h1 {
+.h1-profil-user {
     text-align: center;
     font-size: 3rem;
     color: rgb(65, 57, 57);
