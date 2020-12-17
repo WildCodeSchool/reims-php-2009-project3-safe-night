@@ -20,7 +20,7 @@ class UserType extends AbstractType
             ->add('birthday', BirthdayType::class, ['label' => "Date de naissance"])
             ->add('email', EmailType::class, ['label' => "Adresse mail"])
             ->add('phone_number', TextType::class, ['label' => "Numéro de téléphone"])
-            ->add('adress', TextType::class, ['label' => "Adresse (numéro, voie, code postal, ville)"])
+            ->add('address', TextType::class, ['label' => "Adresse (numéro, voie, code postal, ville)"])
         ;
     }
 
