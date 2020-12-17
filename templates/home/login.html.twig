@@ -2,21 +2,24 @@
 
 {% block header %}{% endblock %}
 {% block body %}
-<form action="">
-    <div class="loginForm">
-        <label for="loginName">Identifiant </label>
+
+<img class="login-logo" src="{{ asset('build/images/favicon.png') }}" alt="logo"/>
+<h1 class="login-title">CONNEXION</h1>
+
+<form class="login-form-container" action="">
+
+    <div class="login-form">
+        <label for="loginName">Email</label>
         <input type="text" name="loginName" id="loginName" >
     </div>
-    <div class="loginForm">
-        <label for="loginPassword">Mot de passe </label>
+    <div class="login-form">
+        <label for="loginPassword">Mot de passe</label>
         <input type="text" name="loginPassword" id="loginPassword">
     </div>
 </form>
-<div>
-    <a href="/index">Connexion </a>
-</div>
-<div>
-    <a href="/user/new">Création de compte </a>
+<div class="login-bottom">
+    <a class="login-button" href="/index">Se connecter</a>
+    <a class="login-registration" href="/user/new">Vous n'avez pas de compte ? Inscrivez vous !</a>
 </div>
 {% endblock %}
 {% block navigation %}{% endblock %}
