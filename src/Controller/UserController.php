@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @Route("/user")
@@ -28,17 +30,22 @@ class UserController extends AbstractController
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, FileUploader $fileUploader): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $avatarFile = $form->get('avatar')->getData();
+            if ($avatarFile) {
+                $avatarFileName = $fileUploader->upload($avatarFile);
+                $user->setAvatar($avatarFileName);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
+            }
             return $this->redirectToRoute('home_index');
         }
 
@@ -61,12 +68,22 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user, FileUploader $fileUploader): Response
     {
+        $user->setAvatar(new File($this->getParameter('image_directory').'/'.$user->getAvatar()));
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $avatarFile = $form->get('avatar')->getData();
+            if ($avatarFile) {
+                $avatarFileName = $fileUploader->upload($avatarFile);
+                $user->setAvatar($avatarFileName);
+                
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
             $this->getDoctrine()->getManager()->flush();
             $id = $user->getId();
             return $this->redirectToRoute('user_show', ['id' => $id]);
@@ -87,6 +104,11 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
+            $fileToDelete = __DIR__.'/../../public/uploads/'. $user->getAvatar();
+            if(file_exists($fileToDelete))
+            {
+                unlink($fileToDelete);
+            }
         }
 
         return $this->redirectToRoute('home');
