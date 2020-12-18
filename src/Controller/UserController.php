@@ -42,9 +42,9 @@ class UserController extends AbstractController
                 $avatarFileName = $fileUploader->upload($avatarFile);
                 $user->setAvatar($avatarFileName);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($user);
+                    $entityManager->flush();
             }
             return $this->redirectToRoute('home_login');
         }
@@ -70,7 +70,7 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user, FileUploader $fileUploader): Response
     {
-        $user->setAvatar(new File($this->getParameter('image_directory').'/'.$user->getAvatar()));
+        $user->setAvatar(new File($this->getParameter('image_directory') . '/' . $user->getAvatar()));
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -79,7 +79,7 @@ class UserController extends AbstractController
             if ($avatarFile) {
                 $avatarFileName = $fileUploader->upload($avatarFile);
                 $user->setAvatar($avatarFileName);
-                
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -104,9 +104,8 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
-            $fileToDelete = __DIR__.'/../../public/uploads/'. $user->getAvatar();
-            if(file_exists($fileToDelete))
-            {
+            $fileToDelete = __DIR__ . '/../../public/uploads/' . $user->getAvatar();
+            if (file_exists($fileToDelete)) {
                 unlink($fileToDelete);
             }
         }
