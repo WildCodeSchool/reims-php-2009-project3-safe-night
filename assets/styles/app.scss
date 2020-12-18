@@ -9,6 +9,7 @@ html, body {
 
 body {
     font-family: 'CooperHewitt-Heavy', arial;
+    color-adjust: exact;
     display:flex;
     flex-direction: column;
 }
@@ -97,6 +98,7 @@ header {
 }
 
 .banner-eventShow {
+    border-radius: 0rem 0rem 1rem 1rem;
     width: 100%;
     height: auto;
 }
@@ -219,6 +221,7 @@ label{
 // HOME PAGE pour le fichier index.html.twig
 
 .banner-img {
+    border-radius: 0rem 0rem 1rem 1rem;
     margin-top: 0;
     width: 100vw;
 }
