@@ -3,9 +3,10 @@
 {% block title %}Nouvel événement{% endblock %}
 
 {% block body %}
-    <h1 class = "pageTitle">Nouvel événement</h1>
-
+        <section class = "new-event">
+        <img  class = "my-events-banner" src="{{ asset('build/images/CreationdEvenement.png') }}" alt="my-events-banner"/>
+    </section>
     {{ include('event/_form.html.twig') }}
 
-    <a class="btn" href="{{ path('event_index') }}">Retour à la liste</a>
+    <a class="btn" href="{{ path('event_index') }}">Ma liste d'évènements</a>
 {% endblock %}
