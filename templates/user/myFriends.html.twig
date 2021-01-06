@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	{% for friend in user.friends %}
+		<h1>{{friend.user.firstname}}
+			{{friend.user.lastname}}</h1>
+		<img
+		class="friend-pic" src="{{ asset('/uploads/' ~ friend.user.avatar) }}"/>
+		{#<a class="btn" href="{{ path('friend_delete') }}">SUPPRIMER AMI</a>#}
+	{% else %}
+		<p>Nous n'avons pas trouvé d'amis.. En ajouter ?</p>
+	{% endfor %}
+
+	<a class="btn" href="{{ path('friend_new') }}">AJOUTER AMI</a>
+{% endblock %}
