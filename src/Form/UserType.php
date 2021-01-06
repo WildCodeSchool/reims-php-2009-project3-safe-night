@@ -12,11 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\CallbackTransformer;
-use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
