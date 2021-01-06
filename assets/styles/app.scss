@@ -1,6 +1,14 @@
 @import 'variables.scss';
-@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-heavy);
-@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-book);
+//@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-heavy);
+//@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-book);
+/*@font-face{
+    font-family:"CooperHewitt-Heavy";
+    src: url("cooperhewitt-heavy.ttf");
+}*/
+@font-face{
+    font-family:"CooperHewitt-Book";
+    src: url("cooperhewitt-book.ttf");
+}
 
 html, body {
 	min-height: 100vh;
@@ -8,9 +16,10 @@ html, body {
 }
 
 body {
-    font-family: 'CooperHewitt-Heavy', arial;
+    font-family: 'CooperHewitt-Book';
     display:flex;
     flex-direction: column;
+    color-adjust: exact;
 }
 
 .eventShow-item {
@@ -99,6 +108,7 @@ header {
 .banner-eventShow {
     width: 100%;
     height: auto;
+    border-radius: 0rem 0rem 1rem 1rem;
 }
 
 // à ici :)
@@ -195,10 +205,9 @@ label{
     font-weight: bold;
 }
 
-.new-event {
-    background-color: #74b8ab;
-    padding: 1rem;
-    margin-bottom: 1rem;
+.new-event { 
+    height:20%;
+    margin-bottom:2rem;
     border-radius: 1rem;
 }
 
@@ -213,7 +222,7 @@ label{
     margin-bottom: 1rem;
     border-radius: 1rem;
     text-transform: uppercase;
-    text-align: end;
+    text-align: center;
 }
 
 // HOME PAGE pour le fichier index.html.twig
@@ -221,15 +230,18 @@ label{
 .banner-img {
     margin-top: 0;
     width: 100vw;
+    border-radius: 0rem 0rem 1rem 1rem;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 4fr));
     margin: 4rem;
+    column-gap: 2rem;
     max-width: 800px;
     font: 18px/1.5 sans-serif;
 }
+
 @media screen and (min-width: 768px) {
     .wrapper {
         display: flex;
@@ -237,6 +249,7 @@ label{
         margin: 4rem;
         max-width: 100%;
         padding: 0px;
+        max-width: 100%;
     }
   }
 
