@@ -215,7 +215,12 @@ class User implements UserInterface
     }
 
     /**
+<<<<<<< HEAD
      * @return Collection|self[]
+=======
+
+     * @return Collection|Friend[]
+>>>>>>> ccb2180688030de8d17fcd5693176a49dd69fbfc
      */
     public function getFriends(): Collection
     {
