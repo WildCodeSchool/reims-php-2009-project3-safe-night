@@ -57,7 +57,7 @@ header {
 
 //Axel -> Template show.html.twig. D'ici à...
 
-.btn {
+.btn, .delete-btn {
     border:1px solid black;
     border-radius: 25px;
     text-decoration: none;
@@ -70,6 +70,11 @@ header {
     color:black;
     align-self:center;
 }
+
+.delete-btn {
+    color: #ffffff;
+    background-color: rgb(214, 0, 0);
+  }
 
 .button-container {
     display:flex;
@@ -153,6 +158,10 @@ form  div {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+}
+
+#registration_form_birthday {
+    flex-direction: row;
 }
 
 .pageTitle {

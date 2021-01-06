@@ -12,6 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
@@ -21,7 +26,6 @@ class UserType extends AbstractType
             ->add('firstname', TextType::class, ['label' => "Prénom"])
             ->add('lastname', TextType::class, ['label' => "Nom"])
             ->add('birthday', BirthdayType::class, ['label' => "Date de naissance"])
-            ->add('email', EmailType::class, ['label' => "Adresse mail"])
             ->add('phone_number', TextType::class, ['label' => "Numéro de téléphone"])
             ->add('address', TextType::class, ['label' => "Adresse (numéro, voie, code postal, ville)"])
             ->add('avatar', FileType::class, [
@@ -40,10 +44,10 @@ class UserType extends AbstractType
                 ],
             ]);
             $builder->get('avatar')->addModelTransformer(new CallBackTransformer(
-                function($avatar) {
+                function ($avatar) {
                     return null;
                 },
-                function($avatar) {
+                function ($avatar) {
                     return $avatar;
                 }
             ));

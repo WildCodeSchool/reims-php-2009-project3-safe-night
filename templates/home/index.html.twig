@@ -9,7 +9,7 @@
 
 <div class="wrapper">
     <div>
-        <img class="wrapper-img" src="{{ asset('/build/images/amis.92db0299.png') }}"/>
+        <a href = "{{ path('friend_show', {'id': app.user.id}) }}"><img class="wrapper-img" src="{{ asset('/build/images/amis.92db0299.png') }}"/></a>
     </div>
     <div>
         <a href="/event"><img class="wrapper-img" src="{{ asset('/build/images/mesevent.b3258772.png') }}"/></a>

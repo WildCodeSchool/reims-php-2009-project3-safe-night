@@ -40,15 +40,8 @@
 		</tbody>
 	</table>
 
-	<ul>
-		{% for friend in user.friends %}
-			<li>{{ friend.firstname ~ friend.lastname }}</li>
-		{% else %}
-			<li>pas d'amis :'(</li>
-		{% endfor %}}
-	</ul>
 	<div class="edit-delete-section">
-		<a class="disconnect-profil">Déconnection</a>
+		<a class="disconnect-profil" href = "{{ path('app_logout') }}">Déconnection</a>
 		<a class="edit-profil" href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a>
 		<a class="cgu-profil">CGU et CGV</a>
 		{{ include('user/_delete_form.html.twig') }}
