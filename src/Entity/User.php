@@ -3,10 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
 use DateTime;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -67,6 +68,17 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private string $avatar;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class)
+     */
+    private $friends;
+
+    public function __construct()
+    {
+        $this->friends = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -203,8 +215,32 @@ class User implements UserInterface
     }
 
     /**
-    * @see UserInterface
-    */
+     * @return Collection|self[]
+     */
+    public function getFriends(): Collection
+    {
+        return $this->friends;
+    }
+
+    public function addFriend(self $friend): self
+    {
+        if (!$this->friends->contains($friend)) {
+            $this->friends[] = $friend;
+        }
+
+        return $this;
+    }
+
+    public function removeFriend(self $friend): self
+    {
+        $this->friends->removeElement($friend);
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
     public function getSalt()
     {
         // not needed when using the "bcrypt" algorithm in security.yaml

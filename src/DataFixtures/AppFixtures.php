@@ -14,15 +14,15 @@ class AppFixtures extends Fixture
         $faker = Faker\Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
-            $users = new User();
-            $users->setFirstName($faker->firstName());
-            $users->setLastName($faker->lastName());
-            $users->setBirthday($faker->dateTime());
-            $users->setEmail($faker->freeEmail());
-            $users->setPhoneNumber($faker->phoneNumber());
-            $users->setAddress($faker->address());
-            //$users->setAvatar($faker->image($width = 200, $height = 200, 'cats', $fullPath = false));
-            $manager->persist($users);
+            $user = new User();
+            $user->setFirstName($faker->firstName());
+            $user->setLastName($faker->lastName());
+            $user->setBirthday($faker->dateTime());
+            $user->setEmail($faker->freeEmail());
+            $user->setPhoneNumber($faker->phoneNumber());
+            $user->setAddress($faker->address());
+            //$user->setAvatar($faker->image($width = 200, $height = 200, 'cats', $fullPath = false));
+            $manager->persist($user);
             $manager->flush();
         }
     }
