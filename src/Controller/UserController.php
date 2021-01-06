@@ -11,7 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
-
+use App\Entity\Friend;
+use App\Repository\FriendRepository;
 /**
  * @Route("/user")
  */
@@ -111,5 +112,72 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/{id}/friends", methods={"GET"}, requirements={"id"="\d+"},name="friends_show")
+     */
+    public function showFriends(User $user, FriendRepository $friendRepository) : Response
+    {
+       
+        if (!$user) {
+            throw $this->createNotFoundException(
+                'No user with id : '. $user->getId() .' found in user\'s table.'
+            );
+        }
+        
+        $friends = $friendRepository->findBy([
+            'user' => $user
+        ]);
+
+        return $this->render('user/myFriends.html.twig', [
+        'user' => $user, 'friends' => $friends
+    ]);
+    }
+
+        /**
+     * @Route("/{user}/friend/{friend}", name="friend_delete", methods={"DELETE"})
+     */
+    public function deleteFriend(Request $request, User $user, Friend $friend): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$friend->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($friend);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('friend_index');
+    }
+
+    /**
+     * @Route("/search", name="search", methods={"GET"})
+     * @return Response
+     */
+    public function search(Request $request, UserRepository $userRepository): Response
+    {
+        $query = $request->query->get('q');
+
+        if (null !== $query) {
+            $users = $userRepository->findByQuery($query);
+        }
+
+        return $this->render('user/index.html.twig', [
+            'users' => $users ?? [],
+        ]);
+    }
+
+    /**
+     * @Route("/autocomplete", name="autocomplete", methods={"GET"})
+     * @return Response
+     */
+    public function autocomplete(Request $request, UserRepository $userRepository): Response
+    {
+        $query = $request->query->get('q');
+
+        if (null !== $query) {
+            $users = $userRepository->findByQuery($query);
+        }
+
+        return $this->json($users ?? [], 200);
     }
 }
