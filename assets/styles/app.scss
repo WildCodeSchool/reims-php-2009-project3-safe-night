@@ -258,18 +258,18 @@ label{
 // Navigation Bar pour le fichier _navigation.html.twig
 
 footer {
-    display: flex;
-    justify-content: center;
-}
-.Home-img {
-    height: 3rem;
-    border: black 1px;
+    position: fixed;
+    bottom: 0;
+    width: 99.4%;
+    text-align: center;
+    padding: 1rem 0rem 1rem 0rem;
     border-radius: 12px 12px 0px 0px;
-    box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
+    background-color: #FFFFFF;
+    box-shadow: 0px 7px 61px -1px rgba(209,209,209,1);
 }
 
-.Home-link {
-    text-align: center;
+.Home-img {
+    height: 2.3rem;
 }
 
 // Page Login du fichier login.html.twig
