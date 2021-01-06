@@ -6,7 +6,7 @@
     <h1 class = "pageTitle">Modifier mon profil</h1>
 
     {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-    {{ include('user/_delete_form.html.twig') }}
-
+    <div class = "button-container">
+        {{ include('user/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

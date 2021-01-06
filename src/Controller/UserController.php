@@ -42,9 +42,9 @@ class UserController extends AbstractController
                 $avatarFileName = $fileUploader->upload($avatarFile);
                 $user->setAvatar($avatarFileName);
 
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $entityManager->persist($user);
-                    $entityManager->flush();
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
             }
             return $this->redirectToRoute('home_login');
         }
