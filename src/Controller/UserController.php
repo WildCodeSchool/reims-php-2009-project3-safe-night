@@ -13,11 +13,14 @@ use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @Route("/user")
+ */
 class UserController extends AbstractController
 {
 
     /**
-     * @Route("/user/new", name="user_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request, FileUploader $fileUploader): Response
     {
@@ -45,7 +48,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/{id}", name="user_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(User $user): Response
     {
@@ -55,7 +58,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, FileUploader $fileUploader): Response
     {
@@ -75,7 +78,7 @@ class UserController extends AbstractController
             }
             $this->getDoctrine()->getManager()->flush();
             $id = $user->getId();
-            return $this->redirectToRoute('user_show', ['id' => $id]);
+            return $this->redirectToRoute('show', ['id' => $id]);
         }
 
         return $this->render('user/edit.html.twig', [
@@ -85,7 +88,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/{id}", name="user_delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {
@@ -103,23 +106,17 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/{id}/friend", methods={"GET"}, requirements={"id"="\d+"},name="friend_show")
+     * @Route("/{id}/friend", methods={"GET"}, requirements={"id"="\d+"},name="friend_show")
      */
     public function showFriends(User $user): Response
     {
-        if (!$user) {
-            throw $this->createNotFoundException(
-                'No user with id : ' . $user->getId() . ' found in user\'s table.'
-            );
-        }
-
         return $this->render('user/myFriends.html.twig', [
             'user' => $user,
         ]);
     }
 
     /**
-     * @Route("/user/{userId}/friend", name="user_friend_add", methods={"POST"})
+     * @Route("/{userId}/friend", name="friend_add", methods={"POST"})
      */
     public function addFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -136,7 +133,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/{userId}/friend/{friendId}", name="user_friend_remove", methods={"DELETE"})
+     * @Route("/{userId}/friend/{friendId}", name="friend_remove", methods={"DELETE"})
      */
     public function removeFriend(Request $request, User $user, User $friend, EntityManagerInterface $entityManager): Response
     {
@@ -149,7 +146,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/{id}/search", name="user_search", methods={"GET"})
+     * @Route("/{id}/search", name="search", methods={"GET"})
      * @return Response
      */
     public function search(Request $request, UserRepository $userRepository): Response
@@ -166,7 +163,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/autocomplete", name="user_autocomplete", methods={"GET"})
+     * @Route("/autocomplete", name="autocomplete", methods={"GET"})
      * @return Response
      */
     public function autocomplete(Request $request, UserRepository $userRepository): Response
