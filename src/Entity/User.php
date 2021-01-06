@@ -57,7 +57,7 @@ class User
     private $avatar;
 
     /**
-     * @ORM\OneToMany(targetEntity=Friend::class, mappedBy="user", orphanRemoval=true)
+     * @ORM\ManyToMany(targetEntity=User::class)
      */
     private $friends;
 
@@ -65,6 +65,7 @@ class User
     {
         $this->friends = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -156,31 +157,25 @@ class User
     }
 
     /**
-     * @return Collection|Friend[]
+     * @return Collection|self[]
      */
     public function getFriends(): Collection
     {
         return $this->friends;
     }
 
-    public function addFriend(Friend $friend): self
+    public function addFriend(self $friend): self
     {
         if (!$this->friends->contains($friend)) {
             $this->friends[] = $friend;
-            $friend->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeFriend(Friend $friend): self
+    public function removeFriend(self $friend): self
     {
-        if ($this->friends->removeElement($friend)) {
-            // set the owning side to null (unless already changed)
-            if ($friend->getUser() === $this) {
-                $friend->setUser(null);
-            }
-        }
+        $this->friends->removeElement($friend);
 
         return $this;
     }
