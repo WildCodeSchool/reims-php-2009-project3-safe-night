@@ -78,7 +78,7 @@ class UserController extends AbstractController
             }
             $this->getDoctrine()->getManager()->flush();
             $id = $user->getId();
-            return $this->redirectToRoute('show', ['id' => $id]);
+            return $this->redirectToRoute('user_show', ['id' => $id]);
         }
 
         return $this->render('user/edit.html.twig', [
@@ -109,7 +109,7 @@ class UserController extends AbstractController
      * @Route("/{id}/friend", methods={"GET"}, requirements={"id"="\d+"},name="friend_show")
      */
     public function showFriends(User $user): Response
-    {
+    
         return $this->render('user/myFriends.html.twig', [
             'user' => $user,
         ]);
