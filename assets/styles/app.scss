@@ -106,6 +106,7 @@ header {
 }
 
 .banner-eventShow {
+    border-radius: 0rem 0rem 1rem 1rem;
     width: 100%;
     height: auto;
     border-radius: 0rem 0rem 1rem 1rem;
@@ -228,6 +229,7 @@ label{
 // HOME PAGE pour le fichier index.html.twig
 
 .banner-img {
+    border-radius: 0rem 0rem 1rem 1rem;
     margin-top: 0;
     width: 100vw;
     border-radius: 0rem 0rem 1rem 1rem;
@@ -287,7 +289,7 @@ footer {
 }
 
 .login-form-container {
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
     width: 17rem;
@@ -322,8 +324,9 @@ footer {
 }
 
 .login-button {
+    align-self: center;
     background-color: #B8342B;
-    width: 35%;
+    width: 65%;
     padding: 10px 10px;
     margin-top: 1rem;
     border-radius: 0.5rem;
@@ -333,6 +336,19 @@ footer {
 .login-registration {
     margin-top: 2rem;
     text-decoration: underline;
+}
+
+.signUpLink {
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.signUpLink a {
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 // SHOW des Users (user/show.html.twig)
 
