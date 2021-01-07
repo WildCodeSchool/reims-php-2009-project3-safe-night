@@ -303,6 +303,7 @@ footer {
     margin-right: auto;
     width: 17rem;
     padding: 0px;
+    font-weight: bold;
 }
 
 .login-form {
@@ -340,11 +341,13 @@ footer {
     margin-top: 1rem;
     border-radius: 0.5rem;
     color: white;
+    border: none;
 }
 
 .login-registration {
     margin-top: 2rem;
     text-decoration: underline;
+    text-align: center;
 }
 
 .signUpLink {
