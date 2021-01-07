@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * @Route("/user")
+ * @Route("/user", name="user_")
  */
 class UserController extends AbstractController
 {
@@ -109,7 +109,7 @@ class UserController extends AbstractController
      * @Route("/{id}/friend", methods={"GET"}, requirements={"id"="\d+"},name="friend_show")
      */
     public function showFriends(User $user): Response
-    
+    {
         return $this->render('user/myFriends.html.twig', [
             'user' => $user,
         ]);
