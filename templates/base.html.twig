@@ -26,9 +26,9 @@
                 .then(response => response.json())
                 .then(json => {
                     let resultHtml = "";
-                    json.forEach(element => {
+                    json.forEach(user => {
                         resultHtml = resultHtml + `
-                        <li><a href = "/programs/${element.id}">${element.title}</a></li>
+                        <li><a href = "/user/${user.id}">${user.firstname ~ user.lastname}</a></li>
                     `;
                     });
 
