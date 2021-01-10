@@ -19,6 +19,25 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+        <script>
+            document.getElementById('searchField').addEventListener('input', function(event) {
+            const query = event.target.value;
+            fetch('https://localhost:8000/user/autocomplete?q=' + query)
+                .then(response => response.json())
+                .then(json => {
+                    let resultHtml = "";
+                    json.forEach(user => {
+                        resultHtml = resultHtml + `
+                        <li><a href = "/user/${user.id}">${user.firstname ~ user.lastname}</a></li>
+                    `;
+                    });
+
+                document.querySelector('#autocomplete').innerHTML = resultHtml;
+                })
+                .catch(() => alert('error'));
+
+            });
+        </script>
     {% endblock %}
 </body>
 </html>

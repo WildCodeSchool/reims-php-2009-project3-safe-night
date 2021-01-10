@@ -11,24 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * @Route("/user")
+ * @Route("/user", name="user_")
  */
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/", name="user_index", methods={"GET"})
-     */
-    public function index(UserRepository $userRepository): Response
-    {
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
-        ]);
-    }
 
     /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request, FileUploader $fileUploader): Response
     {
@@ -56,7 +48,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(User $user): Response
     {
@@ -66,11 +58,11 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, FileUploader $fileUploader): Response
     {
-        $user->setAvatar(new File($this->getParameter('image_directory') . '/' . $user->getAvatar()));
+        //$user->setAvatar(new File($this->getParameter('image_directory') . '/' . $user->getAvatar()));
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -96,7 +88,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {
@@ -110,6 +102,78 @@ class UserController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('/');
+    }
+
+    /**
+     * @Route("/{id}/friend", methods={"GET"}, requirements={"id"="\d+"},name="friend_show")
+     */
+    public function showFriends(User $user): Response
+    {
+        return $this->render('user/myFriends.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/{userId}/friend", name="friend_add", methods={"POST"})
+     */
+    public function addFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+            //$user->addFriend($friend);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('friend_show');
+        }
+
+        return $this->render('user/newFriend.html.twig', [
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * @Route("/{userId}/friend/{friendId}", name="friend_remove", methods={"DELETE"})
+     */
+    public function removeFriend(Request $request, User $user, User $friend, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $friend->getId(), $request->request->get('_token'))) {
+            $user->removeFriend($friend);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('friend_index');
+    }
+
+    /**
+     * @Route("/{id}/search", name="search", methods={"GET"})
+     * @return Response
+     */
+    public function search(Request $request, UserRepository $userRepository): Response
+    {
+        $query = $request->query->get('q');
+
+        if (null !== $query) {
+            $users = $userRepository->findByQuery($query);
+        }
+
+        return $this->render('user/friendSearch.html.twig', [
+            'users' => $users ?? [],
+        ]);
+    }
+
+    /**
+     * @Route("/autocomplete", name="autocomplete", methods={"GET"})
+     * @return Response
+     */
+    public function autocomplete(Request $request, UserRepository $userRepository): Response
+    {
+        $query = $request->query->get('q');
+
+        if (null !== $query) {
+            $users = $userRepository->findByQuery($query);
+        }
+
+        return $this->json($users ?? [], 200);
     }
 }

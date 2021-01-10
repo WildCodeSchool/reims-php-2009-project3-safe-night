@@ -3,14 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints\Date;
 use DateTime;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -51,7 +54,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="date")
      */
-    private date $birthday;
+    private $birthday;
 
     /**
      * @ORM\Column(type="string")
@@ -67,6 +70,22 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private string $avatar;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class)
+     */
+    private $friends;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+    public function __construct()
+    {
+        $this->friends = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -154,12 +173,20 @@ class User implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
     public function getBirthday(): DateTime
+=======
+    public function getBirthday()
+>>>>>>> a6b3e63649cb5c8f4921d959f7f5bfde82b5b4af
     {
         return $this->birthday;
     }
 
+<<<<<<< HEAD
     public function setBirthday(?DateTime $birthday): self
+=======
+    public function setBirthday($birthday): self
+>>>>>>> a6b3e63649cb5c8f4921d959f7f5bfde82b5b4af
     {
         $this->birthday = $birthday;
 
@@ -203,8 +230,32 @@ class User implements UserInterface
     }
 
     /**
-    * @see UserInterface
-    */
+     * @return Collection|self[]
+     */
+    public function getFriends(): Collection
+    {
+        return $this->friends;
+    }
+
+    public function addFriend(self $friend): self
+    {
+        if (!$this->friends->contains($friend)) {
+            $this->friends[] = $friend;
+        }
+
+        return $this;
+    }
+
+    public function removeFriend(self $friend): self
+    {
+        $this->friends->removeElement($friend);
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
     public function getSalt()
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
@@ -218,5 +269,17 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

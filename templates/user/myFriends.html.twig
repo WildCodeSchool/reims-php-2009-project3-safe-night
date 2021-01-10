@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<h1 class="h1-profil-user">Mes amis</h1>
+	<ul>
+		{% for friend in user.friends %}
+			<li>{{ friend.firstname ~ friend.lastname }}</li>
+		{% else %}
+			<p>pas d'amis :'(</p>
+		{% endfor %}
+	</ul>
+    <div>
+    <h2>Chercher utilisateur</h2>
+    {{ include('user/_search_form.html.twig') }}
+    </div>
+{% endblock %}
+
