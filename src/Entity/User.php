@@ -154,12 +154,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getBirthday(): date
+    public function getBirthday(): DateTime
     {
         return $this->birthday;
     }
 
-    public function setBirthday(date $birthday): self
+    public function setBirthday(?DateTime $birthday): self
     {
         $this->birthday = $birthday;
 
