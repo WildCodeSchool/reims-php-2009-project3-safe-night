@@ -339,7 +339,7 @@ class User implements UserInterface
     {
         if ($this->eventGoing->removeElement($eventGoing)) {
             // set the owning side to null (unless already changed)
-            if ($eventGoing->getParticipant() === $this) {
+            if ($eventGoing->getParticipants() === $this) {
                 $eventGoing->setParticipant(null);
             }
         }
