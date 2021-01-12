@@ -244,6 +244,19 @@ class User implements UserInterface
         return $this;
     }
 
+    public function hasFriend(self $friend): bool
+    {
+        $found = false;
+
+        foreach($this->friends as $myFriend) {
+            if ($myFriend->getId() == $friend->getId()) {
+                $found = true;
+            }
+        }
+
+        return $found;
+    }
+
     /**
      * @see UserInterface
      */
