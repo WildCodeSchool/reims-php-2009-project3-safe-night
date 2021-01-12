@@ -8,15 +8,14 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
-    <section >
-        <img class="my-events-banner" src="{{ asset('build/images/my-events.jpg') }}" alt="my-events-banner"/>
-        <h1 class="my-events-title">MES ÉVÈNEMENTS</h1>
+    <section class="my-events-banner" style = "background-image: url('{{ asset('build/images/my-events.jpg') }}')">
+        <h1 class="my-events-title"><strong>MES ÉVÈNEMENTS</strong></h1>
     </section>
 
     <div class="my-events-content example-wrapper">
         <ul class="event-list">
         {% for event in events %}
-            <li class="event"><a href="{{ path('event_show', {id: event.id}) }}">{{event.name}}</a></li>
+            <li class="event" style = "background-image: url('{{ asset('/uploads/' ~ event.image) }}')"><a href="{{ path('event_show', {id: event.id}) }}" >{{event.name}}</a></li>
         {% endfor %}
         </ul>
     </div>
