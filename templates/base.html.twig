@@ -22,13 +22,13 @@
         <script>
             document.getElementById('searchField').addEventListener('input', function(event) {
             const query = event.target.value;
-            fetch('https://localhost:8000/user/autocomplete?q=' + query)
+            fetch(`https://localhost:8000/user/{{app.user.id}}/autocomplete?q=` + query)
                 .then(response => response.json())
                 .then(json => {
                     let resultHtml = "";
-                    json.forEach(user => {
+                    json.forEach(element => {
                         resultHtml = resultHtml + `
-                        <li><a href = "/user/${user.id}">${user.firstname ~ user.lastname}</a></li>
+                        <li><a href = "/user/${element.id}">${element.firstName} ${element.lastname}</a></li>
                     `;
                     });
 
