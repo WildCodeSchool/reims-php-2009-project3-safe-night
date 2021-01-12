@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\User;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/event")
@@ -18,12 +20,26 @@ use Symfony\Component\HttpFoundation\File\File;
 class EventController extends AbstractController
 {
     /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
+    /**
      * @Route("/", name="event_index", methods={"GET"})
      */
     public function index(EventRepository $eventRepository): Response
     {
+        $user = $this->security->getUser();
+
+        $events =  $eventRepository->findBy(['organizer' => $user]);
+
         return $this->render('event/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $events,
         ]);
     }
 
@@ -37,7 +53,6 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $imageFileName = $fileUploader->upload($imageFile);
@@ -70,12 +85,11 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, Event $event, FileUploader $fileUploader): Response
     {
-        $event->setImage(new File($this->getParameter('image_directory').'/'.$event->getImage()));
+        $event->setImage(new File($this->getParameter('image_directory') . '/' . $event->getImage()));
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $imageFileName = $fileUploader->upload($imageFile);
@@ -102,9 +116,8 @@ class EventController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($event);
             $entityManager->flush();
-            $fileToDelete = __DIR__.'/../../public/uploads/'. $event->getImage();
-            if(file_exists($fileToDelete))
-            {
+            $fileToDelete = __DIR__ . '/../../public/uploads/' . $event->getImage();
+            if (file_exists($fileToDelete)) {
                 unlink($fileToDelete);
             }
         }
