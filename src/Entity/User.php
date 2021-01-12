@@ -87,7 +87,7 @@ class User implements UserInterface
     private $eventOrganized;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="participant")
+     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="participants")
      */
     private $eventGoing;
 
