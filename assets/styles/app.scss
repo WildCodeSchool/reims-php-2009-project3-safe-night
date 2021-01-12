@@ -100,10 +100,7 @@ header {
 }
 
 .delete-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 14rem;
 }
 
 .eventShow-item {
@@ -132,6 +129,18 @@ header {
 
 .openLogo {
     justify-self: center;
+}
+
+.safeNightBlue h1 {
+    color: white;
+}
+
+.safeNightBlue label {
+    color: white;
+}
+
+.safeNightBlue a {
+    color: white;
 }
 
 //Form (edit & new event pages)
@@ -466,16 +475,4 @@ footer {
 
 .delete-profil:hover {
     border-color: red;
-}  
-
-.safeNightBlue h1 {
-    color: white;
-}
-
-.safeNightBlue label {
-    color: white;
-}
-
-.safeNightBlue a {
-    color: white;
 }
