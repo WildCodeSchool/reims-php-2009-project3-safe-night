@@ -58,11 +58,11 @@ class Event
     /**
      * @ORM\ManyToMany(targetEntity=user::class, inversedBy="events")
      */
-    private $participant;
+    private $participants;
 
     public function __construct()
     {
-        $this->participant = new ArrayCollection();
+        $this->participants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -157,15 +157,15 @@ class Event
     /**
      * @return Collection|user[]
      */
-    public function getParticipant(): Collection
+    public function getParticipants(): Collection
     {
-        return $this->participant;
+        return $this->participants;
     }
 
     public function addParticipant(user $participant): self
     {
-        if (!$this->participant->contains($participant)) {
-            $this->participant[] = $participant;
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
         }
 
         return $this;
@@ -173,7 +173,7 @@ class Event
 
     public function removeParticipant(user $participant): self
     {
-        $this->participant->removeElement($participant);
+        $this->participants->removeElement($participant);
 
         return $this;
     }
