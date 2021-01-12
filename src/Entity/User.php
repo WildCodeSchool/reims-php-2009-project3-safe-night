@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints\Date;
 use DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -54,7 +53,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="date")
      */
-    private $birthday;
+    private ?DateTime $birthday;
 
     /**
      * @ORM\Column(type="string")
@@ -185,12 +184,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getBirthday()
+    public function getBirthday(): DateTime
     {
         return $this->birthday;
     }
 
-    public function setBirthday($birthday): self
+    public function setBirthday(?DateTime $birthday): self
     {
         $this->birthday = $birthday;
 
@@ -255,6 +254,19 @@ class User implements UserInterface
         $this->friends->removeElement($friend);
 
         return $this;
+    }
+
+    public function hasFriend(self $friend): bool
+    {
+        $found = false;
+
+        foreach($this->friends as $myFriend) {
+            if ($myFriend->getId() == $friend->getId()) {
+                $found = true;
+            }
+        }
+
+        return $found;
     }
 
     /**

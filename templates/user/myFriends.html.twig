@@ -6,7 +6,10 @@
     </section>
 	<ul>
 		{% for friend in user.friends %}
-			<li>{{ friend.firstname ~ friend.lastname }}</li>
+			<li>
+				<img src="{{ asset('/uploads/' ~ friend.avatar) }}" style = "width : 5rem; height: 5rem;">
+				<a href="{{ path('user_show', {"id": friend.id}) }}">{{friend.firstname ~ ' ' ~ friend.lastname}}</a>
+			</li>
 		{% else %}
 			<p>pas d'amis :'(</p>
 		{% endfor %}

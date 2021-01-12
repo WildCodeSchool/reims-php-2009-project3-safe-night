@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Security\Core\Security;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -18,6 +19,15 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class UserController extends AbstractController
 {
+    /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
 
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
@@ -116,37 +126,41 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{userId}/friend", name="friend_add", methods={"POST"})
+     * @Route("/{user}/friend", name="friend_add", methods={"POST"})
      */
     public function addFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-            //$user->addFriend($friend);
-            $entityManager->flush();
+        $userConnected = $this->security->getUser();
+        $userConnected->addFriend($user);
 
-            return $this->redirectToRoute('friend_show');
-        }
-
-        return $this->render('user/newFriend.html.twig', [
-            'user' => $user
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($userConnected);
+        $entityManager->flush();
+        $id = $userConnected->getId();
+        return $this->redirectToRoute("user_friend_show", [
+            'id' => $id
         ]);
     }
 
     /**
-     * @Route("/{userId}/friend/{friendId}", name="friend_remove", methods={"DELETE"})
+     * @Route("/{user}/friend", name="friend_remove", methods={"DELETE"})
      */
-    public function removeFriend(Request $request, User $user, User $friend, EntityManagerInterface $entityManager): Response
+    public function removeFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $friend->getId(), $request->request->get('_token'))) {
-            $user->removeFriend($friend);
-            $entityManager->flush();
-        }
+        $userConnected = $this->security->getUser();
+        $userConnected->removeFriend($user);
 
-        return $this->redirectToRoute('friend_index');
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($userConnected);
+        $entityManager->flush();
+        $id = $userConnected->getId();
+        return $this->redirectToRoute("user_friend_show", [
+            'id' => $id
+        ]);
     }
 
     /**
-     * @Route("/{id}/search", name="search", methods={"GET"})
+     * @Route("/search", name="search", methods={"GET"})
      * @return Response
      */
     public function search(Request $request, UserRepository $userRepository): Response
@@ -162,7 +176,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/autocomplete", name="autocomplete", methods={"GET"})
+     * @Route("/autocomplete", name="autocomplete", methods={"GET"})
      * @return Response
      */
     public function autocomplete(Request $request, UserRepository $userRepository): Response
