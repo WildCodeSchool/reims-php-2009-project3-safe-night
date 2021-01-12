@@ -53,6 +53,8 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->security->getUser();
+            $event->setOrganizer($user);
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $imageFileName = $fileUploader->upload($imageFile);
