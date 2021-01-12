@@ -8,9 +8,11 @@
 </div>
 
 <div class="wrapper">
+    {% if app.user %}
     <div>
         <a href = "{{ path('user_friend_show', {'id': app.user.id}) }}"><img class="wrapper-img" src="{{ asset('/build/images/amis.92db0299.png') }}"/></a>
     </div>
+    {% endif %}
     <div>
         <a href="/event"><img class="wrapper-img" src="{{ asset('/build/images/mesevent.b3258772.png') }}"/></a>
     </div>
