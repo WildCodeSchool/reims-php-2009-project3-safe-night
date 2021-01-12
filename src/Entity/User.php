@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints\Date;
 use DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -54,7 +53,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="date")
      */
-    private $birthday;
+    private ?DateTime $birthday;
 
     /**
      * @ORM\Column(type="string")
@@ -173,20 +172,12 @@ class User implements UserInterface
         return $this;
     }
 
-<<<<<<< HEAD
     public function getBirthday(): DateTime
-=======
-    public function getBirthday()
->>>>>>> a6b3e63649cb5c8f4921d959f7f5bfde82b5b4af
     {
         return $this->birthday;
     }
 
-<<<<<<< HEAD
     public function setBirthday(?DateTime $birthday): self
-=======
-    public function setBirthday($birthday): self
->>>>>>> a6b3e63649cb5c8f4921d959f7f5bfde82b5b4af
     {
         $this->birthday = $birthday;
 

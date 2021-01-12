@@ -6,18 +6,29 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 use App\Entity\User;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use DateTime;
 
 class AppFixtures extends Fixture
 {
+    Private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder; 
+    }
+
     public function load(ObjectManager $manager)
     {
         $user = new User();
+
+        $encodedPassword = $this->encoder->encodePassword($user,'123456');
+
         $user->setFirstName('Rasmus');
         $user->setLastName('Lerdorf');
         $user->setBirthday(new DateTime('2000/02/24'));
         $user->setEmail('rasmusphp@creator.com');
-        $user->setPassword('123456');
+        $user->setPassword($encodedPassword);
         $user->setPhoneNumber('0123456789');
         $user->setAddress('4, rue de la Bonne Brasserie, Montreal');
         $user->setAvatar('Rasmus.png');
@@ -30,12 +41,12 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setFirstName($faker->firstName());
             $user->setLastName($faker->lastName());
-            $user->setBirthday($faker->dateTime());
+            $user->setBirthday(new DateTime($faker->date()));
             $user->setEmail($faker->freeEmail());
-            $user->setPassword('123456');
+            $user->setPassword($encodedPassword);
             $user->setPhoneNumber($faker->phoneNumber());
             $user->setAddress($faker->address());
-            //$user->setAvatar($faker->image($width = 200, $height = 200, 'cats', $fullPath = false));
+            $user->setAvatar('Rasmus.png');
             $manager->persist($user);
             $manager->flush();
         }
