@@ -232,7 +232,9 @@ label{
     color: black;
     list-style: none;
 }
-
+li a {
+    color: black;
+}
 .new-event { 
     height:20%;
     margin-bottom:2rem;
