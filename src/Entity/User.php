@@ -6,12 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints\Date;
 use DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -52,7 +54,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="date")
      */
-    private date $birthday;
+    private $birthday;
 
     /**
      * @ORM\Column(type="string")
@@ -73,6 +75,11 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity=User::class)
      */
     private $friends;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
 
     public function __construct()
     {
@@ -166,12 +173,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getBirthday(): date
+    public function getBirthday()
     {
         return $this->birthday;
     }
 
-    public function setBirthday(date $birthday): self
+    public function setBirthday($birthday): self
     {
         $this->birthday = $birthday;
 
@@ -254,5 +261,17 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

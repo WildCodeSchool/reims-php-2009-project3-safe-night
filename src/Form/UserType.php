@@ -21,7 +21,6 @@ class UserType extends AbstractType
             ->add('firstname', TextType::class, ['label' => "Prénom"])
             ->add('lastname', TextType::class, ['label' => "Nom"])
             ->add('birthday', BirthdayType::class, ['label' => "Date de naissance"])
-            ->add('email', EmailType::class, ['label' => "Adresse mail"])
             ->add('phone_number', TextType::class, ['label' => "Numéro de téléphone"])
             ->add('address', TextType::class, ['label' => "Adresse (numéro, voie, code postal, ville)"])
             ->add('avatar', FileType::class, [
@@ -40,10 +39,10 @@ class UserType extends AbstractType
                 ],
             ]);
             $builder->get('avatar')->addModelTransformer(new CallBackTransformer(
-                function($avatar) {
+                function ($avatar) {
                     return null;
                 },
-                function($avatar) {
+                function ($avatar) {
                     return $avatar;
                 }
             ));
