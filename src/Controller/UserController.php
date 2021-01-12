@@ -151,8 +151,7 @@ class UserController extends AbstractController
      */
     public function search(Request $request, UserRepository $userRepository): Response
     {
-        $query = $request->query->get('q');
-
+        $query = $request->query->get('q');        
         if (null !== $query) {
             $users = $userRepository->findByQuery($query);
         }
@@ -163,7 +162,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/autocomplete", name="autocomplete", methods={"GET"})
+     * @Route("/{id}/autocomplete", name="autocomplete", methods={"GET"})
      * @return Response
      */
     public function autocomplete(Request $request, UserRepository $userRepository): Response
