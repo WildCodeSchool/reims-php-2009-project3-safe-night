@@ -62,7 +62,8 @@ header {
 
 //Axel -> Template show.html.twig. D'ici à...
 
-.btn, .delete-btn {
+// La classe btn doit avoir les mêmes propriétés que la classe user-button pour avoir le même format de bouton, et ajouter la classe delete-btn pour appliquer le DRY
+.btn {
     border:1px solid black;
     border-radius: 25px;
     text-decoration: none;
@@ -77,8 +78,16 @@ header {
 }
 
 .delete-btn {
+    background-color: #F25846;
+    color: rgb(78, 72, 72);
+    border-radius: 1rem;
+    font-size: 1rem;
+    width: 14rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+    text-align: center;
+    margin-bottom: 2rem;
     color: #ffffff;
-    background-color: rgb(214, 0, 0);
+    border: none;
   }
 
 .button-container {
@@ -288,7 +297,7 @@ footer {
     padding: 1rem 0rem 1rem 0rem;
     border-radius: 12px 12px 0px 0px;
     background-color: #FFFFFF;
-    box-shadow: 0px 7px 61px -1px rgba(209,209,209,1);
+    box-shadow: 0px 45px 93px -15px rgba(0,0,0,0.86);
 }
 
 .Home-img {
@@ -392,8 +401,6 @@ footer {
     height: auto;
     margin-top: 3rem;
     border-radius: 100%;
-    -webkit-box-shadow: 0px 11px 26px -8px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 11px 26px -8px rgba(0,0,0,0.75);
     box-shadow: 0px 11px 26px -8px rgba(0,0,0,0.75);
 }
 
@@ -411,11 +418,12 @@ footer {
     font-style: normal;
     color: rgb(78, 72, 72);
     border-spacing: 1.4rem;
+    margin-bottom: 1rem;
 }
 
 .user-profil th {
     display: block;
-    margin-left: 3rem;
+    margin-left: 2.75rem;
     text-align: left;
 }
 
@@ -424,67 +432,24 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 
-.disconnect-profil {
-    border: 1px solid;
-    color: rgb(78, 72, 72);
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
+.user-button {
+    color: white;
+    background-color: #2D306D;
+    border-radius: 1rem;
     font-size: 1rem;
     width: 14rem;
-    height: 1.5rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
     text-align: center;
     margin-bottom: 1rem;
 }
 
-.disconnect-profil:hover {
-    border-color: lightblue;
-} 
-
-.edit-profil {
-    border: 1px solid;
-    color: rgb(78, 72, 72);
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
-    font-size: 1rem;
-    width: 14rem;
-    height: 1.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.edit-profil:hover {
-    border-color: lightblue;
-} 
-
-.cgu-profil {
-    border: 1px solid;
-    color: rgb(78, 72, 72);
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
-    font-size: 1rem;
-    width: 14rem;
-    height: 1.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.cgu-profil:hover {
-    border-color: darkgrey;
-}
-
-.delete-profil {
-    border: 1px solid;
-    color: rgb(78, 72, 72);
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
-    font-size: 1rem;
-    width: 14rem;
-    height: 1.5rem;
-    text-align: center;
+.user-button:hover {
+    background-color: #2D306D;
 }
 
 .delete-profil:hover {
-    border-color: red;
+    background-color: #F48283;
 }
