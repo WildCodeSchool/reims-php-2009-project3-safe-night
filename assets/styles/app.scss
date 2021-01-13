@@ -10,13 +10,18 @@
     src: url("cooperhewitt-book.ttf");
 }
 
+@font-face{
+    font-family:"CooperHewitt-Medium";
+    src: url("cooper-hewitt.medium.ttf");
+}
+
 html, body {
 	min-height: 100vh;
 	margin: 0; padding: 0;
 }
 
 body {
-    font-family: 'CooperHewitt-Book';
+    font-family: 'CooperHewitt-Medium';
     display:flex;
     flex-direction: column;
     color-adjust: exact;
