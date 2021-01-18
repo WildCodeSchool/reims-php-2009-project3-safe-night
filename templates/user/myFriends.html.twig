@@ -1,6 +1,9 @@
 {% extends "base.html.twig" %}
 {% block body %}
-<h1 class="h1-profil-user">Mes amis</h1>
+	<section class="my-friends-banner" style = "background-color: #7588b9 ;">
+		<img class = "banner-logo" src = "{{ asset('build/images/MyFriends.png') }}">
+        <h1 class="my-friends-title">MES AMIS</h1>
+    </section>
 	<ul>
 		{% for friend in user.friends %}
 			<li>

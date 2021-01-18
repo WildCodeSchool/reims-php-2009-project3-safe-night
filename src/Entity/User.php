@@ -341,7 +341,7 @@ class User implements UserInterface
     {
         if (!$this->eventGoing->contains($eventGoing)) {
             $this->eventGoing[] = $eventGoing;
-            $eventGoing->setParticipant($this);
+            $eventGoing->addParticipant($this);
         }
 
         return $this;
@@ -351,8 +351,8 @@ class User implements UserInterface
     {
         if ($this->eventGoing->removeElement($eventGoing)) {
             // set the owning side to null (unless already changed)
-            if ($eventGoing->getParticipant() === $this) {
-                $eventGoing->setParticipant(null);
+            if ($eventGoing->getParticipants() === $this) {
+                $eventGoing->removeParticipant($this);
             }
         }
 

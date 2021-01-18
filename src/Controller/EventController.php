@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\User;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/event")
@@ -19,22 +19,16 @@ use Symfony\Component\Security\Core\Security;
 class EventController extends AbstractController
 {
     /**
-     * @var Security
-     */
-    private $security;
-
-    public function __construct(Security $security)
-    {
-       $this->security = $security;
-    }
-
-    /**
      * @Route("/", name="event_index", methods={"GET"})
      */
     public function index(EventRepository $eventRepository): Response
     {
+        $user = $this->getUser();
+
+        $events =  $eventRepository->findBy(['organizer' => $user]);
+
         return $this->render('event/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $events,
         ]);
     }
 

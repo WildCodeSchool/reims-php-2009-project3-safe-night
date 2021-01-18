@@ -38,6 +38,17 @@
 
             });
         </script>
+        <script>
+            function unscrollFunction() {
+                document.querySelector('#footer').style.position = "static";
+            }
+            function scrollFunction() {
+                document.querySelector('#footer').style.position = "fixed";
+                setTimeout(unscrollFunction, 3000);
+            }
+
+            window.onscroll = scrollFunction;
+        </script> 
     {% endblock %}
 </body>
 </html>

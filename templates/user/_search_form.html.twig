@@ -1,7 +1,7 @@
-<form id="searchForm" action="{{ path('user_search') }}" method="get">
+<form id="searchForm" action="{{ path('user_search', {'id': app.user.id}) }}" method="get">
 	<div id="searchBox">
 		<input type="text" name="q" id="searchField" autocomplete="off">
-		<ul id="autocomplete"></ul>
+		<ul class = "my-friends-content" id="autocomplete"></ul>
 	</div>
 	<button class = "btn">Chercher</button>
 </form>
