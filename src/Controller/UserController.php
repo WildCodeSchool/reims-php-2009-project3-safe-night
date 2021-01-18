@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Security\Core\Security;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -19,16 +18,6 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class UserController extends AbstractController
 {
-    /**
-     * @var Security
-     */
-    private $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
@@ -130,7 +119,7 @@ class UserController extends AbstractController
      */
     public function addFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        $userConnected = $this->security->getUser();
+        $userConnected = $this->getUser();
         $userConnected->addFriend($user);
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -147,7 +136,7 @@ class UserController extends AbstractController
      */
     public function removeFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        $userConnected = $this->security->getUser();
+        $userConnected = $this->getUser();
         $userConnected->removeFriend($user);
 
         $entityManager = $this->getDoctrine()->getManager();
