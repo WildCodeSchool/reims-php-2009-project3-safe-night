@@ -22,7 +22,7 @@
         <script>
             document.getElementById('searchField').addEventListener('input', function(event) {
             const query = event.target.value;
-            fetch(`{{ path('user_autocomplete') }}?q=` + query)
+            fetch(`{{ path('user_autocomplete', {id: app.user.id}) }}?q=` + query)
                 .then(response => response.json())
                 .then(json => {
                     let resultHtml = "";
