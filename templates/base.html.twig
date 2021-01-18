@@ -12,17 +12,17 @@
 <body>
     
 
-    {% block header %}{% include '_header.html.twig' %}{% endblock %}
+    {% include '_header.html.twig' %}
 
     {% block body %}{% endblock %}
-    {% block navigation %}{% include '_navigation.html.twig' %}{% endblock %}
+    {% include '_navigation.html.twig' %}
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
         <script>
             document.getElementById('searchField').addEventListener('input', function(event) {
             const query = event.target.value;
-            fetch(`https://localhost:8000/user/{{app.user.id}}/autocomplete?q=` + query)
+            fetch(`{{ path('user_autocomplete', {id: app.user.id}) }}?q=` + query)
                 .then(response => response.json())
                 .then(json => {
                     let resultHtml = "";
@@ -38,6 +38,17 @@
 
             });
         </script>
+        <script>
+            function unscrollFunction() {
+                document.querySelector('#footer').style.position = "static";
+            }
+            function scrollFunction() {
+                document.querySelector('#footer').style.position = "fixed";
+                setTimeout(unscrollFunction, 3000);
+            }
+
+            window.onscroll = scrollFunction;
+        </script> 
     {% endblock %}
 </body>
 </html>

@@ -80,9 +80,21 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="organizer", orphanRemoval=true)
+     */
+    private $eventOrganized;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="participants")
+     */
+    private $eventGoing;
+
     public function __construct()
     {
         $this->friends = new ArrayCollection();
+        $this->eventOrganized = new ArrayCollection();
+        $this->eventGoing = new ArrayCollection();
     }
 
 
@@ -244,6 +256,19 @@ class User implements UserInterface
         return $this;
     }
 
+    public function hasFriend(self $friend): bool
+    {
+        $found = false;
+
+        foreach($this->friends as $myFriend) {
+            if ($myFriend->getId() == $friend->getId()) {
+                $found = true;
+            }
+        }
+
+        return $found;
+    }
+
     /**
      * @see UserInterface
      */
@@ -270,6 +295,66 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEventOrganized(): Collection
+    {
+        return $this->eventOrganized;
+    }
+
+    public function addEventOrganized(Event $eventOrganized): self
+    {
+        if (!$this->eventOrganized->contains($eventOrganized)) {
+            $this->eventOrganized[] = $eventOrganized;
+            $eventOrganized->setOrganizer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventOrganized(Event $eventOrganized): self
+    {
+        if ($this->eventOrganized->removeElement($eventOrganized)) {
+            // set the owning side to null (unless already changed)
+            if ($eventOrganized->getOrganizer() === $this) {
+                $eventOrganized->setOrganizer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEventGoing(): Collection
+    {
+        return $this->eventGoing;
+    }
+
+    public function addEventGoing(Event $eventGoing): self
+    {
+        if (!$this->eventGoing->contains($eventGoing)) {
+            $this->eventGoing[] = $eventGoing;
+            $eventGoing->addParticipant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventGoing(Event $eventGoing): self
+    {
+        if ($this->eventGoing->removeElement($eventGoing)) {
+            // set the owning side to null (unless already changed)
+            if ($eventGoing->getParticipants() === $this) {
+                $eventGoing->removeParticipant($this);
+            }
+        }
 
         return $this;
     }

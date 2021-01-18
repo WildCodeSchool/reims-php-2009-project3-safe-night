@@ -3,8 +3,9 @@
 {% block title %}Nouvel événement{% endblock %}
 
 {% block body %}
-        <section class = "new-event">
-        <img  class = "my-events-banner" src="{{ asset('build/images/CreationdEvenement.png') }}" alt="my-events-banner"/>
+    <section class="my-friends-banner" style = "background-color: #c07a7f ;">
+		<img class = "banner-logo" src = "{{ asset('build/images/addEvent.png') }}"><span style = "font-size:200%;color:white;">+</span>
+        <h1 class="my-friends-title">NOUVEL ÉVÈNEMENT</h1>
     </section>
     {{ include('event/_form.html.twig') }}
 
