@@ -12,13 +12,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer as NormalizerAbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 /**
  * @Route("/user", name="user_")
  */
 class UserController extends AbstractController
 {
-
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
@@ -116,33 +120,37 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{userId}/friend", name="friend_add", methods={"POST"})
+     * @Route("/{user}/friend", name="friend_add", methods={"POST"})
      */
     public function addFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-            //$user->addFriend($friend);
-            $entityManager->flush();
+        $userConnected = $this->getUser();
+        $userConnected->addFriend($user);
 
-            return $this->redirectToRoute('friend_show');
-        }
-
-        return $this->render('user/newFriend.html.twig', [
-            'user' => $user
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($userConnected);
+        $entityManager->flush();
+        $id = $userConnected->getId();
+        return $this->redirectToRoute("user_friend_show", [
+            'id' => $id
         ]);
     }
 
     /**
-     * @Route("/{userId}/friend/{friendId}", name="friend_remove", methods={"DELETE"})
+     * @Route("/{user}/friend", name="friend_remove", methods={"DELETE"})
      */
-    public function removeFriend(Request $request, User $user, User $friend, EntityManagerInterface $entityManager): Response
+    public function removeFriend(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $friend->getId(), $request->request->get('_token'))) {
-            $user->removeFriend($friend);
-            $entityManager->flush();
-        }
+        $userConnected = $this->getUser();
+        $userConnected->removeFriend($user);
 
-        return $this->redirectToRoute('friend_index');
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($userConnected);
+        $entityManager->flush();
+        $id = $userConnected->getId();
+        return $this->redirectToRoute("user_friend_show", [
+            'id' => $id
+        ]);
     }
 
     /**
@@ -151,7 +159,7 @@ class UserController extends AbstractController
      */
     public function search(Request $request, UserRepository $userRepository): Response
     {
-        $query = $request->query->get('q');        
+        $query = $request->query->get('q');
         if (null !== $query) {
             $users = $userRepository->findByQuery($query);
         }
@@ -168,11 +176,19 @@ class UserController extends AbstractController
     public function autocomplete(Request $request, UserRepository $userRepository): Response
     {
         $query = $request->query->get('q');
-
+        $encoder = new JsonEncoder();
         if (null !== $query) {
             $users = $userRepository->findByQuery($query);
         }
+        $defaultContext = [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
+                return $object->getId();
+            },
+        ];
+        $normalizer = new ObjectNormalizer(null, null, null, null, null, null, $defaultContext);
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $response = new Response($serializer->serialize($users, 'json'));
 
-        return $this->json($users ?? [], 200);
+        return $response;
     }
 }

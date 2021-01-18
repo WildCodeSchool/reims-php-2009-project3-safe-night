@@ -40,12 +40,27 @@
 		</tbody>
 	</table>
 
-	<div class="edit-delete-section">
-		<a class="user-button" href = "{{ path('app_logout') }}">Déconnexion</a>
-		<a class="user-button" href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a>
-		<a class="user-button">CGU et CGV</a>
-		{{ include('user/_delete_form.html.twig') }}
-	</div>
+	{% if app.user and app.user.id != user.id %}
+		{% if app.user.hasFriend(user) %}
+			<form method="POST" action="{{ path('user_friend_remove', {'user': user.id}) }}">
+				<input id="friend.id" name="friend.id" type="hidden" value="{{ user.id }}">
+				<button type="Submit">Supprimer</button>
+			</form>
+		{% else %}
+			<form method="POST" action="{{ path('user_friend_add', {'user': user.id}) }}">
+				<input id="friend.id" name="friend.id" type="hidden" value="{{ user.id }}">
+				<button type="Submit">Ajouter</button>
+			</form>
+		{% endif %}
+	{% endif %}
 
+	<div class="edit-delete-section">
+		{% if app.user.id == user.id %}
+			<a class="user-button" href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a>
+			<a class="user-button">CGU et CGV</a>
+			<a class="user-button" href = "{{ path('app_logout') }}">Déconnexion</a>
+			{{ include('user/_delete_form.html.twig') }}
+		{% endif %}
+	</div>
 
 {% endblock %}

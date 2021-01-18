@@ -213,17 +213,31 @@ label{
 
 // Page "Mes évènements" du fichier index.html.twig
 
-.my-events-banner {
-    width: 100%;
-    height: auto;
+.my-events-banner, .my-friends-banner {
+    height: 25vh;
+    background-size: cover;
     border-radius: 0rem 0rem 1rem 1rem;
+    display: flex;
+}
+.my-friends-banner {
+    justify-content: center;
+    align-items: center;
 }
 
-.my-events-title {
+.my-events-title, .my-friends-title {
     color: white;
     position: absolute;
-    margin-top: -50px;
     margin-left: 40px;
+    align-self: flex-end;
+    text-shadow: 1px 1px 12px rgb(0, 0, 0);
+}
+
+.my-friends-title {
+    margin-left:0;
+    text-shadow: none;
+    font-size: 200%;
+    margin-top: 1vh;
+    font-weight: 900;
 }
 
 .my-events-content {
@@ -233,11 +247,17 @@ label{
     color: white;
 }
 
-.my-events-content, a {
-    color: black;
+.my-events-content a {
+    color:white;
     font-weight: bold;
 }
-
+.my-friends-content a {
+    color: black;
+    list-style: none;
+}
+li a {
+    color: black;
+}
 .new-event { 
     height:20%;
     margin-bottom:2rem;
@@ -250,16 +270,22 @@ label{
 }
 
 .event {
-    background-color: #74b8ab;
+    background-size: cover;
+    text-shadow: 1px 1px 2px black;
     padding: 2rem 4rem 2rem 4rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
     text-transform: uppercase;
-    text-align: center;
+    text-align: end;
 }
 
 // HOME PAGE pour le fichier index.html.twig
-
+.banner-logo {
+    width: 20vw;
+    height:8vh;
+    margin-bottom: 3vh;
+    filter: invert(100%) brightness(1);
+}
 .banner-img {
     border-radius: 0rem 0rem 1rem 1rem;
     margin-top: 0;
@@ -290,7 +316,7 @@ label{
 // Navigation Bar pour le fichier _navigation.html.twig
 
 footer {
-    position: fixed;
+    position:fixed;
     bottom: 0;
     width: 99.4%;
     text-align: center;
