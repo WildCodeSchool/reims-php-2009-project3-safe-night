@@ -1,8 +1,10 @@
-{% extends 'gray_base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}{{ user.firstname }} {{ user.lastname }}{% endblock %}
 
 {% block body %}
+<body class="safeNightGray">
+
 	<div class="profil-pic-section">
 		<img class="profil-pic" src="{{ asset('/uploads/' ~ user.avatar) }}"/>
 	</div>
