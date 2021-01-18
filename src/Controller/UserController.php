@@ -144,6 +144,7 @@ class UserController extends AbstractController
         $userConnected = $this->getUser();
         $userConnected->removeFriend($user);
 
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($userConnected);
         $entityManager->flush();
@@ -151,6 +152,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute("user_friend_show", [
             'id' => $id
         ]);
+        }
     }
 
     /**
