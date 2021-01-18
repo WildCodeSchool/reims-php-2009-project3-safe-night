@@ -1,40 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User
-{% endblock %}
+{% block title %}{{ user.firstname }} {{ user.lastname }}{% endblock %}
 
 {% block body %}
+<body class="safeNightGray">
+
 	<div class="profil-pic-section">
-		<img class="profil-pic" src="{{'/uploads/' ~ user.avatar }}"/>
+		<img class="profil-pic" src="{{ asset('/uploads/' ~ user.avatar) }}"/>
 	</div>
 
-	<h1 class="h1-profil-user">Mon compte</h1>
+	<h1 class="h1-profil-user">{{ user.firstname }} {{ user.lastname }}	</h1>
 
 	<table class="user-profil">
 		<tbody>
-			<tr>
+			{# <tr>
 				<th>Prénom:</th>
 				<td>{{ user.firstname }}</td>
 			</tr>
 			<tr>
 				<th>Nom de famille:</th>
 				<td>{{ user.lastname }}</td>
-			</tr>
+			</tr> #}
 			<tr>
-				<th>Date d'anniversaire</th>
-				<td>{{ user.birthday|date('d-m-Y') }}</td>
-			</tr>
-			<tr>
-				<th>Email:</th>
+				<th>Email :</th>
 				<td>{{ user.email }}</td>
 			</tr>
 			<tr>
-				<th>Numéro de téléphone:
-				</th>
+				<th>Numéro de téléphone :</th>
 				<td>{{ user.phoneNumber }}</td>
 			</tr>
 			<tr>
-				<th>Adresse</th>
+				<th>Date de naissance :</th>
+				<td>{{ user.birthday|date('d/m/Y') }}</td>
+			</tr>
+			<tr>
+				<th>Adresse :</th>
 				<td>{{ user.address }}</td>
 			</tr>
 		</tbody>
@@ -44,8 +44,6 @@
 		{% if app.user.hasFriend(user) %}
 			<form method="POST" action="{{ path('user_friend_remove', {'user': user.id}) }}">
 				<input id="friend.id" name="friend.id" type="hidden" value="{{ user.id }}">
-				<input type="hidden" name="_method" value="DELETE">
-				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
 				<button type="Submit">Supprimer</button>
 			</form>
 		{% else %}
@@ -57,15 +55,12 @@
 	{% endif %}
 
 	<div class="edit-delete-section">
-
-
-
-	{% if app.user.id == user.id %}
-		<a class="edit-profil" href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a>
-		<a class="cgu-profil">CGU et CGV</a>
-		<a class="disconnect-profil" href = "{{ path('app_logout') }}">Déconnexion</a>
-		{{ include('user/_delete_form.html.twig') }}
-	{% endif %}
+		{% if app.user.id == user.id %}
+			<a class="user-button" href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil</a>
+			<a class="user-button">CGU et CGV</a>
+			<a class="user-button" href = "{{ path('app_logout') }}">Déconnexion</a>
+			{{ include('user/_delete_form.html.twig') }}
+		{% endif %}
 	</div>
 
 {% endblock %}
