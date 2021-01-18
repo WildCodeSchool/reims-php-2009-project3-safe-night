@@ -260,7 +260,7 @@ class User implements UserInterface
     {
         $found = false;
 
-        foreach($this->friends as $myFriend) {
+        foreach ($this->friends as $myFriend) {
             if ($myFriend->getId() == $friend->getId()) {
                 $found = true;
             }
