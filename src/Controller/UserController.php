@@ -12,6 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer as NormalizerAbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 /**
  * @Route("/user", name="user_")
@@ -171,11 +176,19 @@ class UserController extends AbstractController
     public function autocomplete(Request $request, UserRepository $userRepository): Response
     {
         $query = $request->query->get('q');
-
+        $encoder = new JsonEncoder();
         if (null !== $query) {
             $users = $userRepository->findByQuery($query);
         }
+        $defaultContext = [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
+                return $object->getId();
+            },
+        ];
+        $normalizer = new ObjectNormalizer(null, null, null, null, null, null, $defaultContext);
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $response = new Response($serializer->serialize($users, 'json'));
 
-        return $this->json($users ?? [], 200);
+        return $response;
     }
 }
