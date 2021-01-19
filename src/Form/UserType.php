@@ -20,7 +20,7 @@ class UserType extends AbstractType
         $builder
             ->add('firstname', TextType::class, ['label' => "Prénom"])
             ->add('lastname', TextType::class, ['label' => "Nom"])
-            ->add('birthday', DateType::class, ['label' => "Date de naissance", 'date_widget' => 'single_text'])
+            ->add('birthday', DateType::class, ['label' => "Date de naissance", 'widget' => 'single_text'])
             ->add('phone_number', TextType::class, ['label' => "Numéro de téléphone"])
             ->add('address', TextType::class, ['label' => "Adresse (numéro, voie, code postal, ville)"])
             ->add('avatar', FileType::class, [
