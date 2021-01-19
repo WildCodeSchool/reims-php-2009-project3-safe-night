@@ -84,7 +84,7 @@ header {
     border-radius: 1rem;
     font-size: 1rem;
     width: 14rem;
-    padding: 0.5rem 0rem 0.5rem 0rem;
+    padding: 0.6rem 0rem 0.5rem 0rem;
     text-align: center;
     margin-bottom: 2rem;
     color: #ffffff;
@@ -219,6 +219,7 @@ label{
     border-radius: 0rem 0rem 0.7rem 0.7rem;
     display: flex;
 }
+
 .my-friends-banner {
     justify-content: center;
     align-items: center;
@@ -252,10 +253,7 @@ label{
     color:white;
     font-weight: bold;
 }
-.my-friends-content a {
-    color: black;
-    list-style: none;
-}
+
 li a {
     color: black;
 }
@@ -305,7 +303,7 @@ li a {
 .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 4fr));
-    margin: 4rem;
+    margin: 4rem 4rem 0 4rem;
     column-gap: 2rem;
     max-width: 800px;
     font: 18px/1.5 sans-serif;
@@ -327,12 +325,17 @@ li a {
 footer {
     position:fixed;
     bottom: 0;
-    width: 99.4%;
+    width: 100%;
     text-align: center;
     padding: 1rem 0rem 1rem 0rem;
     border-radius: 12px 12px 0px 0px;
     background-color: #FFFFFF;
     box-shadow: 0px 45px 93px -15px rgba(0,0,0,0.86);
+}
+
+.nav-bar {
+    bottom: 0;
+    margin-top: 4rem;
 }
 
 .Home-img {
@@ -472,11 +475,11 @@ footer {
 
 .user-button {
     color: white;
-    background-color: #4f5394;
+    background-color: #7487B7;
     border-radius: 1rem;
     font-size: 1rem;
     width: 14rem;
-    padding: 0.5rem 0rem 0.5rem 0rem;
+    padding: 0.8rem 0rem 0.5rem 0rem;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -487,4 +490,53 @@ footer {
 
 .delete-profil:hover {
     background-color: #F48283;
+}
+
+// CSS de Friends
+
+.search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #7487B7;
+    border-radius: 1rem;
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -2rem;
+    border: none;
+    padding: 0.6rem 0rem 0.6em 0rem;
+    text-align: center;
+    width: 10rem;
+    font-weight: bold;
+}
+
+.search-icon {
+    width: 2rem;
+    height: auto;
+    margin-right: 0.5rem;
+}
+
+.my-friends-content {
+    list-style: none;
+    padding: 1rem;
+    margin-top: -1rem;
+}
+
+.my-friends-content li {
+    padding: 0.7rem 0 0.5rem 1rem;
+    background-color: #F2F2F2;
+    border-radius: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.friends-show {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.friends-show li {
+    background-color: #F5F5F5;
 }
