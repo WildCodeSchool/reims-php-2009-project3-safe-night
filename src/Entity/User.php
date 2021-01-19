@@ -41,34 +41,34 @@ class User implements UserInterface
     private array $roles = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $firstname;
+    private ?string $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $lastname;
+    private ?string $lastname;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
-    private ?DateTime $birthday;
+    private ?DateTime $birthday = null;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private string $phoneNumber;
+    private ?string $phoneNumber;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private string $address;
+    private ?string $address;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $avatar;
+    private ?string $avatar;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class)
@@ -184,7 +184,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getBirthday(): DateTime
+    public function getBirthday(): ?DateTime
     {
         return $this->birthday;
     }
