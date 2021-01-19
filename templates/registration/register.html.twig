@@ -10,7 +10,15 @@
     <h1>Inscription</h1>
 
     {{ form_start(registrationForm) }}
-        {{ form_widget(registrationForm) }} 
+    <div class = "registrationForm-item">
+        {{ form_row(registrationForm.email) }} 
+    </div>
+    <div class = "registrationForm-item">
+        {{ form_row(registrationForm.plainPassword) }} 
+    </div>
+    <div class = "registrationForm-item">
+        {{ form_row(registrationForm.agreeTerms) }} 
+    </div>
         <button class = "btn" type="submit" class="btn">S'INSCRIRE</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

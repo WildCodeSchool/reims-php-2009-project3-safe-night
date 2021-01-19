@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer as NormalizerAbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/user", name="user_")
@@ -105,8 +106,10 @@ class UserController extends AbstractController
                 unlink($fileToDelete);
             }
         }
+        $session = new Session();
+        $session->invalidate();
 
-        return $this->redirectToRoute('/');
+        return $this->redirectToRoute('app_logout');
     }
 
     /**
@@ -145,13 +148,13 @@ class UserController extends AbstractController
         $userConnected->removeFriend($user);
 
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($userConnected);
-        $entityManager->flush();
-        $id = $userConnected->getId();
-        return $this->redirectToRoute("user_friend_show", [
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($userConnected);
+            $entityManager->flush();
+            $id = $userConnected->getId();
+            return $this->redirectToRoute("user_friend_show", [
             'id' => $id
-        ]);
+            ]);
         }
     }
 
