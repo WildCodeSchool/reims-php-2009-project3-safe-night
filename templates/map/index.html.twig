@@ -34,7 +34,7 @@ fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ app.user.address }}.
             console.log(json, json.features[0].center);
             const center = json.features[0].center;
             new mapboxgl.Marker()
-            .setPopup(new mapboxgl.Popup().setHTML("<h1>Mon adresse</h1>")) // add popup
+            .setPopup(new mapboxgl.Popup().setHTML("<h1>Mon adresse</h1><p>{{app.user.address}}</p>")) // add popup
             .setLngLat(center)
             .addTo(map);
         });
@@ -47,7 +47,7 @@ fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ app.user.address }}.
                 console.log(json, json.features[0].center);
                 const center = json.features[0].center;
                 new mapboxgl.Marker()
-                .setPopup(new mapboxgl.Popup().setHTML("<h1>{{event.name}}</h1>")) // add popup
+                .setPopup(new mapboxgl.Popup().setHTML("<h1>{{event.name}}</h1><p>{{event.place}}</p><p>Début: {{event.datetimeStart|date('d/m/Y H:i')}}</p><p>Fin: {{event.datetimeEnd|date('d/m/Y H:i')}}</p>")) // add popup
                 .setLngLat(center)
                 .addTo(map);
             })
