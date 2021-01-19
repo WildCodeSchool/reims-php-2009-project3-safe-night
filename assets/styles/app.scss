@@ -542,8 +542,18 @@ footer {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    border: solid 1px red;
+    padding-left: 0;
 }
 
-.friends-show li {
-    background-color: #F5F5F5;
+.friends-show li a {
+    background-color: #EBEBEB;
+    width: 10.8rem;
+    height: 6rem;
+    margin: 0 1rem 1rem 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

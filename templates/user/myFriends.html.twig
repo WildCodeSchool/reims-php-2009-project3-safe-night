@@ -10,8 +10,10 @@
 	<ul class="friends-show">
 		{% for friend in user.friends %}
 			<li>
-				<img src="{{ asset('/uploads/' ~ friend.avatar) }}" style = "width : 5rem; height: 5rem;">
-				<a href="{{ path('user_show', {"id": friend.id}) }}">{{friend.firstname ~ ' ' ~ friend.lastname}}</a>
+				<a href="{{ path('user_show', {"id": friend.id}) }}">
+					<img src="{{ asset('/uploads/' ~ friend.avatar) }}" style = "width : 4rem; height: auto; border-radius: 50%; padding-right: 10px">
+					<p>{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
+				</a>
 			</li>
 		{% else %}
 			<p>Ajoutez votre 1er⸱e ami⸱e !</p>
