@@ -11,17 +11,17 @@
 	</div>
 	{% endif %}
 	<h1 class="h1-profil-user">
-	{% if app.user.id == user.id %}
+	{% if user.firstname and user.lastname %}
+		{{ user.firstname }} {{ user.lastname }}
+	{% else %}
 		Mon profil
-		{% elseif user.firstname and user.lastname %}
-			{{ user.firstname }} {{ user.lastname }}
 	{% endif %}
 	</h1>
 	<table class="user-profil">
 		<tbody>
 			<tr>
 				<th>Email :</th>
-				<td>if{{ user.email }}</td>
+				<td>{{ user.email }}</td>
 			</tr>
 			<tr>
 				<th>Numéro de téléphone :</th>
