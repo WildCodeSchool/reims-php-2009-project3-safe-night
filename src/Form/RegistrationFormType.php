@@ -25,7 +25,7 @@ class RegistrationFormType extends AbstractType
         $builder
         ->add('firstname', TextType::class, ['label' => "Prénom"])
         ->add('lastname', TextType::class, ['label' => "Nom"])
-        ->add('birthday', BirthdayType::class, ['label' => "Date de naissance"])
+        ->add('birthday', DateType::class, ['label' => "Date de naissance", 'date_widget' => 'single_text'])
         ->add('email', EmailType::class, ['label' => "Adresse mail"])
         ->add('plainPassword', PasswordType::class, [
             // instead of being set onto the object directly,

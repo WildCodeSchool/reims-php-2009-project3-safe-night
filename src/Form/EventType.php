@@ -19,8 +19,12 @@ class EventType extends AbstractType
         $builder
             ->add('name', TextType::class, ['label' => "Nom de l'évènement"])
             ->add('description', TextType::class, ['label' => 'Description'])
-            ->add('datetime_start', DateTimeType::class, ['label' => 'Date et heure de début'])
-            ->add('datetime_end', DateTimeType::class, ['label' => 'Date et heure de fin'])
+            ->add('datetime_start', DateTimeType::class, ['label' => 'Date et heure de début',
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text'])
+            ->add('datetime_end', DateTimeType::class, ['label' => 'Date et heure de fin',
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text'])
             ->add('place', TextType::class, ['label' => 'Lieu'])
             ->add('image', FileType::class, [
                 'label' => 'Image (jpg, jpeg, png, webp)',
@@ -38,14 +42,13 @@ class EventType extends AbstractType
                 ],
             ]);
             $builder->get('image')->addModelTransformer(new CallBackTransformer(
-                function($image) {
+                function ($image) {
                     return null;
                 },
-                function($image) {
+                function ($image) {
                     return $image;
                 }
             ));
-            
     }
 
     public function configureOptions(OptionsResolver $resolver)
