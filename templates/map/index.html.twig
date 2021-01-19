@@ -33,7 +33,9 @@ fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ app.user.address }}.
         .then(json => {
             console.log(json, json.features[0].center);
             const center = json.features[0].center;
-            new mapboxgl.Marker()
+            new mapboxgl.Marker({
+                    color: '#c07a7f'
+                })
             .setPopup(new mapboxgl.Popup().setHTML("<h1>Mon adresse</h1><p>{{app.user.address}}</p>")) // add popup
             .setLngLat(center)
             .addTo(map);
