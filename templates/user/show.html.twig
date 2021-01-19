@@ -2,8 +2,9 @@
 
 {% block title %}{{ user.firstname }} {{ user.lastname }}{% endblock %}
 
+{% block bodyClass %}safeNightGray{% endblock %}
+
 {% block body %}
-<body class="safeNightGray">
 
 	<div class="profil-pic-section">
 		<img class="profil-pic" src="{{ asset('/uploads/' ~ user.avatar) }}"/>
@@ -13,14 +14,6 @@
 
 	<table class="user-profil">
 		<tbody>
-			{# <tr>
-				<th>Prénom:</th>
-				<td>{{ user.firstname }}</td>
-			</tr>
-			<tr>
-				<th>Nom de famille:</th>
-				<td>{{ user.lastname }}</td>
-			</tr> #}
 			<tr>
 				<th>Email :</th>
 				<td>{{ user.email }}</td>
