@@ -7,7 +7,7 @@
 {% block body %}
 
 	<div class="profil-pic-section">
-		<img class="profil-pic" src="{{ asset('/uploads/' ~ user.avatar) }}"/>
+		<img class="profil-pic" src="{{'/uploads/' ~ user.avatar }}"/>
 	</div>
 
 	<h1 class="h1-profil-user">{{ user.firstname }} {{ user.lastname }}	</h1>
@@ -37,6 +37,8 @@
 		{% if app.user.hasFriend(user) %}
 			<form method="POST" action="{{ path('user_friend_remove', {'user': user.id}) }}">
 				<input id="friend.id" name="friend.id" type="hidden" value="{{ user.id }}">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
 				<button class="delete-btn delete-btn-center" type="Submit">Retirer de sa liste d'amis</button>
 			</form>
 		{% else %}
