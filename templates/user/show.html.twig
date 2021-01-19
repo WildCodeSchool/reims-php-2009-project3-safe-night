@@ -37,7 +37,7 @@
 		{% if app.user.hasFriend(user) %}
 			<form method="POST" action="{{ path('user_friend_remove', {'user': user.id}) }}">
 				<input id="friend.id" name="friend.id" type="hidden" value="{{ user.id }}">
-				<button type="Submit">Supprimer</button>
+				<button class="delete-btn delete-btn-center" type="Submit">Retirer de sa liste d'amis</button>
 			</form>
 		{% else %}
 			<form method="POST" action="{{ path('user_friend_add', {'user': user.id}) }}">

@@ -89,7 +89,14 @@ header {
     margin-bottom: 2rem;
     color: #ffffff;
     border: none;
-  }
+    font-weight: bold;
+}
+
+.delete-btn-center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 17rem;
+}
 
 .button-container {
     display:flex;
