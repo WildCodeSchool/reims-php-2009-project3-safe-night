@@ -564,6 +564,34 @@ footer {
     padding: 0 10px 0 10px;
 }
 
+.searching-users {
+    padding-left: 0;
+}
+
+.searching-users li {
+    list-style: none;
+}
+
+.searching-users li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EBEBEB;
+    margin: 0 1rem 3rem 1rem;
+    border-radius: 1rem;
+    height: 12rem;
+}
+
+.searching-users-picture {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+}
+
+.searching-users li a h2 {
+    padding: 0 0 5rem 1rem;
+}
+
 /* CSS Map index */
 
 #map { 
