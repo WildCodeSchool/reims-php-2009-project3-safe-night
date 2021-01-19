@@ -14,7 +14,10 @@
 
     {% include '_header.html.twig' %}
 
+    <body class="{% block bodyClass %}{% endblock %}"></body>
+
     {% block body %}{% endblock %}
+    
     {% include '_navigation.html.twig' %}
 
     {% block javascripts %}
