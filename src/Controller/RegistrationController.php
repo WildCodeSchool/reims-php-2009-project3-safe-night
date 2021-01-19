@@ -28,10 +28,6 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $avatarFile = $form->get('avatar')->getData();
-            if ($avatarFile) {
-                $avatarFileName = $fileUploader->upload($avatarFile);
-                $user->setAvatar($avatarFileName);
                 // encode the plain password
                 $user->setPassword(
                     $passwordEncoder->encodePassword(
@@ -56,8 +52,7 @@ class RegistrationController extends AbstractController
                     'main' // firewall name in security.yaml
                 );
             }
-        }
-
+            
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
