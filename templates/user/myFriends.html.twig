@@ -11,7 +11,7 @@
 		{% for friend in user.friends %}
 			<li>
 				<a href="{{ path('user_show', {"id": friend.id}) }}">
-					<img src="{{ asset('/uploads/' ~ friend.avatar) }}" style = "width : 4rem; height: auto; border-radius: 50%; padding-right: 10px">
+					<img class="friend-picture" src="{{ asset('/uploads/' ~ friend.avatar) }}">
 					<p>{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
 				</a>
 			</li>

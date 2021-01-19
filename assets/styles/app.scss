@@ -543,7 +543,6 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: solid 1px red;
     padding-left: 0;
 }
 
@@ -556,4 +555,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.friend-picture {
+    width : 4rem;
+    height: auto;
+    border-radius: 50%;
+    padding: 0 10px 0 10px;
 }
