@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte{% endblock %}
+
+{% block headMap %}
+
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
+
+{% endblock %}
+
+
+{% block body %}
+
+<div id='map'></div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuY2hlejA4MjMwIiwiYSI6ImNrazJxNGt6eDEzZW4yb3J1MmlnbWoyM2IifQ.sL93OELuUpqzZSHwQGes0A';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/sanchez08230/ckk3swi694qlc17p855bf8k6h',
+center: [12.550343, 55.665957],
+zoom: 8
+});
+ 
+var marker = new mapboxgl.Marker()
+.setLngLat([12.550343, 55.665957])
+.addTo(map);
+</script>
+
+{% endblock %}
