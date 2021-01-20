@@ -177,4 +177,15 @@ class Event
 
         return $this;
     }
+
+    public function hasParticipant(user $user): bool
+    {
+        foreach ($this->participants as $participant) {
+            if ($participant->getId() === $user->getId()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
