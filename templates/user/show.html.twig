@@ -61,7 +61,7 @@
 		{% else %}
 			<form method="POST" action="{{ path('user_friend_add', {'user': user.id}) }}">
 				<input id="friend.id" name="friend.id" type="hidden" value="{{ user.id }}">
-				<button type="Submit">Ajouter</button>
+				<button class="submit-btn" type="Submit">Ajouter</button>
 			</form>
 		{% endif %}
 	{% endif %}

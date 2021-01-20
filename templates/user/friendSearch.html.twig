@@ -5,7 +5,9 @@
 {% for user in users %}
     <li>
         <a href="{{ path('user_show', {"id": user.id}) }}">
-            <img class="searching-users-picture" src="{{ asset('/uploads/' ~ user.avatar) }}">
+            <div class="searching-picture-background">
+                <img class="searching-users-picture" src="{{ asset('/uploads/' ~ user.avatar) }}">
+            </div>
             <h2>{{user.firstname ~ ' ' ~ user.lastname}}</h2>
         </a>
     </li>
