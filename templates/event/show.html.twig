@@ -10,11 +10,11 @@
     <p class = "eventShow-item"><i>{{ event.description }}</i></p>
     <div class = "showItem from">
         <h2>Du</h2>
-        <p class = "eventShow-item">{{ event.datetimeStart ? event.datetimeStart|date('d-m-Y H:i') : '' }}</p>
+        <p class = "eventShow-item">{{ event.datetimeStart ? event.datetimeStart|date('d/m/Y H:i') : '' }}</p>
     </div>
     <div class = "showItem to">
         <h2>Au</h2>
-        <p class = "eventShow-item">{{ event.datetimeEnd ? event.datetimeEnd|date('d-m-Y H:i') : '' }}</p>
+        <p class = "eventShow-item">{{ event.datetimeEnd ? event.datetimeEnd|date('d/m/Y H:i') : '' }}</p>
     </div>
     <div class = "showItem location">
         <img class = "icon" src = "{{ asset('build/images/location.png') }}">
