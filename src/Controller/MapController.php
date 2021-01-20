@@ -13,8 +13,13 @@ class MapController extends AbstractController
      */
     public function index(): Response
     {
+        $user = $this->getUser();
+        $events = [];
+        $events = array_merge($user->getEventOrganized(), $user->getEventGoing());
+
         return $this->render('map/index.html.twig', [
             'controller_name' => 'MapController',
+            'events' => $events
         ]);
     }
 }
