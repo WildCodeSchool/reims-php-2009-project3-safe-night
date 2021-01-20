@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
@@ -61,6 +62,20 @@ class EventController extends AbstractController
             'event' => $event,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{event}/user/{user}", name="event_user_toggle", methods={"POST"})
+     */
+    public function invite(Event $event, User $user, EntityManagerInterface $entityManager): Response
+    {
+        if ($event->hasParticipant($user)) {
+            $event->removeParticipant($user);
+        } else {
+            $event->addParticipant($user);
+        }
+        $entityManager->flush();
+        return $this->redirectToRoute('event_show', ['id' => $event->getId()]);
     }
 
     /**
