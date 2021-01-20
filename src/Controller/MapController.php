@@ -14,9 +14,15 @@ class MapController extends AbstractController
     public function index(): Response
     {
         $user = $this->getUser();
+        $eventsOrganized = $user->getEventOrganized();
         $events = [];
-        $events = array_merge($user->getEventOrganized(), $user->getEventGoing());
-
+        foreach ($eventsOrganized as $eventOrganized) {
+            $events[] = $eventOrganized;
+        }
+        $eventsGoing = $user->getEventGoing();
+        foreach ($eventsGoing as $eventGoing) {
+            $events[] = $eventGoing;
+        }
         return $this->render('map/index.html.twig', [
             'controller_name' => 'MapController',
             'events' => $events
