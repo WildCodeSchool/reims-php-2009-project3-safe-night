@@ -58,7 +58,7 @@ class Event
     /**
      * @ORM\ManyToMany(targetEntity=user::class, inversedBy="events")
      */
-    private $participants;
+    private $participants = [];
 
     public function __construct()
     {
@@ -157,7 +157,7 @@ class Event
     /**
      * @return Collection|user[]
      */
-    public function getParticipants(): Collection
+    public function getParticipants(): ?Collection
     {
         return $this->participants;
     }
