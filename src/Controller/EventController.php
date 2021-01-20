@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
@@ -21,11 +22,13 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="event_index", methods={"GET"})
      */
-    public function index(EventRepository $eventRepository): Response
+    public function index(): Response
     {
         $user = $this->getUser();
 
-        $events =  $eventRepository->findBy(['organizer' => $user]);
+        $eventOrganized = $user->getEventOrganized();
+        $eventGoing = $user->getEventGoing();
+        $events = array_merge($eventGoing->toArray(), $eventOrganized->toArray());
 
         return $this->render('event/index.html.twig', [
             'events' => $events,
@@ -59,6 +62,20 @@ class EventController extends AbstractController
             'event' => $event,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{event}/user/{user}", name="event_user_toggle", methods={"POST"})
+     */
+    public function invite(Event $event, User $user, EntityManagerInterface $entityManager): Response
+    {
+        if ($event->hasParticipant($user)) {
+            $event->removeParticipant($user);
+        } else {
+            $event->addParticipant($user);
+        }
+        $entityManager->flush();
+        return $this->redirectToRoute('event_show', ['id' => $event->getId()]);
     }
 
     /**

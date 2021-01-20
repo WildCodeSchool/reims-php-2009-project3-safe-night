@@ -79,7 +79,7 @@ header {
 }
 
 .delete-btn {
-    background-color: #F25846;
+    background-color: #BF797E;
     color: rgb(78, 72, 72);
     border-radius: 1rem;
     font-size: 1rem;
@@ -450,10 +450,14 @@ footer {
 }
 
 .h1-profil-user {
-
     text-align: center;
     font-size: 3rem;
     color: rgb(65, 57, 57);
+    transition-duration: .3s;
+}
+
+.h1-profil-user:hover {
+    letter-spacing: 1.5px;
 }
 
 .user-profil {
@@ -497,6 +501,9 @@ footer {
 
 #editAvatar {
     align-self:center;
+}
+.user-button-disconnection {
+    background-color: #BF797E;
 }
 
 .delete-profil:hover {
