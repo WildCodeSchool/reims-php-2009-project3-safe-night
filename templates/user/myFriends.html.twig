@@ -1,22 +1,25 @@
 {% extends "base.html.twig" %}
 {% block body %}
 	<section class="my-friends-banner" style = "background-color: #7588b9 ;">
-		<img class = "banner-logo" src = "{{ asset('build/images/MyFriends.png') }}">
+		<img class = "banner-logo-friends" src = "{{ asset('build/images/friends_icon.png') }}">
         <h1 class="my-friends-title">MES AMIS</h1>
-    </section>
-	<ul>
+	</section>
+	<div>
+		{{ include('user/_search_form.html.twig') }}
+	</div>
+	<ul class="friends-show">
 		{% for friend in user.friends %}
 			<li>
-				<img src="{{ asset('/uploads/' ~ friend.avatar) }}" style = "width : 5rem; height: 5rem;">
-				<a href="{{ path('user_show', {"id": friend.id}) }}">{{friend.firstname ~ ' ' ~ friend.lastname}}</a>
+				<a href="{{ path('user_show', {"id": friend.id}) }}">
+					<div class="friend-show-picture-background">
+						<img class="friend-picture" src="{{ asset('/uploads/' ~ friend.avatar) }}">
+					</div>
+					<p class="friend-name">{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
+				</a>
 			</li>
 		{% else %}
-			<p>pas d'amis :'(</p>
+			<p>Ajoutez votre 1er⸱e ami⸱e !</p>
 		{% endfor %}
 	</ul>
-    <div>
-    <h2>Chercher utilisateur</h2>
-    {{ include('user/_search_form.html.twig') }}
-    </div>
 {% endblock %}
 

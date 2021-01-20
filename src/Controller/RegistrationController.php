@@ -51,8 +51,8 @@ class RegistrationController extends AbstractController
                     $authenticator,
                     'main' // firewall name in security.yaml
                 );
-            }
-            
+        }
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
