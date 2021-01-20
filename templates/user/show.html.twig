@@ -5,15 +5,9 @@
 {% block bodyClass %}safeNightGray{% endblock %}
 
 {% block body %}
-	{% if user.avatar %}
-		<div class="profil-pic-section">
-			<img class="profil-pic" src="{{'/uploads/' ~ user.avatar }}"/>
-		</div>
-	{% else %}
-		<div class="profil-pic-section">
-			<img class="profil-pic-default" src="{{ asset('build/images/usericon.png') }}" alt="user-icon"/>
-		</div>
-	{% endif %}
+	<div class="profil-pic-section">
+		<img class="{{ user.avatar ? "profil-pic" : "profil-pic-default" }}" src="{{ user.avatar ? '/uploads/' ~ user.avatar : asset('build/images/usericon.png') }}"/>
+	</div>
 	<h1 class="h1-profil-user">
 	{% if user.firstname and user.lastname %}
 		{{ user.firstname }} {{ user.lastname }}
