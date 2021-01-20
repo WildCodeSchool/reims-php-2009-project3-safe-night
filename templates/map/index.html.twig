@@ -24,33 +24,13 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuY2hlejA4MjMwIiwiYSI6ImNrazJxNGt6eDEzZW4yb
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/sanchez08230/ckk3swi694qlc17p855bf8k6h',
-center: [4.031696, 49.258329],
-zoom: 11
+center: [12.550343, 55.665957],
+zoom: 8
 });
-{% if app.user.address %}
-fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ app.user.address }}.json?limit=1&access_token=pk.eyJ1Ijoic2FuY2hlejA4MjMwIiwiYSI6ImNrazJxNGt6eDEzZW4yb3J1MmlnbWoyM2IifQ.sL93OELuUpqzZSHwQGes0A")
-        .then(response => response.json())
-        .then(json => {
-            console.log(json, json.features[0].center);
-            const center = json.features[0].center;
-            new mapboxgl.Marker()
-            .setPopup(new mapboxgl.Popup().setHTML("<h1>Mon adresse</h1>")) // add popup
-            .setLngLat(center)
-            .addTo(map);
-        });
-{% endif %}
-{% for event in events %}
-    fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ event.place }}.json?limit=1&access_token=pk.eyJ1Ijoic2FuY2hlejA4MjMwIiwiYSI6ImNrazJxNGt6eDEzZW4yb3J1MmlnbWoyM2IifQ.sL93OELuUpqzZSHwQGes0A")
-        .then(response => response.json())
-        .then(json => {
-            console.log(json, json.features[0].center);
-            const center = json.features[0].center;
-            new mapboxgl.Marker()
-            .setPopup(new mapboxgl.Popup().setHTML("<h1>{{event.name}}</h1>")) // add popup
-            .setLngLat(center)
-            .addTo(map);
-        })
-{% endfor %}
+ 
+var marker = new mapboxgl.Marker()
+.setLngLat([12.550343, 55.665957])
+.addTo(map);
 </script>
 
 {% endblock %}
