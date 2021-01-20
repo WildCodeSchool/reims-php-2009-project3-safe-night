@@ -1,7 +1,7 @@
 <form id="searchForm" action="{{ path('user_search', {'id': app.user.id}) }}" method="get">
 	<div id="searchBox">
-		<input type="text" name="q" id="searchField" autocomplete="off">
-		<ul class = "my-friends-content" id="autocomplete"></ul>
+		<input type="text" name="q" id="searchField" autocomplete="off" placeholder="Chercher un utilisateur">
+		<ul class ="my-friends-content" id="autocomplete"></ul>
 	</div>
-	<button class = "btn">Chercher</button>
+	<button class ="search-button"><img class="search-icon" src="{{ asset('/build/images/search_icon.da1f55ed.png') }}" alt="Search"/>Rechercher</button>
 </form>

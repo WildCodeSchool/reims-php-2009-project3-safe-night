@@ -48,7 +48,7 @@ class EventType extends AbstractType
                 function ($image) {
                     return $image;
                 }
-            ));        
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
