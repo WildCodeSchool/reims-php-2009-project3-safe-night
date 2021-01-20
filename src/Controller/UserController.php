@@ -4,18 +4,17 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\AvatarType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
-use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer as NormalizerAbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -65,10 +64,30 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user, FileUploader $fileUploader): Response
+    public function edit(Request $request, User $user): Response
     {
-        //$user->setAvatar(new File($this->getParameter('image_directory') . '/' . $user->getAvatar()));
         $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+            $id = $user->getId();
+            return $this->redirectToRoute('user_show', ['id' => $id]);
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+     /**
+     * @Route("/{id}/editAvatar", name="edit_avatar", methods={"GET","POST"})
+     */
+    public function editAvatar(Request $request, User $user, FileUploader $fileUploader): Response
+    {
+        $form = $this->createForm(AvatarType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -81,15 +100,13 @@ class UserController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
             }
-            $this->getDoctrine()->getManager()->flush();
             $id = $user->getId();
-            return $this->redirectToRoute('user_show', ['id' => $id]);
-        }
-
-        return $this->render('user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+            return $this->redirectToRoute('user_edit', ['id' => $id]);
+        }           
+        return $this->render('user/editAvatar.html.twig', [
+                'user' => $user,
+                'form' => $form->createView(),
+            ]);
     }
 
     /**
