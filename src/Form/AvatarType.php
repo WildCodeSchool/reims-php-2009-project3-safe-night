@@ -17,7 +17,7 @@ class AvatarType extends AbstractType
         $builder
             ->add('avatar', FileType::class, [
                 'label' => 'Avatar (jpg, jpeg, png, webp)',
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '2m',
