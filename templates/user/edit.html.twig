@@ -7,7 +7,12 @@
 {% block body %}
 
     <h1 class = "pageTitle">Modifier mon profil</h1>
-
+    {% if user.avatar %}
+	<div class="profil-pic-section">
+		<img class="profil-pic" src="{{'/uploads/' ~ user.avatar }}"/>
+	</div>
+	{% endif %}
+    <a class="user-button" id= "editAvatar" href="{{ path('user_edit_avatar', {'id': user.id}) }}">Modifier mon avatar</a>
     {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
     <div class = "button-container">
         {{ include('user/_delete_form.html.twig') }}
