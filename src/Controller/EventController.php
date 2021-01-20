@@ -62,6 +62,16 @@ class EventController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/addparticipant", name="event_show_add_participant", methods={"GET"})
+     */
+    public function addParticipant(Event $event): Response
+    {
+        return $this->render('event/show.html.twig', [
+            'event' => $event,
+        ]);
+    }
+
+    /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      */
     public function show(Event $event): Response
