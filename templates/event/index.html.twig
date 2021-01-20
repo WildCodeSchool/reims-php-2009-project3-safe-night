@@ -15,7 +15,7 @@
     <div class="my-events-content example-wrapper">
         <ul class="event-list">
         {% for event in events %}
-            <li class="event" style = "background-image: url('{{ asset('/uploads/' ~ event.image) }}')"><a href="{{ path('event_show', {id: event.id}) }}" >{{event.name}}</a></li>
+            <li class="event" style = "background-image: url('{{ asset('/uploads/' ~ event.image) }}')"><a href="{{ path('event_show', {id: event.id}) }}" >{{event.name}}<p class="event-timer-tuile">du {{ event.datetimeStart ? event.datetimeStart|date('d/m/Y H:i') : '' }} au {{ event.datetimeEnd ? event.datetimeEnd|date('d/m/Y H:i') : '' }}</p></a></li>
         {% endfor %}
         </ul>
     </div>

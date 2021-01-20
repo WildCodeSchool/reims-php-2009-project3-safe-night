@@ -264,6 +264,7 @@ label{
 li a {
     color: black;
 }
+
 .new-event { 
     height:20%;
     margin-bottom:2rem;
@@ -282,7 +283,11 @@ li a {
     margin-bottom: 1rem;
     border-radius: 1rem;
     text-transform: uppercase;
-    text-align: end;
+    text-align: center;
+}
+
+.event-timer-tuile{
+    font-size: 0.6rem;
 }
 
 // HOME PAGE pour le fichier index.html.twig
