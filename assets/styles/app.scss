@@ -454,6 +454,13 @@ footer {
     box-shadow: 0px 11px 26px -8px rgba(0,0,0,0.75);
 }
 
+.profil-pic-default {
+    width: 60%;
+    height: auto;
+    margin-top: 3rem;
+    border-radius: 100%;
+}
+
 .h1-profil-user {
     text-align: center;
     font-size: 3rem;
@@ -502,6 +509,10 @@ footer {
 
 .user-button:hover {
     background-color: #2D306D;
+}
+
+#editAvatar {
+    align-self:center;
 }
 
 .user-button-disconnection {
