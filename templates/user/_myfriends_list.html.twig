@@ -1,0 +1,14 @@
+<ul class="friends-show">
+    {% for friend in user.friends %}
+        <li>
+            <a href="{{ path('user_show', {"id": friend.id}) }}">
+                <div class="friend-show-picture-background">
+                    <img class="friend-picture" src="{{ asset('/uploads/' ~ friend.avatar) }}">
+                </div>
+                <p class="friend-name">{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
+            </a>
+        </li>
+    {% else %}
+        <p>Ajoutez votre 1er⸱e ami⸱e !</p>
+    {% endfor %}
+</ul>
