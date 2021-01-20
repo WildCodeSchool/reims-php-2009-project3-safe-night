@@ -42,18 +42,22 @@ fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ app.user.address }}.
         });
 {% endif %}
 {% if events %}
+    const events = [
     {% for event in events %}
-        fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ event.place }}.json?limit=1&access_token=pk.eyJ1Ijoic2FuY2hlejA4MjMwIiwiYSI6ImNrazJxNGt6eDEzZW4yb3J1MmlnbWoyM2IifQ.sL93OELuUpqzZSHwQGes0A")
-            .then(response => response.json())
-            .then(json => {
-                console.log(json, json.features[0].center);
-                const center = json.features[0].center;
-                new mapboxgl.Marker()
-                .setPopup(new mapboxgl.Popup().setHTML("<h1>{{event.name}}</h1><p>{{event.place}}</p><p>Début: {{event.datetimeStart|date('d/m/Y H:i')}}</p><p>Fin: {{event.datetimeEnd|date('d/m/Y H:i')}}</p>")) // add popup
-                .setLngLat(center)
-                .addTo(map);
-            })
+        {place: '{{ event.place }}', name: '{{event.name}}', datetimeStart: '{{event.datetimeStart|date('d/m/Y H:i')}}', datetimeEnd: '{{event.datetimeStart|date('d/m/Y H:i')}}' },
     {% endfor %}
+    ]
+        events.forEach(event => {
+            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${event.place}.json?limit=1&access_token=pk.eyJ1Ijoic2FuY2hlejA4MjMwIiwiYSI6ImNrazJxNGt6eDEzZW4yb3J1MmlnbWoyM2IifQ.sL93OELuUpqzZSHwQGes0A`)
+                .then(response => response.json())
+                .then(json => {
+                    const center = json.features[0].center;
+                    new mapboxgl.Marker()
+                    .setPopup(new mapboxgl.Popup().setHTML(`<h1>${event.name}</h1><p>${event.place}</p><p>Début: ${event.datetimeStart}</p><p>Fin: ${event.datetimeEnd}</p>`)) // add popup
+                    .setLngLat(center)
+                    .addTo(map);
+                })
+        })
 {% endif %}
 </script>
 
