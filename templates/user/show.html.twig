@@ -6,9 +6,13 @@
 
 {% block body %}
 	{% if user.avatar %}
-	<div class="profil-pic-section">
-		<img class="profil-pic" src="{{'/uploads/' ~ user.avatar }}"/>
-	</div>
+		<div class="profil-pic-section">
+			<img class="profil-pic" src="{{'/uploads/' ~ user.avatar }}"/>
+		</div>
+	{% else %}
+		<div class="profil-pic-section">
+			<img class="profil-pic-default" src="{{ asset('build/images/usericon.png') }}" alt="user-icon"/>
+		</div>
 	{% endif %}
 	<h1 class="h1-profil-user">
 	{% if user.firstname and user.lastname %}
