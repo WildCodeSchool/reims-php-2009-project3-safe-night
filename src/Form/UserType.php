@@ -23,29 +23,7 @@ class UserType extends AbstractType
             ->add('birthday', DateType::class, ['label' => "Date de naissance", 'widget' => 'single_text'])
             ->add('phone_number', TextType::class, ['label' => "Numéro de téléphone"])
             ->add('address', TextType::class, ['label' => "Adresse (numéro, voie, code postal, ville)"])
-            ->add('avatar', FileType::class, [
-                'label' => 'Avatar (jpg, jpeg, png, webp)',
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '2m',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                            'image/webp'
-                        ],
-                        'mimeTypesMessage' => 'Seuls les fichiers jpg, jpeg, png et webp sont acceptés',
-                    ])
-                ],
-            ]);
-            $builder->get('avatar')->addModelTransformer(new CallBackTransformer(
-                function ($avatar) {
-                    return null;
-                },
-                function ($avatar) {
-                    return $avatar;
-                }
-            ));
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
