@@ -54,11 +54,24 @@ header {
 .leftarrow {
     width: 2rem;
     height: 2rem;
+    margin-bottom: 5px;
+}
+
+.user-icon-section {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #72B8AA;
+    margin-bottom: 5px;
 }
 
 .user-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    clip-path: ellipse(50% 50%);
 }
 
 //Axel -> Template show.html.twig. D'ici à...

@@ -1,12 +1,8 @@
 {% block header %}
     <header>
         <a href="{{ app.request.headers.get('referer') }}"><img class="leftarrow" src="{{ asset('build/images/previous.png') }}" alt="leftarrow"/></a>
-        <a href="{{ path('profile') }}">
-            {% if app.user.avatar %}
-                <img class="user-icon" src="{{'/uploads/' ~ app.user.avatar }}" alt="user-icon"/ style="border-radius: 50%;">
-            {% else %}
-			    <img class="user-icon" src="{{ asset('build/images/usericon.png') }}" alt="user-icon"/>
-            {% endif %}
+        <a class="user-icon-section" href="{{ path('profile') }}">
+            <img class="user-icon" src="{{ app.user.avatar ? '/uploads/' ~ app.user.avatar : asset('build/images/usericon.png') }}"/>
         </a>
         
     </header>
