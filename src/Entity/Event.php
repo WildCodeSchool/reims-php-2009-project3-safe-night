@@ -17,37 +17,37 @@ class Event
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private string $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private \DateTimeInterface $datetimeStart;
+    private ?\DateTimeInterface $datetimeStart;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private \DateTimeInterface $datetimeEnd;
+    private ?\DateTimeInterface $datetimeEnd;
 
     /**
      * @ORM\Column(type="text")
      */
-    private string $place;
+    private ?string $place;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $image;
+    private ?string $image;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="event")
@@ -63,7 +63,7 @@ class Event
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private int $maxParticipant;
+    private ?int $maxParticipant;
 
     public function __construct()
     {
