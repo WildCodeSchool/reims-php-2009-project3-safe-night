@@ -64,14 +64,20 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: #72B8AA;
     margin-bottom: 5px;
 }
 
 .user-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    clip-path: ellipse(50% 50%);
+    width: 2.6rem;
+    height: 2.6rem;
+}
+
+.user-icon-logged {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 8px 19px -8px rgba(0,0,0,0.75);
 }
 
 //Axel -> Template show.html.twig. D'ici à...
@@ -99,7 +105,6 @@ header {
     width: 14rem;
     padding: 0.6rem 0rem 0.5rem 0rem;
     text-align: center;
-    margin-bottom: 2rem;
     color: #ffffff;
     border: none;
     font-weight: bold;
@@ -180,21 +185,20 @@ header {
 //Form (edit & new event pages)
 
 input {
-    margin: 0;
-    box-sizing: border-box;
-    display:inline;
-    padding: 0.60rem;
+    padding: 0.6rem;
     border-radius: 0.5rem;
-    margin-bottom: 1rem;
     border: solid 1px grey;
-    outline: none;
+    margin-bottom:1rem;
+    margin-top: 0.5rem;
 }
 
 form {
-    padding: 1em;
+    padding: 4em;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 form  div {
@@ -209,12 +213,10 @@ form  div {
 
 .pageTitle {
     text-align: center;
+    margin-bottom: -2rem;
+    color: #413939;
 }
 
-label{
-    display: block;
-    margin-bottom: 0.5rem;
-}
 #event_datetime_start_date, #event_datetime_end_date{
     display: inline;
     margin-right: 1rem;
@@ -458,13 +460,15 @@ footer {
 .profil-pic-section {
     display: flex;
     justify-content: center;
-    margin: 3rem 0 3rem 0;
-    filter: drop-shadow(0 7px 9px rgba(0,0,0,0.75));
+    margin-top: 3rem;
 }
 
 .profil-pic {
-    width: 60%;
-    clip-path: ellipse(50% 50%);
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 11px 26px -8px rgba(0,0,0,0.75);
 }
 
 .profil-pic-default {
@@ -478,11 +482,6 @@ footer {
     text-align: center;
     font-size: 3rem;
     color: rgb(65, 57, 57);
-    transition-duration: .3s;
-}
-
-.h1-profil-user:hover {
-    letter-spacing: 1.5px;
 }
 h2 {
     margin-left: 2vw;
@@ -520,6 +519,9 @@ h2 {
     padding: 0.8rem 0rem 0.5rem 0rem;
     text-align: center;
     margin-bottom: 1rem;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .user-button:hover {
@@ -528,6 +530,8 @@ h2 {
 
 #editAvatar {
     align-self:center;
+    margin: 2.5rem 0 -2rem 0;
+    z-index: 1;
 }
 
 .user-button-disconnection {
@@ -556,6 +560,14 @@ h2 {
     text-align: center;
     width: 10rem;
     font-weight: bold;
+}
+
+#searchBox input {
+    transition-duration: .3s;
+}
+
+#searchBox input:hover {
+    letter-spacing: 1.5px;
 }
 
 .search-icon {
