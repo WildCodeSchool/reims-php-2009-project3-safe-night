@@ -54,11 +54,24 @@ header {
 .leftarrow {
     width: 2rem;
     height: 2rem;
+    margin-bottom: 5px;
+}
+
+.user-icon-section {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #72B8AA;
+    margin-bottom: 5px;
 }
 
 .user-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    clip-path: ellipse(50% 50%);
 }
 
 //Axel -> Template show.html.twig. D'ici à...
@@ -444,14 +457,13 @@ footer {
 .profil-pic-section {
     display: flex;
     justify-content: center;
+    margin: 3rem 0 3rem 0;
+    filter: drop-shadow(0 7px 9px rgba(0,0,0,0.75));
 }
 
 .profil-pic {
     width: 60%;
-    height: auto;
-    margin-top: 3rem;
-    border-radius: 100%;
-    box-shadow: 0px 11px 26px -8px rgba(0,0,0,0.75);
+    clip-path: ellipse(50% 50%);
 }
 
 .profil-pic-default {
