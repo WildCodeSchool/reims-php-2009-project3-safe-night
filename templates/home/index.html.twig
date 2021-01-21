@@ -3,24 +3,17 @@
 {% block title %}Home{% endblock %}
     
 {% block body %}
-<div>
-    <img class="banner-img" src="{{ asset('build/images/banner-img.6394fd7a.jpg') }}"/>
-</div>
 
-<div class="wrapper">
-    {% if app.user %}
-    <div>
-        <a href = "{{ path('user_friend_show', {'id': app.user.id}) }}"><img class="wrapper-img" src="{{ asset('/build/images/amis.92db0299.png') }}"/></a>
+<img class="banner-img" src="{{ asset('build/images/banner-img.6394fd7a.jpg') }}"/>
+
+<section class="home-body">
+    <div class="home-menu">
+        {% if app.user %}
+        <a class="home-button button-friends" href = "{{ path('user_friend_show', {'id': app.user.id}) }}"><img src="{{ asset('build/images/friends_icon.png') }}"><p>MES AMIS</p></a>
+        {% endif %}
+        <a class="home-button button-events" href="/event"><p>MES ÉVÈNEMENTS</p></a>
+        <a class="home-button button-new-event" href="/event/new"><div><img src="{{ asset('build/images/addEvent.png') }}"><span>+</span></div><p>NOUVEL ÉVÈNEMENT</p></a>
+        <a class="home-button" href="/map"><img class="button-map" src="{{ asset('/build/images/map.c81597cb.png') }}"/></a>
     </div>
-    {% endif %}
-    <div>
-        <a href="/event"><img class="wrapper-img" src="{{ asset('/build/images/mesevent.b3258772.png') }}"/></a>
-    </div>
-    <div>
-        <a href="/event/new"><img class="wrapper-img" src="{{ asset('/build/images/newevent.85896179.png') }}"/></a>
-    </div>
-    <div>
-        <a href="/map"><img class="wrapper-img" src="{{ asset('/build/images/carte.21117fbf.png') }}"/></a>
-    </div>
-</div>
+</section>
 {% endblock %}

@@ -48,6 +48,7 @@ header {
     padding: 0rem 1rem 0.25rem 1rem;
     box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
     margin-bottom: 0;
+    z-index: 20;
 }
 
 .leftarrow {
@@ -76,7 +77,7 @@ header {
     height: 2.6rem;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0px 8px 19px -8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 19px -8px rgba(0,0,0,0.75);
 }
 
 //Axel -> Template show.html.twig. D'ici à...
@@ -245,7 +246,6 @@ form  div {
     justify-content: center;
     align-items: center;
     margin-top: -10px;
-    z-index: 9;
 }
 
 .my-events-title, .my-friends-title {
@@ -320,19 +320,98 @@ li a {
 }
 
 .banner-img {
-    border-radius: 0rem 0rem 1rem 1rem;
-    margin-top: 0;
-    width: 100vw;
-    border-radius: 0rem 0rem 1rem 1rem;
+    width: 100%;
+    margin-top: -10px;
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 4fr));
-    margin: 4rem 4rem 0 4rem;
-    column-gap: 2rem;
-    max-width: 800px;
-    font: 18px/1.5 sans-serif;
+.home-body {
+    border-radius: 12px 12px 0px 0px;
+    margin-top: -10px;
+    background-color: white;
+}
+
+.home-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+// Boutons du menu home
+
+.home-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 9rem;
+    height: 7rem;
+    border-radius: 15px;
+    margin: 0.8rem;
+}
+
+// Texte des boutons du menu home
+
+.home-button p {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: center;
+}
+
+// Bouton "Friends"
+
+.button-friends {
+    background-color: #7688BA;
+}
+
+.button-friends img {
+    width: 4.5rem;
+}
+
+// Bouton "Events"
+
+.button-events {
+    background-color: #74B9AB;
+}
+
+.button-events p{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+// Bouton "New event"
+
+.button-new-event {
+    background-color: #C07A7F;
+}
+
+.button-new-event div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 10px 0;
+}
+
+.button-new-event img {
+    width: 2rem;
+    filter: invert(100%) brightness(1);
+    margin-left: 15px;
+}
+
+.button-new-event span {
+    font-size: 1.3rem;
+    color: white;
+    padding-left: 4px;
+}
+
+.button-new-event p {
+    margin-bottom: 0px;
+}
+
+.button-map {
+    width: 9.1rem;
 }
 
 @media screen and (min-width: 768px) {
