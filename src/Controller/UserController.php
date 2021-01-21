@@ -184,6 +184,10 @@ class UserController extends AbstractController
         $query = $request->query->get('q');
         if (null !== $query) {
             $users = $userRepository->findByQuery($query);
+            if (in_array($this->getUser(), $users)) {
+                $keyToDestroy = array_search($this->getUser(), $users);
+                unset($users[$keyToDestroy]);
+            }
         }
 
         return $this->render('user/friendSearch.html.twig', [
@@ -201,6 +205,10 @@ class UserController extends AbstractController
         $encoder = new JsonEncoder();
         if (null !== $query) {
             $users = $userRepository->findByQuery($query);
+            if (in_array($this->getUser(), $users)) {
+                $keyToDestroy = array_search($this->getUser(), $users);
+                unset($users[$keyToDestroy]);
+            }
         }
         $defaultContext = [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {

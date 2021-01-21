@@ -39,10 +39,12 @@
 			</tr>
 			<tr>
 				<th>Adresse :</th>
-				<td>{% if user.address %}		
-				{{ user.address }}
-				{% else %}
+				<td>{% if app.user.address and app.user.id == user.id %}		
+				{{ app.user.address }}
+				{% elseif app.user.id == user.id %}
 					Non renseignée
+				{% else %}
+					Privée
 				{% endif %}</td>
 			</tr>
 		</tbody>

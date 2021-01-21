@@ -1,7 +1,7 @@
 <ul class="friends-show">
     {% for friend in user.friends %}
         <li>
-            <a href="{{ path('user_show', {"id": friend.id}) }}">
+            <a class="friend-link {{ loop.index == 1 ? 'first' : 'not-first' }}" href="{{ path('user_show', {"id": friend.id}) }}">
                 <div class="friend-show-picture-background">
                     <img class="friend-picture" src="{{ asset('/uploads/' ~ friend.avatar) }}">
                 </div>
