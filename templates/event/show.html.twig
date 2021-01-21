@@ -3,7 +3,7 @@
 {% block title %}{{ event.name }}{% endblock %}
 
 {% block body %}
-    <section class="my-events-banner" style = "background-image: url('{{ asset('build/images/my-events.jpg') }}')">
+    <section class="my-events-banner" style = "background-image: url('{{ asset('/uploads/' ~ event.image) }}')">
         <h1 class="my-events-title"><strong>{{ event.name }}</strong></h1>
     </section>
     <p class = "eventShow-item"><i>{{ event.description }}</i></p>
