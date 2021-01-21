@@ -36,17 +36,21 @@
         {% if app.user == event.organizer %}
         <a class = "btn" href="{{ path('event_edit', {'id': event.id}) }}">modifier</a>
         {{ include('event/_delete_form.html.twig') }}
-        <ul>
+        <ul class="friends-show">
         {% for friend in app.user.friends %}
             <li>
-                <img src="{{ asset('/uploads/' ~ friend.avatar) }}" style = "width : 5rem; height: 5rem;">
-                <form action="{{ path('event_user_toggle', {"event": event.id, "user": friend.id}) }}" method="post">
-                    <p>{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
-                    <button type="submit">{{ event.hasParticipant(friend) ? "Désinviter" : 'Inviter' }}</button>
-                </form>
+                <div class="friend-link">
+                    <div class="friend-show-picture-background">
+                        <img class="friend-picture" src="{{ asset('/uploads/' ~ friend.avatar) }}">
+                    </div>
+                    <p class="friend-name">{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
+                    <form class="friend-invite" action="{{ path('event_user_toggle', {"event": event.id, "user": friend.id}) }}" method="post">
+                        <button class="friend-invite-button {{ event.hasParticipant(friend) ? "remove" : 'add' }}" type="submit">{{ event.hasParticipant(friend) ? "-" : '+' }}</button>
+                    </form>
+                </div>
             </li>
         {% else %}
-            <p>pas d'amis :'(</p>
+            <p>Ajoutez d'abord des ami.e.s</p>
         {% endfor %}
         </ul>
         {% endif %}
