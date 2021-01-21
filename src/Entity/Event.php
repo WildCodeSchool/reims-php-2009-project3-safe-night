@@ -17,37 +17,37 @@ class Event
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $datetimeStart;
+    private ?\DateTimeInterface $datetimeStart;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $datetimeEnd;
+    private ?\DateTimeInterface $datetimeEnd;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $place;
+    private ?string $place;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image;
+    private ?string $image;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="event")
@@ -59,6 +59,11 @@ class Event
      * @ORM\ManyToMany(targetEntity=user::class, inversedBy="events")
      */
     private $participants = [];
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private ?int $maxParticipant;
 
     public function __construct()
     {
@@ -187,5 +192,22 @@ class Event
         }
 
         return false;
+    }
+
+    public function getMaxParticipant(): ?int
+    {
+        return $this->maxParticipant;
+    }
+
+    public function setMaxParticipant(?int $maxParticipant): self
+    {
+        $this->maxParticipant = $maxParticipant;
+
+        return $this;
+    }
+
+    public function getCurrentParticipant(): ?int
+    {
+        return count($this->participants) + 1;
     }
 }

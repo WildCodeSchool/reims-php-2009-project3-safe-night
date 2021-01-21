@@ -29,6 +29,7 @@ body {
 
 .eventShow-item {
     text-align:center;
+    margin-top: 5vh;
 }
 
 // Suppression des puces des listes à puces
@@ -254,6 +255,7 @@ form  div {
     margin-left: 40px;
     align-self: flex-end;
     text-shadow: 1px 1px 12px rgb(0, 0, 0);
+    text-transform: uppercase;
 }
 
 .my-friends-title {
@@ -481,7 +483,9 @@ footer {
     font-size: 3rem;
     color: rgb(65, 57, 57);
 }
-
+h2 {
+    margin-left: 2vw;
+}
 .user-profil {
     display: flex;
     justify-content: center;
