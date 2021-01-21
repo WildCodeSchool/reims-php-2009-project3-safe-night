@@ -20,12 +20,12 @@ final class Version20210121084331 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE event ADD max_participant INT DEFAULT NULL, ADD current_participant INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE event ADD max_participant INT DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE event DROP max_participant, DROP current_participant');
+        $this->addSql('ALTER TABLE event DROP max_participant');
     }
 }

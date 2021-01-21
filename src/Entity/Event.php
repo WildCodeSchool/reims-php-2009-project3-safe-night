@@ -17,37 +17,37 @@ class Event
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $datetimeStart;
+    private ?\DateTimeInterface $datetimeStart;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $datetimeEnd;
+    private ?\DateTimeInterface $datetimeEnd;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $place;
+    private ?string $place;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image;
+    private ?string $image;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="event")
@@ -63,12 +63,7 @@ class Event
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $maxParticipant;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $currentParticipant = 1;
+    private ?int $maxParticipant;
 
     public function __construct()
     {
@@ -213,13 +208,6 @@ class Event
 
     public function getCurrentParticipant(): ?int
     {
-        return $this->currentParticipant;
-    }
-
-    public function setCurrentParticipant(?int $currentParticipant): self
-    {
-        $this->currentParticipant = $currentParticipant;
-
-        return $this;
+        return count($this->participants) + 1;
     }
 }
