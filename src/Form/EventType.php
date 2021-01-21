@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class EventType extends AbstractType
 {
@@ -40,7 +41,9 @@ class EventType extends AbstractType
                         'mimeTypesMessage' => 'Seuls les fichiers jpg, jpeg, png et webp sont acceptés',
                     ])
                 ],
-            ]);
+            ])
+            ->add('maxParticipant', IntegerType::class, ['label' => 'Nombre de participants maximum (facultatif)', 'required' => false])
+            ;
             $builder->get('image')->addModelTransformer(new CallBackTransformer(
                 function ($image) {
                     return null;

@@ -3,10 +3,9 @@
 {% block title %}{{ event.name }}{% endblock %}
 
 {% block body %}
-    <div>
-        <img class="banner-eventShow" src="{{ asset('/uploads/' ~ event.image) }}" />
-        <h1 class = "eventShow-title">{{ event.name }}</h1>
-    </div>
+    <section class="my-events-banner" style = "background-image: url('{{ asset('/uploads/' ~ event.image) }}')">
+        <h1 class="my-events-title"><strong>{{ event.name }}</strong></h1>
+    </section>
     <p class = "eventShow-item"><i>{{ event.description }}</i></p>
     <div class = "showItem from">
         <h2>Du</h2>
@@ -19,6 +18,17 @@
     <div class = "showItem location">
         <img class = "icon" src = "{{ asset('build/images/location.png') }}">
         <p class = "eventShow-item">{{ event.place }}</p>
+    </div>
+        <div class = "showItem location">
+        <p class = "eventShow-item">Nombre de participants: 
+        {% if event.maxParticipant and event.currentParticipant %}
+            {{ event.currentParticipant }}/{{ event.maxParticipant }}
+        {% elseif event.currentParticipant %}
+            {{ event.currentParticipant }}
+            {% else %}
+            Non renseigné
+        {% endif %}
+        </p>
     </div>
     <div class = "button-container">
         <a class = "btn" href="{{ path('event_index') }}">Retour à la Liste</a>
