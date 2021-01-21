@@ -71,14 +71,8 @@ class EventController extends AbstractController
     {
         if ($event->hasParticipant($user)) {
             $event->removeParticipant($user);
-            $currentParticipant = $event->getCurrentParticipant();
-            $currentParticipant -= 1;
-            $event->setCurrentParticipant($currentParticipant);
         } else {
             $event->addParticipant($user);
-            $currentParticipant = $event->getCurrentParticipant();
-            $currentParticipant += 1;
-            $event->setCurrentParticipant($currentParticipant);
         }
         $entityManager->flush();
         return $this->redirectToRoute('event_show', ['id' => $event->getId()]);
