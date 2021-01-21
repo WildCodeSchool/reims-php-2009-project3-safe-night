@@ -60,6 +60,16 @@ class Event
      */
     private $participants = [];
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $maxParticipant;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $currentParticipant = 1;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -187,5 +197,29 @@ class Event
         }
 
         return false;
+    }
+
+    public function getMaxParticipant(): ?int
+    {
+        return $this->maxParticipant;
+    }
+
+    public function setMaxParticipant(?int $maxParticipant): self
+    {
+        $this->maxParticipant = $maxParticipant;
+
+        return $this;
+    }
+
+    public function getCurrentParticipant(): ?int
+    {
+        return $this->currentParticipant;
+    }
+
+    public function setCurrentParticipant(?int $currentParticipant): self
+    {
+        $this->currentParticipant = $currentParticipant;
+
+        return $this;
     }
 }

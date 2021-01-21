@@ -20,6 +20,17 @@
         <img class = "icon" src = "{{ asset('build/images/location.png') }}">
         <p class = "eventShow-item">{{ event.place }}</p>
     </div>
+        <div class = "showItem location">
+        <p class = "eventShow-item">Nombre de participants: 
+        {% if event.maxParticipant and event.currentParticipant %}
+            {{ event.currentParticipant }}/{{ event.maxParticipant }}
+        {% elseif event.currentParticipant %}
+            {{ event.currentParticipant }}
+            {% else %}
+            Non renseigné
+        {% endif %}
+        </p>
+    </div>
     <div class = "button-container">
         <a class = "btn" href="{{ path('event_index') }}">Retour à la Liste</a>
         {% if app.user == event.organizer %}
