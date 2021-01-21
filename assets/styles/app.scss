@@ -17,7 +17,7 @@
 
 html, body {
 	min-height: 100vh;
-	margin: 0; padding: 0;
+    margin: 0; padding: 0;
 }
 
 body {
@@ -48,7 +48,6 @@ header {
     padding: 0rem 1rem 0.25rem 1rem;
     box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
     margin-bottom: 0;
-    z-index: 10;
 }
 
 .leftarrow {
@@ -582,15 +581,63 @@ footer {
     padding-left: 0;
 }
 
-.friends-show li a {
+.friend-link {
     background-color: #EBEBEB;
-    width: 10.93rem;
-    height: 6rem;
     margin: 0 1rem 1rem 1rem;
     border-radius: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.friend-invite {
+    position:absolute;
+    right: 0;
+    transform: translateX(50%);
+    padding: 0;
+}
+
+.friend-invite-button {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: sans-serif;
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    font-size: 1rem;
+    --hue: 220;
+    --saturation: 87%;
+    --lightness: 61%;
+    background: hsl(var(--hue), var(--saturation), var(--lightness));
+    color: #ffffff;
+    border-radius: 50%;
+}
+
+.friend-invite-button.remove {
+    --hue: 6;
+}
+
+.friend-invite-button:hover,
+.friend-invite-button:focus {
+    --lightness: 40%;
+}
+
+.friend-invite-button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+.friend-invite-button:active {
+    transform: scale(0.9);
 }
 
 .friend-show-picture-background {
@@ -611,7 +658,8 @@ footer {
 }
 
 .friend-name {
-    padding-left: 0.5rem;
+    padding: 1rem;
+    margin: 0;
     width: 4rem;
     font-size: 14px;
     color: #413939;
