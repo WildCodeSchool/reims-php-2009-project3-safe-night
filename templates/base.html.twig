@@ -28,6 +28,7 @@
                 .then(response => response.json())
                 .then(json => {
                     let resultHtml = "";
+                    console.log(json);
                     json.forEach(element => {
                         resultHtml = resultHtml + `
                         <li><a href = "/user/${element.id}">${element.firstName} ${element.lastname}</a></li>
@@ -36,7 +37,7 @@
 
                 document.querySelector('#autocomplete').innerHTML = resultHtml;
                 })
-                .catch(() => alert('error'));
+                .catch((error) => {console.log(error)});
 
             });
         </script>

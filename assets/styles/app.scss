@@ -49,6 +49,7 @@ header {
     padding: 0rem 1rem 0.25rem 1rem;
     box-shadow: 0px -40px 93px -15px rgba(0,0,0,0.86);
     margin-bottom: 0;
+    z-index: 30;
 }
 
 .leftarrow {
@@ -64,14 +65,20 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: #72B8AA;
     margin-bottom: 5px;
 }
 
 .user-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    clip-path: ellipse(50% 50%);
+    width: 2.6rem;
+    height: 2.6rem;
+}
+
+.user-icon-logged {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 0px 19px -8px rgba(0,0,0,0.75);
 }
 
 //Axel -> Template show.html.twig. D'ici à...
@@ -99,7 +106,6 @@ header {
     width: 14rem;
     padding: 0.6rem 0rem 0.5rem 0rem;
     text-align: center;
-    margin-bottom: 2rem;
     color: #ffffff;
     border: none;
     font-weight: bold;
@@ -180,21 +186,20 @@ header {
 //Form (edit & new event pages)
 
 input {
-    margin: 0;
-    box-sizing: border-box;
-    display:inline;
-    padding: 0.60rem;
+    padding: 0.6rem;
     border-radius: 0.5rem;
-    margin-bottom: 1rem;
     border: solid 1px grey;
-    outline: none;
+    margin-bottom:1rem;
+    margin-top: 0.5rem;
 }
 
 form {
-    padding: 1em;
+    padding: 4em;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 form  div {
@@ -209,12 +214,10 @@ form  div {
 
 .pageTitle {
     text-align: center;
+    margin-bottom: -2rem;
+    color: #413939;
 }
 
-label{
-    display: block;
-    margin-bottom: 0.5rem;
-}
 #event_datetime_start_date, #event_datetime_end_date{
     display: inline;
     margin-right: 1rem;
@@ -244,7 +247,6 @@ label{
     justify-content: center;
     align-items: center;
     margin-top: -10px;
-    z-index: 9;
 }
 
 .my-events-title, .my-friends-title {
@@ -320,19 +322,98 @@ li a {
 }
 
 .banner-img {
-    border-radius: 0rem 0rem 1rem 1rem;
-    margin-top: 0;
-    width: 100vw;
-    border-radius: 0rem 0rem 1rem 1rem;
+    width: 100%;
+    margin-top: -10px;
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 4fr));
-    margin: 4rem 4rem 0 4rem;
-    column-gap: 2rem;
-    max-width: 800px;
-    font: 18px/1.5 sans-serif;
+.home-body {
+    border-radius: 12px 12px 0px 0px;
+    margin-top: -10px;
+    background-color: white;
+}
+
+.home-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+// Boutons du menu home
+
+.home-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 9rem;
+    height: 7rem;
+    border-radius: 15px;
+    margin: 0.8rem;
+}
+
+// Texte des boutons du menu home
+
+.home-button p {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: center;
+}
+
+// Bouton "Friends"
+
+.button-friends {
+    background-color: #7688BA;
+}
+
+.button-friends img {
+    width: 4.5rem;
+}
+
+// Bouton "Events"
+
+.button-events {
+    background-color: #74B9AB;
+}
+
+.button-events p{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+// Bouton "New event"
+
+.button-new-event {
+    background-color: #C07A7F;
+}
+
+.button-new-event div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 10px 0;
+}
+
+.button-new-event img {
+    width: 2rem;
+    filter: invert(100%) brightness(1);
+    margin-left: 15px;
+}
+
+.button-new-event span {
+    font-size: 1.3rem;
+    color: white;
+    padding-left: 4px;
+}
+
+.button-new-event p {
+    margin-bottom: 0px;
+}
+
+.button-map {
+    width: 9.1rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -357,6 +438,7 @@ footer {
     border-radius: 12px 12px 0px 0px;
     background-color: #FFFFFF;
     box-shadow: 0px 45px 93px -15px rgba(0,0,0,0.86);
+    z-index: 30;
 }
 
 .nav-bar {
@@ -458,13 +540,15 @@ footer {
 .profil-pic-section {
     display: flex;
     justify-content: center;
-    margin: 3rem 0 3rem 0;
-    filter: drop-shadow(0 7px 9px rgba(0,0,0,0.75));
+    margin-top: 3rem;
 }
 
 .profil-pic {
-    width: 60%;
-    clip-path: ellipse(50% 50%);
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 11px 26px -8px rgba(0,0,0,0.75);
 }
 
 .profil-pic-default {
@@ -478,11 +562,6 @@ footer {
     text-align: center;
     font-size: 3rem;
     color: rgb(65, 57, 57);
-    transition-duration: .3s;
-}
-
-.h1-profil-user:hover {
-    letter-spacing: 1.5px;
 }
 h2 {
     margin-left: 2vw;
@@ -520,6 +599,10 @@ h2 {
     padding: 0.8rem 0rem 0.5rem 0rem;
     text-align: center;
     margin-bottom: 1rem;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
 }
 
 .user-button:hover {
@@ -528,6 +611,8 @@ h2 {
 
 #editAvatar {
     align-self:center;
+    margin: 2.5rem 0 -2rem 0;
+    z-index: 1;
 }
 
 .user-button-disconnection {
@@ -556,6 +641,23 @@ h2 {
     text-align: center;
     width: 10rem;
     font-weight: bold;
+}
+
+#searchBox input {
+    transition-duration: .3s;
+}
+
+#searchBox input:hover {
+    letter-spacing: 1.5px;
+}
+
+#searchForm {
+    padding: 1rem 3rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search-icon {
