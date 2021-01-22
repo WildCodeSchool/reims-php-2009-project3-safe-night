@@ -511,6 +511,8 @@ footer {
     border-radius: 0.5rem;
     color: white;
     border: none;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .login-registration {
@@ -531,6 +533,47 @@ footer {
     font-size: 1.4rem;
     font-weight: bold;
 }
+
+.login-form > label {
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+}
+
+.register-form input {
+    padding: 0.60rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border: solid 1px grey;
+    outline: none;
+}
+
+.register-form form {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 17rem;
+    padding: 0px;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.register-form form  div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0rem;
+}
+
+.register-form label {
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+}
+
+.login-logo-marge {
+    margin-top: 3.96rem;
+}
+
 // Show des Users (user/show.html.twig)
 
 .safeNightGray {
