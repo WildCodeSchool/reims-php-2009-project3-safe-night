@@ -230,6 +230,7 @@ form  div {
 #user_birthday {
     flex-direction: row;
 }
+
 #event_datetime_start, #event_datetime_end { 
     flex-direction: row;
 }
@@ -254,8 +255,12 @@ form  div {
     position: absolute;
     margin-left: 40px;
     align-self: flex-end;
-    text-shadow: 1px 1px 12px rgb(0, 0, 0);
+    text-shadow: 1px 1px 10px rgb(0, 0, 0);
     text-transform: uppercase;
+}
+
+.my-events-title {
+    font-size: 2rem;
 }
 
 .my-friends-title {
@@ -318,7 +323,8 @@ li a {
     filter: invert(100%) brightness(1);
     width: 4rem;
     height: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
 }
 
 .banner-img {
