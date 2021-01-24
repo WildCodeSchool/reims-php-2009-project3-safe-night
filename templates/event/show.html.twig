@@ -6,30 +6,27 @@
     <section class="my-events-banner" style = "background-image: url('{{ asset('/uploads/' ~ event.image) }}')">
         <h1 class="my-events-title"><strong>{{ event.name }}</strong></h1>
     </section>
-    <p class = "eventShow-item"><i>{{ event.description }}</i></p>
-    <div class = "showItem from">
-        <h2>Du</h2>
-        <p class = "eventShow-item">{{ event.datetimeStart ? event.datetimeStart|date('d/m/Y H:i') : '' }}</p>
-    </div>
-    <div class = "showItem to">
-        <h2>Au</h2>
-        <p class = "eventShow-item">{{ event.datetimeEnd ? event.datetimeEnd|date('d/m/Y H:i') : '' }}</p>
-    </div>
-    <div class = "showItem location">
-        <img class = "icon" src = "{{ asset('build/images/location.png') }}">
-        <p class = "eventShow-item">{{ event.place }}</p>
-    </div>
+    <article class="eventShow-article">
+        <p class = "eventShow-item-description"><em>{{ event.description }}</em></p>
+        <div class = "showItem from">
+            <p class = "eventShow-item"> Du <span>{{ event.datetimeStart ? event.datetimeStart|date('d/m/Y à H:i') : '' }}</span> <br/> au <span>{{ event.datetimeEnd ? event.datetimeEnd|date('d/m/Y à H:i') : '' }}</span></p>
+        </div>
         <div class = "showItem location">
-        <p class = "eventShow-item">Nombre de participants: 
-        {% if event.maxParticipant and event.currentParticipant %}
-            {{ event.currentParticipant }}/{{ event.maxParticipant }}
-        {% elseif event.currentParticipant %}
-            {{ event.currentParticipant }}
-            {% else %}
-            Non renseigné
-        {% endif %}
-        </p>
-    </div>
+            <img class = "icon" src = "{{ asset('build/images/location.png') }}">
+            <p class = "eventShow-item">{{ event.place }}</p>
+        </div>
+            <div class = "showItem location">
+            <p class = "eventShow-item">Nombre de participants: 
+            {% if event.maxParticipant and event.currentParticipant %}
+                {{ event.currentParticipant }}/{{ event.maxParticipant }}
+            {% elseif event.currentParticipant %}
+                {{ event.currentParticipant }}
+                {% else %}
+                Non renseigné
+            {% endif %}
+            </p>
+        </div>
+    </article>
     <div class = "button-container">
         <a class = "btn" href="{{ path('event_index') }}">Retour à la Liste</a>
         {% if app.user == event.organizer %}

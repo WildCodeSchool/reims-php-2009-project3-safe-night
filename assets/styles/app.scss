@@ -27,9 +27,20 @@ body {
     color-adjust: exact;
 }
 
+.eventShow-article {
+padding: 2rem;
+}
+
 .eventShow-item {
-    text-align:center;
-    margin-top: 5vh;
+    text-align: center;
+}
+
+.eventShow-item-description {
+    text-align: center;
+}
+
+.eventShow-item span {
+    font-size: 1.3rem;
 }
 
 // Suppression des puces des listes à puces
@@ -132,7 +143,8 @@ header {
 
 .icon {
     max-width: 2rem;
-    height:auto;
+    height: auto;
+    margin-right: 1rem;
 }
 
 .showItem {
@@ -142,10 +154,6 @@ header {
 
 .delete-form {
     width: 14rem;
-}
-
-.eventShow-item {
-    text-align:center;
 }
 
 .banner-eventShow {
