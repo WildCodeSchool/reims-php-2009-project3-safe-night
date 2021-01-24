@@ -198,8 +198,6 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 form  div {
@@ -237,14 +235,21 @@ form  div {
 
 // Page "Mes évènements" du fichier index.html.twig
 
-.my-events-banner, .my-friends-banner {
+.my-events-banner {
+    height: 12rem;
+    background-size: cover;
+    border-radius: 0rem 0rem 0.7rem 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.my-friends-banner {
     height: 10.5rem;
     background-size: cover;
     border-radius: 0rem 0rem 0.7rem 0.7rem;
     display: flex;
-}
-
-.my-friends-banner {
     justify-content: center;
     align-items: center;
     margin-top: -10px;
@@ -652,6 +657,27 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     z-index: 10;
+    font-weight: bold;
+}
+
+a.user-button-red {
+    margin-top: -3rem;
+}
+
+.user-button-red {
+    color: white;
+    background-color: #c07a7f;
+    border-radius: 1rem;
+    font-size: 1rem;
+    width: 14rem;
+    padding: 0.8rem 0rem 0.5rem 0rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+    font-weight: bold;
 }
 
 .user-button:hover {
