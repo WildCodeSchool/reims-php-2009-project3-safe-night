@@ -76,7 +76,7 @@ class EventFixtures extends Fixture
         $smileParty->setDatetimeStart(new \DateTime('05-02-2021 18:00'));
         $smileParty->setDatetimeEnd(new \DateTime('06-02-2021 0:00'));
         $smileParty->setPlace('22 rue du général Accart, 51100 Reims');
-        $smileParty->setImage('smile-600Éc0547495cf.webp');
+        $smileParty->setImage('smile-600c0547495cf.webp');
         $smileParty->setOrganizer($ilyes);
         $smileParty->setMaxParticipant(6);
         $manager->persist($smileParty);
