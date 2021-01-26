@@ -50,5 +50,19 @@
         {% endfor %}
         </ul>
         {% endif %}
-    </div>
+        {% if event.hasParticipant(app.user) %}
+         <ul class="friends-show">
+            <li>
+                <div class="friend-link">
+                    <div class="friend-show-picture-background">
+                        <img class="friend-picture" src="{{ asset('/uploads/' ~ app.user.avatar) }}">
+                    </div>
+                    <p class="friend-name">{{app.user.firstname ~ ' ' ~ app.user.lastname}}</p>
+                    <form class="friend-invite" action="{{ path('event_user_toggle', {"event": event.id, "user": app.user.id}) }}" method="post">
+                        <button class="friend-invite-button {{ event.hasParticipant(app.user) ? "remove" : 'add' }}" type="submit">{{ event.hasParticipant(app.user) ? "-" : '+' }}</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}
