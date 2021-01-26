@@ -20,7 +20,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $user = new User();
+        /*$user = new User();
 
         $encodedPassword = $this->encoder->encodePassword($user,'123456');
 
@@ -49,6 +49,6 @@ class AppFixtures extends Fixture
             $user->setAvatar('Rasmus.png');
             $manager->persist($user);
             $manager->flush();
-        }
+        }*/
     }
 }
