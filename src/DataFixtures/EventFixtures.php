@@ -83,10 +83,10 @@ class EventFixtures extends Fixture
 
         $mappleSirupParty = new Event();
         $mappleSirupParty->setName("Soirée Sirop d'Érable");
-        $mappleSirupParty->setDescription("Bonne humeur au rendez-vous !!");
-        $mappleSirupParty->setDatetimeStart(new \DateTime('05-02-2021 18:00'));
-        $mappleSirupParty->setDatetimeEnd(new \DateTime('06-02-2021 0:00'));
-        $mappleSirupParty->setPlace('22 rue du général Accart, 51100 Reims');
+        $mappleSirupParty->setDescription("Tabarnak");
+        $mappleSirupParty->setDatetimeStart(new \DateTime('22-02-2021 18:00'));
+        $mappleSirupParty->setDatetimeEnd(new \DateTime('23-02-2021 0:00'));
+        $mappleSirupParty->setPlace('6 rue de Saint-Brice, 51100 Reims');
         $mappleSirupParty->setImage('sirop-erable-duo.jpg');
         $mappleSirupParty->setOrganizer($caribou);
         $mappleSirupParty->setMaxParticipant(6);
