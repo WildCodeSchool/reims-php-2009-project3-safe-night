@@ -44,7 +44,7 @@ fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/{{ app.user.address }}.
 {% if events %}
     const events = [
     {% for event in events %}
-        {place: '{{ event.place }}', name: '{{event.name}}', datetimeStart: '{{event.datetimeStart|date('d/m/Y H:i')}}', datetimeEnd: '{{event.datetimeStart|date('d/m/Y H:i')}}' },
+        {place: '{{ event.place }}', name: '{{event.name}}', datetimeStart: '{{event.datetimeStart|date('d/m/Y H:i')}}', datetimeEnd: '{{event.datetimeEnd|date('d/m/Y H:i')}}' },
     {% endfor %}
     ]
         events.forEach(event => {

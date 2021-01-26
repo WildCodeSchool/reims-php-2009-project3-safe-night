@@ -3,11 +3,12 @@
 {% block title %}Modifier un événement{% endblock %}
 
 {% block body %}
-    <h1 class = "pageTitle">Modifier un événement</h1>
-    <div class="edit-form">
-        {{ include('event/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-    </div>
-    <div>
-        {{ include('event/_delete_form.html.twig') }}
-    </div>
+ <section class="my-events-banner" style = "background-image: url('{{ asset('/uploads/' ~ event.image) }}')">
+        <h1 class="my-events-title"><strong>MODIFIER l'ÉVÉNEMENT</strong></h1>
+  </section> 
+  <a class="btn" id= "editBanner" href="{{ path('event_edit_banner', {'id': event.id}) }}">Modifier la bannière</a>
+      {{ include('event/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+     <div class = "button-container">
+      {{ include('event/_delete_form.html.twig') }}
+     </div>
 {% endblock %}

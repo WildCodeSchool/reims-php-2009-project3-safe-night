@@ -911,3 +911,36 @@ a.user-button-blue {
     bottom: 0; 
     width: 100%; 
 }
+
+/* CSS SOS Index */ 
+.background-SOS {
+    background-color: red;
+    width: 100vw;
+    height: 76vh;
+    margin: 0;
+    color: white;
+    padding: 0;
+    text-align: center;
+}
+
+.alarm-btn{
+    margin-top: 4.5em;
+    text-align: center;
+    border-radius: 54px;
+    height: 4rem;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 10rem;
+    background: #f73010;
+    box-shadow:  16px 16px 32px #c3260d,
+                -16px -16px 32px #ff3a13;
+}
+
+.h1-SOS{
+    text-align: center;
+}
+
+.p-SOS{
+    text-align: center;
+}
