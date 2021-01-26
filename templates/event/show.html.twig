@@ -53,7 +53,7 @@
         {% endfor %}
         </ul>
         {% endif %}
-        {% if isParticipant %}
+        {% if event.hasParticipant(app.user) %}
          <ul class="friends-show">
             <li>
                 <div class="friend-link">
