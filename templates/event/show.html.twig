@@ -34,7 +34,6 @@
         <a class = "btn" href="{{ path('event_index') }}">Retour à la Liste</a>
         {% if app.user == event.organizer %}
         <a class = "btn" href="{{ path('event_edit', {'id': event.id}) }}">modifier</a>
-        {{ include('event/_delete_form.html.twig') }}
         <ul class="friends-show">
         {% for friend in app.user.friends %}
             <li>

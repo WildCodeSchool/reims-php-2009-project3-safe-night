@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Entity\User;
 use App\Form\EventType;
+use App\Form\EventEditType;
+use App\Form\BannerType;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,8 +95,29 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, Event $event, FileUploader $fileUploader): Response
     {
-        $event->setImage(new File($this->getParameter('image_directory') . '/' . $event->getImage()));
-        $form = $this->createForm(EventType::class, $event);
+        $form = $this->createForm(EventEditType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($event);
+                $entityManager->flush();
+    
+            return $this->redirectToRoute('event_index');
+        }
+
+        return $this->render('event/edit.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
+        ]);
+    }
+
+     /**
+     * @Route("/{id}/editBanner", name="event_edit_banner", methods={"GET","POST"})
+     */
+    public function editBanner(Request $request, Event $event, FileUploader $fileUploader): Response
+    {
+        $form = $this->createForm(BannerType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -106,10 +129,10 @@ class EventController extends AbstractController
                 $entityManager->persist($event);
                 $entityManager->flush();
             }
-            return $this->redirectToRoute('event_index');
+            return $this->redirectToRoute('event_edit', ['id' => $event->getId()]);
         }
 
-        return $this->render('event/edit.html.twig', [
+        return $this->render('event/editBanner.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
         ]);
