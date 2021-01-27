@@ -470,6 +470,10 @@ footer {
 .SOS-img {
     width: 10rem;
     height: 10rem;
+    border-radius: 20px;
+    background: linear-gradient(315deg, #ea003F, #ea003F);
+    box-shadow:  9px 9px 13px #969696,
+                -9px -9px 13px #ffffff;
 }
 
 // Page Login du fichier login.html.twig
