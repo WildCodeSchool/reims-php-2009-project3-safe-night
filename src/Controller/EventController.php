@@ -24,16 +24,12 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="event_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(EventRepository $eventRepository): Response
     {
         $user = $this->getUser();
 
-        $eventOrganized = $user->getEventOrganized();
-        $eventGoing = $user->getEventGoing();
-        $events = array_merge($eventGoing->toArray(), $eventOrganized->toArray());
-
         return $this->render('event/index.html.twig', [
-            'events' => $events,
+            'events' => $eventRepository->findAllEventRelativeToUser($user),
         ]);
     }
 

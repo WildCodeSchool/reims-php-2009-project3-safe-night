@@ -302,7 +302,7 @@ class User implements UserInterface
     /**
      * @return Collection|Event[]
      */
-    public function getEventOrganized(): Collection
+    public function getEventOrganized(): ?Collection
     {
         return $this->eventOrganized;
     }
@@ -332,7 +332,7 @@ class User implements UserInterface
     /**
      * @return Collection|Event[]
      */
-    public function getEventGoing(): Collection
+    public function getEventGoing(): ?Collection
     {
         return $this->eventGoing;
     }
