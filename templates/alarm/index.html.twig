@@ -5,6 +5,16 @@
 {% block body %}
     <h1 class="h1-SOS">SOS</h1>
     <p class="p-SOS">Une notification à été envoyée<br> à vos contacts de confiance</p>
-    <div style="display: flex; justify-content: center;">
-    <button class="alarm-btn"onclick="toggle()"> ALARME </button>
+    <button class="alarm-btn align-self-center" onclick="toggle()"> ALARME </button>
+    <audio id="audio" src = "{{ asset('/son/alarm.wav') }}"></audio>
+    <script>
+        function toggle() {
+            const alarm = document.getElementById('audio');
+            if (alarm.paused) {
+                alarm.play();
+            } else {
+            alarm.pause();
+            }
+        }
+    </script> 
 {% endblock %}

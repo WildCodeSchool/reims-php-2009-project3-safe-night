@@ -176,15 +176,7 @@ header {
 .safeNightBlue {
     background-color: $safeBlue-color;
     justify-content: center;
-}
-
-.flexContainerLogo {
-    display: flex;
-    justify-content: center;
-}
-
-.openLogo {
-    justify-self: center;
+    text-align: center;
 }
 
 .safeNightBlue h1 {
@@ -329,7 +321,7 @@ li a {
 }
 
 .event-timer-tuile{
-    font-size: 0.6rem;
+    font-size: 0.7rem;
 }
 
 // HOME PAGE pour le fichier index.html.twig
@@ -458,6 +450,8 @@ li a {
 
 footer {
     position:fixed;
+    display:flex;
+    justify-content:space-evenly;
     bottom: 0;
     width: 100%;
     text-align: center;
@@ -476,8 +470,14 @@ footer {
 .Home-img {
     height: 2.3rem;
 }
+
 .SOS-img {
-    height: 2.3rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 20px;
+    background: linear-gradient(315deg, #ea003F, #ea003F);
+    box-shadow:  9px 9px 13px #969696,
+                -9px -9px 13px #ffffff;
 }
 
 // Page Login du fichier login.html.twig
@@ -922,6 +922,13 @@ a.user-button-blue {
 }
 
 /* CSS SOS Index */ 
+.background-SOS {
+    background-color: red;
+    color: white;
+    text-align: center;
+    flex: 1;
+}
+
 .alarm-btn{
     margin-top: 3em;
     text-align: center;
@@ -932,8 +939,6 @@ a.user-button-blue {
     font-weight: bold;
     width: 10rem;
     background: #f73010;
-    box-shadow:  16px 16px 32px #c3260d,
-                -16px -16px 32px #ff3a13;
 }
 
 .h1-SOS{
@@ -943,6 +948,23 @@ a.user-button-blue {
     color: white;
 }
 
+.safe-confirm-sos {
+    justify-content: space-between;
+    text-align: center;
+}
+
+.arrow-red-img {
+    height: 3rem;
+    width: 2.5rem;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.title-red {
+    color:#ea003F;
+}
 .p-SOS{
     text-align: center;
     color: white;

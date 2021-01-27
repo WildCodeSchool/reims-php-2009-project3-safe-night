@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
-<div class="flexContainerLogo">
-    <div class="openLogo">
-        <a href="{{ path('alarm')}}"><img src="{{ asset('build/images/favicon.png') }}"></a>
-    </div>
-</div>
+
+{% block bodyClass %}safe-confirm-sos{% endblock %}
+
+{% block body %}
+<h1 class="title-red">LANCER UN SOS</h1>
+<img class="arrow-red-img align-self-center" src="{{ asset('build/images/fleche.png') }}" alt="fleche vers le bas">
+<a class="flexContainerLogo" href="{{ path('alarm')}}">
+    <img class="SOS-img" src="{{ asset('build/images/SOS.de71847f.png') }}" alt="SOS">
+</a>
+<p>Attention :</br>Une notification va etre envoyée<br>à vos contacts de confiance</p>
+{% endblock %}
