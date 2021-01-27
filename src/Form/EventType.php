@@ -6,12 +6,13 @@ use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EventType extends AbstractType
 {
@@ -19,7 +20,7 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ['label' => "Nom de l'évènement"])
-            ->add('description', TextType::class, ['label' => 'Description'])
+            ->add('description', TextareaType::class, ['label' => 'Description'])
             ->add('datetime_start', DateTimeType::class, ['label' => 'Date et heure de début',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text'])
@@ -42,7 +43,8 @@ class EventType extends AbstractType
                     ])
                 ],
             ])
-            ->add('maxParticipant', IntegerType::class, ['label' => 'Nombre de participants maximum (facultatif)', 'required' => false])
+            ->add('maxParticipant', IntegerType::class, ['label' => 'Nombre de participants maximum (facultatif)',
+             'required' => false])
             ;
             $builder->get('image')->addModelTransformer(new CallBackTransformer(
                 function ($image) {
