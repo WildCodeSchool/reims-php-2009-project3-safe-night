@@ -472,6 +472,9 @@ footer {
 .Home-img {
     height: 2.3rem;
 }
+.SOS-img {
+    height: 2.3rem;
+}
 
 // Page Login du fichier login.html.twig
 
@@ -916,7 +919,7 @@ a.user-button-blue {
 .background-SOS {
     background-color: red;
     width: 100vw;
-    height: 76vh;
+    min-height: 69vh;
     margin: 0;
     color: white;
     padding: 0;
@@ -924,7 +927,7 @@ a.user-button-blue {
 }
 
 .alarm-btn{
-    margin-top: 4.5em;
+    margin-top: 4.2em;
     text-align: center;
     border-radius: 54px;
     height: 4rem;
@@ -938,9 +941,6 @@ a.user-button-blue {
 }
 
 .h1-SOS{
-    text-align: center;
-}
-
-.p-SOS{
-    text-align: center;
+    margin-top: 2rem;
+    font-size: 5rem;
 }
