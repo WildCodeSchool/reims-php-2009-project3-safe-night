@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-class EventType extends AbstractType
+class EventEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -27,31 +27,8 @@ class EventType extends AbstractType
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text'])
             ->add('place', TextType::class, ['label' => 'Lieu'])
-            ->add('image', FileType::class, [
-                'label' => 'Image (jpg, jpeg, png, webp)',
-                'required' => true,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '2m',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                            'image/webp'
-                        ],
-                        'mimeTypesMessage' => 'Seuls les fichiers jpg, jpeg, png et webp sont acceptés',
-                    ])
-                ],
-            ])
             ->add('maxParticipant', IntegerType::class, ['label' => 'Nombre de participants maximum (facultatif)', 'required' => false])
             ;
-            $builder->get('image')->addModelTransformer(new CallBackTransformer(
-                function ($image) {
-                    return null;
-                },
-                function ($image) {
-                    return $image;
-                }
-            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
