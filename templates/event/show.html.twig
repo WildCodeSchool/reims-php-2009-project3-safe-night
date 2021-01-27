@@ -28,41 +28,69 @@
         </div>
     </article>
     <div class = "button-container">
-        <a class = "user-button" href="{{ path('event_index') }}">Retour à la Liste</a>
-        {% if app.user == event.organizer %}
-        <a class = "user-button" href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>
-        
-        <ul class="friends-show">
-        {% for friend in app.user.friends %}
-            <li>
-                <div class="friend-link">
-                    <div class="friend-show-picture-background">
-                        <img class="friend-picture" src="{{ asset('/uploads/' ~ friend.avatar) }}">
+        {% if app.user == event.organizer and app.user.friends|length > 0 %}
+        <a class = "user-button" href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>   
+        <h3>Mes amis</h3>
+         <ul class="friends-show">
+            {% for friend in app.user.friends %}
+                <li>
+                    <div class="friend-link">
+                        <div class="friend-show-picture-background">
+                            <img class="friend-picture" src="{{ asset('/uploads/' ~ friend.avatar) }}">
+                        </div>
+                        <p class="friend-name">{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
+                        <form class="friend-invite" action="{{ path('event_user_toggle', {"event": event.id, "user": friend.id}) }}" method="post">
+                            <button class="friend-invite-button {{ event.hasParticipant(friend) ? "remove" : 'add' }}" type="submit">{{ event.hasParticipant(friend) ? "-" : '+' }}</button>
+                        </form>
                     </div>
-                    <p class="friend-name">{{friend.firstname ~ ' ' ~ friend.lastname}}</p>
-                    <form class="friend-invite" action="{{ path('event_user_toggle', {"event": event.id, "user": friend.id}) }}" method="post">
-                        <button class="friend-invite-button {{ event.hasParticipant(friend) ? "remove" : 'add' }}" type="submit">{{ event.hasParticipant(friend) ? "-" : '+' }}</button>
-                    </form>
-                </div>
-            </li>
-        {% else %}
-            <p>Ajoutez d'abord des ami.e.s</p>
-        {% endfor %}
+                </li>
+            {% endfor %}
         </ul>
+        {% elseif app.user == event.organizer %}
+            <a class = "user-button" href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>  
+            <p>Ajoutez d'abord des ami.e.s</p>         
         {% endif %}
-        {% if event.hasParticipant(app.user) %}
          <ul class="friends-show">
             <li>
-                <div class="friend-link">
+                <h3>Organisé par</h3>
+                <a class="friend-link" href="{{ path('user_show', {"id": event.organizer.id}) }}">
                     <div class="friend-show-picture-background">
-                        <img class="friend-picture" src="{{ asset('/uploads/' ~ app.user.avatar) }}">
+                        <img class="friend-picture" src="{{ asset('/uploads/' ~ event.organizer.avatar) }}">
                     </div>
-                    <p class="friend-name">{{app.user.firstname ~ ' ' ~ app.user.lastname}}</p>
-                    <form class="friend-invite" action="{{ path('event_user_toggle', {"event": event.id, "user": app.user.id}) }}" method="post">
-                        <button class="friend-invite-button {{ event.hasParticipant(app.user) ? "remove" : 'add' }}" type="submit">{{ event.hasParticipant(app.user) ? "-" : '+' }}</button>
-                    </form>
-                </div>
+                    <p class="friend-name">{{event.organizer.firstname ~ ' ' ~ event.organizer.lastname}}</p>
+                </a>
             </li>
         </ul>
-    {% endif %}
+        <h3>Participants</h3>
+        {% if event.participants|length == 0 %}
+            <p> Pas encore de participant </p>
+        {% endif %}
+        {% for participant in event.participants %}      
+            {% if participant == app.user %}
+            <ul style = "padding-left : 0;list-style:none;">
+                <li>
+                    <div class="friend-link">
+                        <div class="friend-show-picture-background">
+                            <img class="friend-picture" src="{{ asset('/uploads/' ~ app.user.avatar) }}">
+                        </div>
+                        <p class="friend-name">{{app.user.firstname ~ ' ' ~ app.user.lastname}}</p>
+                        <form class="friend-invite" action="{{ path('event_user_toggle', {"event": event.id, "user": app.user.id}) }}" method="post">
+                            <button class="friend-invite-button {{ event.hasParticipant(app.user) ? "remove" : 'add' }}" type="submit">{{ event.hasParticipant(app.user) ? "-" : '+' }}</button>
+                        </form>
+                    </div>
+                </li>              
+            {% else %}
+                 <li style = "list-style:none;">
+                    <a class="friend-link {{ loop.index == 1 ? 'first' : 'not-first' }}" href="{{ path('user_show', {"id": participant.id}) }}">
+                        <div class="friend-show-picture-background">
+                            <img class="friend-picture" src="{{ asset('/uploads/' ~ participant.avatar) }}">
+                        </div>
+                        <p class="friend-name">{{participant.firstname ~ ' ' ~ participant.lastname}}</p>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        </ul> 
+        <a class = "user-button" href="{{ path('event_index') }}">Retour à la Liste</a>
+    </div>
 {% endblock %}
