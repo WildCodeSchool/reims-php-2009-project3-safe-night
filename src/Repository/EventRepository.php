@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Event;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,18 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllEventRelativeToUser(User $user)
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->leftJoin('e.participants', 'p')
+            ->where('e.organizer = :user')
+            ->orWhere('p = :user')
+            ->setParameter('user', $user)
+            ->orderBy('e.datetimeStart', 'ASC');
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }
