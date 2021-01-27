@@ -102,7 +102,6 @@ class EventController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($event);
                 $entityManager->flush();
-    
             return $this->redirectToRoute('event_index');
         }
 

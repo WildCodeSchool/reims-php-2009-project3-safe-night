@@ -27,9 +27,20 @@ body {
     color-adjust: exact;
 }
 
+.eventShow-article {
+padding: 2rem;
+}
+
 .eventShow-item {
-    text-align:center;
-    margin-top: 5vh;
+    text-align: center;
+}
+
+.eventShow-item-description {
+    text-align: center;
+}
+
+.eventShow-item span {
+    font-size: 1.3rem;
 }
 
 // Suppression des puces des listes à puces
@@ -111,6 +122,10 @@ header {
     font-weight: bold;
 }
 
+.delete-button-edit {
+    margin-top: -10rem;
+}
+
 .delete-btn-center {
     margin-left: auto;
     margin-right: auto;
@@ -132,7 +147,8 @@ header {
 
 .icon {
     max-width: 2rem;
-    height:auto;
+    height: auto;
+    margin-right: 1rem;
 }
 
 .showItem {
@@ -142,10 +158,6 @@ header {
 
 .delete-form {
     width: 14rem;
-}
-
-.eventShow-item {
-    text-align:center;
 }
 
 .banner-eventShow {
@@ -198,8 +210,6 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 form  div {
@@ -230,20 +240,28 @@ form  div {
 #user_birthday {
     flex-direction: row;
 }
+
 #event_datetime_start, #event_datetime_end { 
     flex-direction: row;
 }
 
 // Page "Mes évènements" du fichier index.html.twig
 
-.my-events-banner, .my-friends-banner {
+.my-events-banner {
+    height: 12rem;
+    background-size: cover;
+    border-radius: 0rem 0rem 0.7rem 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.my-friends-banner {
     height: 10.5rem;
     background-size: cover;
     border-radius: 0rem 0rem 0.7rem 0.7rem;
     display: flex;
-}
-
-.my-friends-banner {
     justify-content: center;
     align-items: center;
     margin-top: -10px;
@@ -254,8 +272,12 @@ form  div {
     position: absolute;
     margin-left: 40px;
     align-self: flex-end;
-    text-shadow: 1px 1px 12px rgb(0, 0, 0);
+    text-shadow: 1px 1px 10px rgb(0, 0, 0);
     text-transform: uppercase;
+}
+
+.my-events-title {
+    font-size: 2rem;
 }
 
 .my-friends-title {
@@ -318,7 +340,8 @@ li a {
     filter: invert(100%) brightness(1);
     width: 4rem;
     height: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
 }
 
 .banner-img {
@@ -646,6 +669,11 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     z-index: 10;
+    font-weight: bold;
+}
+
+a.user-button-blue {
+    margin-top: -3rem;
 }
 
 .user-button:hover {
