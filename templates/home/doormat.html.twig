@@ -1,10 +1,7 @@
 {% extends 'blue_base.html.twig' %}
 
 {% block body %}
-<div class="flexContainerLogo">
-    <div class="openLogo">
-        <a href="{{ path('app_login')}}"><img src="{{ asset('build/images/favicon.png') }}"></a>
-    </div>
-</div>
+<a href="{{ path('app_login')}}">
+    <img src="{{ asset('build/images/favicon.png') }}">
+</a>
 {% endblock %}
-

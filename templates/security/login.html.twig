@@ -1,6 +1,6 @@
 {% extends 'blue_base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
 <img class="login-logo" src="{{ asset('build/images/favicon.png') }}" alt="logo"/>
@@ -26,5 +26,5 @@
 
     <button class="login-button" type="submit">Se connecter</button>
 </form>
-<a class="login-registration" href="{{ path('app_register') }}">Vous n'avez pas de compte ? Inscrivez-vous !</a>
+<a class="login-registration" href="{{ path('app_register') }}">Vous n'avez pas de compte ?<br>Inscrivez-vous !</a>
 {% endblock %}
