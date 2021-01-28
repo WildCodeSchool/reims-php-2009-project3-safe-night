@@ -7,7 +7,7 @@
         <h1 class="my-events-title"><strong>{{ event.name }}</strong></h1>
     </section>
     <article class="eventShow-article">
-        <p class = "eventShow-item-description"><em>{{ event.description }}</em></p>
+        <p class = "eventShow-item showItem"><em>{{ event.description }}</em></p>
         <div class = "showItem from">
             <p class = "eventShow-item"> Du <span>{{ event.datetimeStart ? event.datetimeStart|date('d/m/Y à H:i') : '' }}</span> <br/> au <span>{{ event.datetimeEnd ? event.datetimeEnd|date('d/m/Y à H:i') : '' }}</span></p>
         </div>

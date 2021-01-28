@@ -1,10 +1,5 @@
 @import 'variables.scss';
-//@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-heavy);
-//@import url(https://fr.allfont.net/allfont.css?fonts=cooperhewitt-book);
-/*@font-face{
-    font-family:"CooperHewitt-Heavy";
-    src: url("cooperhewitt-heavy.ttf");
-}*/
+
 @font-face{
     font-family:"CooperHewitt-Book";
     src: url("cooperhewitt-book.ttf");
@@ -32,10 +27,6 @@ padding: 2rem;
 }
 
 .eventShow-item {
-    text-align: center;
-}
-
-.eventShow-item-description {
     text-align: center;
 }
 
@@ -156,8 +147,8 @@ header {
 }
 
 .showItem {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 .delete-form {
@@ -452,6 +443,7 @@ footer {
     position:fixed;
     display:flex;
     justify-content:space-evenly;
+    align-items: center;
     bottom: 0;
     width: 100%;
     text-align: center;
@@ -469,6 +461,12 @@ footer {
 
 .Home-img {
     height: 2.3rem;
+}
+
+.SOS-icon {
+    height:2.8rem;
+    width:auto;
+    box-sizing: border-box;
 }
 
 .SOS-img {
