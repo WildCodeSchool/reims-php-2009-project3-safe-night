@@ -29,7 +29,7 @@
     </article>
     <div class = "button-container">
         {% if app.user == event.organizer and app.user.friends|length > 0 %}
-        <a class = "user-button" href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>   
+        <a class = "user-button" href="{{ path('event_edit', {'id': event.id}) }}">Modifier l'événement</a>   
         <h3>Mes amis</h3>
          <ul class="friends-show">
             {% for friend in app.user.friends %}
@@ -47,7 +47,8 @@
             {% endfor %}
         </ul>
         {% elseif app.user == event.organizer %}
-            <a class = "user-button" href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>  
+            <a class = "user-button" href="{{ path('event_edit', {'id': event.id}) }}">Modifier l'événement</a>  
+            <h3>Mes amis</h3>
             <p>Ajoutez d'abord des ami.e.s</p>         
         {% endif %}
          <ul class="friends-show">
