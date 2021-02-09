@@ -15,6 +15,15 @@
     
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+        <script>
+            // Si on est sur firefox on change la couleur de fond de la class safeNightBlue
+            let body = document.querySelector(".safeNightBlue")
+            if (typeof InstallTrigger !== 'undefined') {
+                body.style.backgroundColor = "#2d0064"
+            } else {
+                body.style.backgroundColor = "#1D2662"
+            }
+        </script>
     {% endblock %}
 </body>
 </html>
