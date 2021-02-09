@@ -20,32 +20,26 @@ class EventFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        $baptiste = $this->userRepository->findOneBy(['firstname' => 'Baptiste']);
-        $bruno = $this->userRepository->findOneBy(['firstname' => 'Bruno']);
-        $linus = $this->userRepository->findOneBy(['firstname' => 'Linus']);
-        $axel = $this->userRepository->findOneBy(['firstname' => 'Axel', 'lastname' => 'Croizé']);
-        $caribou = $this->userRepository->findOneBy(['firstname' => 'Axel', 'lastname' => 'Raboit']);
-        $ilyes = $this->userRepository->findOneBy(['firstname' => 'Ilyes']);
 
         $hpParty = new Event();
         $hpParty->setName('Soirée Harry Potter');
         $hpParty->setDescription('Amenez vos baguettes et vos balais');
-        $hpParty->setDatetimeStart(new \DateTime('06-04-2021 20:00'));
-        $hpParty->setDatetimeEnd(new \DateTime('07-04-2021 02:00'));
+        $hpParty->setDatetimeStart(new \DateTime('11-02-2021 20:00'));
+        $hpParty->setDatetimeEnd(new \DateTime('12-04-2021 02:00'));
         $hpParty->setPlace('192 rue de Vesles, 51100 Reims');
         $hpParty->setImage('soiree-harry-potter-sance-600dc4894f2ab.jpeg');
-        $hpParty->setOrganizer($bruno);
+        $hpParty->setOrganizer($this->getReference('cedric'));
         $hpParty->setMaxParticipant(6);
         $manager->persist($hpParty);
 
         $racletteParty = new Event();
         $racletteParty->setName('Soirée Raclette');
         $racletteParty->setDescription("N'oubliez pas vos poêlons !");
-        $racletteParty->setDatetimeStart(new \DateTime('06-02-2021 20:00'));
-        $racletteParty->setDatetimeEnd(new \DateTime('07-02-2021 00:00'));
+        $racletteParty->setDatetimeStart(new \DateTime('06-03-2021 20:00'));
+        $racletteParty->setDatetimeEnd(new \DateTime('07-03-2021 00:00'));
         $racletteParty->setPlace('15 Avenue de Paris, 51100 Reims');
         $racletteParty->setImage('bb-chch090801-0135a-x-600700f02fe98.jpeg');
-        $racletteParty->setOrganizer($baptiste);
+        $racletteParty->setOrganizer($this->getReference('cedric'));
         $racletteParty->setMaxParticipant(6);
         $manager->persist($racletteParty);
 
@@ -56,7 +50,7 @@ class EventFixtures extends Fixture
         $codeParty->setDatetimeEnd(new \DateTime('14-02-2021 5:00'));
         $codeParty->setPlace('2 rue Alfred Nobel, 51350 Cormontreuil');
         $codeParty->setImage('code-informatique-60-1920x1080-600ad30ad6ddf.jpeg');
-        $codeParty->setOrganizer($linus);
+        $codeParty->setOrganizer($this->getReference('cedric'));
         $codeParty->setMaxParticipant(6);
         $manager->persist($codeParty);
 
@@ -67,17 +61,17 @@ class EventFixtures extends Fixture
         $beachParty->setDatetimeEnd(new \DateTime('13-06-2021 8:00'));
         $beachParty->setPlace('Avenue de la page, 40600 Biscarrosse');
         $beachParty->setImage('7dff86ca-f55c-438d-9918-6ab94b84fcf7-6006fe108fcce.jpeg');
-        $beachParty->setOrganizer($axel);
+        $beachParty->setOrganizer($this->getReference('cedric'));
         $manager->persist($beachParty);
 
         $smileParty = new Event();
         $smileParty->setName('Soirée Smile');
         $smileParty->setDescription("Bonne humeur au rendez-vous !!");
-        $smileParty->setDatetimeStart(new \DateTime('05-02-2021 18:00'));
-        $smileParty->setDatetimeEnd(new \DateTime('06-02-2021 0:00'));
+        $smileParty->setDatetimeStart(new \DateTime('19-02-2021 18:00'));
+        $smileParty->setDatetimeEnd(new \DateTime('20-02-2021 0:00'));
         $smileParty->setPlace('22 rue du général Accart, 51100 Reims');
         $smileParty->setImage('smile-600c0547495cf.webp');
-        $smileParty->setOrganizer($ilyes);
+        $smileParty->setOrganizer($this->getReference('cedric'));
         $smileParty->setMaxParticipant(6);
         $manager->persist($smileParty);
 
@@ -88,7 +82,7 @@ class EventFixtures extends Fixture
         $mappleSirupParty->setDatetimeEnd(new \DateTime('23-02-2021 0:00'));
         $mappleSirupParty->setPlace('6 rue de Saint-Brice, 51100 Reims');
         $mappleSirupParty->setImage('sirop-erable-duo.jpg');
-        $mappleSirupParty->setOrganizer($caribou);
+        $mappleSirupParty->setOrganizer($this->getReference('cedric'));
         $mappleSirupParty->setMaxParticipant(6);
         $manager->persist($mappleSirupParty);
 
